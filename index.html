@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#fbf7f0" />
+  <meta
+    name="description"
+    content="CJ Code designs and rebuilds websites, keeps them current, and implements AI chatbots, automation, and workflow integration for agencies and companies."
+  />
+  <title>Web and AI Services Portfolio</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%23fbf7f0' width='32' height='32'/%3E%3Cpath fill='none' stroke='%231c4694' stroke-width='2' d='M6 22 L14 10 L20 18 L26 8'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script>
+    (function () {
+      var reload = false;
+      try {
+        var nav = performance.getEntriesByType("navigation")[0];
+        reload = !!(nav && nav.type === "reload");
+      } catch (e) {}
+      if (!location.hash || reload) {
+        if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+      }
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a class="wordmark" href="#top">CJ Code</a>
+
+      <button
+        class="nav-toggle"
+        id="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-nav"
+      >
+        <span class="sr-only">Menu</span>
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <a href="#process">Process</a>
+        <a href="#work">Work</a>
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a class="btn btn-nav" href="contact.html">Start a project</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <h1 data-reveal>
+        Websites that represent the business, and AI that runs the work behind them.
+      </h1>
+      <div class="hero-split">
+        <div data-reveal>
+          <p class="lede">
+            CJ Code designs and rebuilds websites, keeps them current, and
+            implements AI — chatbots, automation, and workflow integration —
+            for agencies and companies that need both the public face and the
+            operating layer.
+          </p>
+          <div class="cta-row">
+            <a class="btn ghost" href="#services">View services</a>
+            <a class="btn primary" href="contact.html">Start a project</a>
+          </div>
+        </div>
+        <ul class="path-map" data-reveal aria-label="How the work connects">
+          <li>Design</li>
+          <li>Redesign</li>
+          <li>Automate</li>
+          <li>Maintain</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="process" aria-labelledby="process-title">
+      <header class="section-head" data-reveal>
+        <div>
+          <h2 id="process-title">A short path from brief to running system.</h2>
+        </div>
+      </header>
+
+      <ul class="process-list">
+        <li data-reveal>
+          <h3>Discover</h3>
+          <p>Goals, constraints, the current site or workflow, and what “done” has to mean for the business.</p>
+        </li>
+        <li data-reveal>
+          <h3>Design / rebuild</h3>
+          <p>Information architecture, visual system, and pages that ship — new work or a redesign of what’s already live.</p>
+        </li>
+        <li data-reveal>
+          <h3>Automate</h3>
+          <p>Chat, handoffs, and the repetitive middle: the AI layer that sits inside the operation, not beside it.</p>
+        </li>
+        <li data-reveal>
+          <h3>Maintain</h3>
+          <p>Updates, monitoring, and small improvements so the site and the automations don’t stall after launch.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section" id="work" aria-labelledby="work-title">
+      <header class="section-head" data-reveal>
+        <div>
+          <h2 id="work-title">A few projects so far. More as they go live.</h2>
+        </div>
+      </header>
+      <div id="work-grid" class="work-grid">
+        <article class="ghost-card" aria-hidden="true">
+          <div class="ghost-media"></div>
+          <div class="ghost-body">
+            <p class="ghost-cat"></p>
+            <p class="ghost-title"></p>
+            <p class="ghost-summary"></p>
+          </div>
+        </article>
+        <article class="ghost-card" aria-hidden="true">
+          <div class="ghost-media"></div>
+          <div class="ghost-body">
+            <p class="ghost-cat"></p>
+            <p class="ghost-title"></p>
+            <p class="ghost-summary"></p>
+          </div>
+        </article>
+        <article class="ghost-card" aria-hidden="true">
+          <div class="ghost-media"></div>
+          <div class="ghost-body">
+            <p class="ghost-cat"></p>
+            <p class="ghost-title"></p>
+            <p class="ghost-summary"></p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="services" aria-labelledby="services-title">
+      <header class="section-head" data-reveal>
+        <div>
+          <h2 id="services-title">What we build and keep running.</h2>
+        </div>
+      </header>
+
+      <ul class="service-grid">
+        <li class="service-card" data-reveal>
+          <h3>Website design</h3>
+          <p>
+            New sites with a point of view — structure, type, and interaction
+            that hold up next to the brands you already respect.
+          </p>
+        </li>
+        <li class="service-card" data-reveal>
+          <h3>Website redesign</h3>
+          <p>
+            Take what’s live and make it earn attention again. Same URL, clearer
+            story, faster pages, stronger conversion path.
+          </p>
+        </li>
+        <li class="service-card" data-reveal>
+          <h3>Updates and maintenance</h3>
+          <p>
+            Copy, components, CMS, performance, and the unglamorous work that
+            keeps a site from rotting after launch.
+          </p>
+        </li>
+        <li class="service-card" data-reveal>
+          <h3>AI business automation</h3>
+          <p>
+            Remove the copy-paste layer: intake, routing, follow-up, reporting.
+            AI where a person was only moving information.
+          </p>
+        </li>
+        <li class="service-card" data-reveal>
+          <h3>AI chatbot implementation</h3>
+          <p>
+            Assistants that answer, qualify, and hand off — on the site, in
+            Slack, or in the tools the team already uses. The widget on this
+            page is a live sketch of that UX.
+          </p>
+        </li>
+        <li class="service-card" data-reveal>
+          <h3>AI in business workflows</h3>
+          <p>
+            Wire models into the actual sequence of work: CRM, docs, support,
+            ops. Not a demo. A step in the process.
+          </p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section" id="pricing" aria-labelledby="pricing-title">
+      <header class="section-head" data-reveal>
+        <div>
+          <h2 id="pricing-title">Starting prices for design, redesign, automation, and maintenance.</h2>
+          <p class="section-lede">
+            These are starting points — not guaranteed final prices. Scope, integrations, content,
+            page count, and functionality all affect the quote. The goal is clarity without locking
+            you into a one-size-fits-all package.
+          </p>
+        </div>
+      </header>
+
+      <div class="pricing-summary-wrap" data-reveal>
+        <table class="pricing-summary">
+          <caption class="sr-only">Pricing summary</caption>
+          <thead>
+            <tr>
+              <th scope="col">Service</th>
+              <th scope="col">Starting price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Website Design</th>
+              <td>$750</td>
+            </tr>
+            <tr>
+              <th scope="row">Website Redesign</th>
+              <td>$500</td>
+            </tr>
+            <tr>
+              <th scope="row">Business Automation</th>
+              <td>$300</td>
+            </tr>
+            <tr>
+              <th scope="row">Website Maintenance</th>
+              <td>$75/month</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <ul class="pricing-grid">
+        <li class="pricing-card" data-reveal>
+          <p class="pricing-step">Design</p>
+          <h3>Website Design</h3>
+          <p class="pricing-amount">Starting at <strong>$750</strong></p>
+          <p class="pricing-lede">
+            For businesses that need a new, modern website built from the ground up.
+          </p>
+          <div class="pricing-block">
+            <p class="pricing-label">Includes</p>
+            <ul>
+              <li>Custom website design</li>
+              <li>Mobile-responsive layout</li>
+              <li>Up to 5 core pages</li>
+              <li>Clear navigation and calls to action</li>
+              <li>Contact form</li>
+              <li>Basic SEO structure</li>
+              <li>Deployment and setup</li>
+              <li>Basic launch testing</li>
+            </ul>
+          </div>
+          <p class="pricing-best">
+            <strong>Best for:</strong> Small businesses that need a professional online presence
+            without unnecessary complexity.
+          </p>
+        </li>
+
+        <li class="pricing-card" data-reveal>
+          <p class="pricing-step">Redesign</p>
+          <h3>Website Redesign</h3>
+          <p class="pricing-amount">Starting at <strong>$500</strong></p>
+          <p class="pricing-lede">
+            For businesses that already have a website but need a more modern, professional,
+            user-friendly experience.
+          </p>
+          <div class="pricing-block">
+            <p class="pricing-label">Includes</p>
+            <ul>
+              <li>Review of the existing website</li>
+              <li>Modernized visual design</li>
+              <li>Improved layout and navigation</li>
+              <li>Mobile responsiveness</li>
+              <li>Improved calls to action</li>
+              <li>Content organization</li>
+              <li>Contact form updates when needed</li>
+              <li>Basic SEO structure</li>
+              <li>Launch testing</li>
+            </ul>
+          </div>
+          <p class="pricing-best">
+            <strong>Best for:</strong> Sites that look outdated, are hard to use, or no longer
+            present the business well.
+          </p>
+        </li>
+
+        <li class="pricing-card" data-reveal>
+          <p class="pricing-step">Automate</p>
+          <h3>Business Automation</h3>
+          <p class="pricing-amount">Starting at <strong>$300</strong></p>
+          <p class="pricing-lede">
+            For businesses that want to reduce repetitive work and improve how information moves
+            between their tools.
+          </p>
+          <div class="pricing-block">
+            <p class="pricing-label">Includes</p>
+            <ul>
+              <li>Workflow planning</li>
+              <li>One focused automation</li>
+              <li>Connection between supported tools and services</li>
+              <li>Basic testing</li>
+              <li>Setup and handoff</li>
+              <li>Basic documentation</li>
+            </ul>
+          </div>
+          <div class="pricing-block">
+            <p class="pricing-label">Examples</p>
+            <ul>
+              <li>Lead capture workflows</li>
+              <li>Form-to-email notifications</li>
+              <li>Automated follow-ups</li>
+              <li>Information routing</li>
+              <li>Simple business workflows</li>
+              <li>Connecting existing tools</li>
+              <li>Repetitive administrative tasks</li>
+            </ul>
+          </div>
+          <p class="pricing-note">
+            More complex automations, multiple workflows, advanced integrations, AI systems, or
+            ongoing automation management may require a custom quote.
+          </p>
+        </li>
+
+        <li class="pricing-card" data-reveal>
+          <p class="pricing-step">Maintain</p>
+          <h3>Website Maintenance</h3>
+          <p class="pricing-amount">Starting at <strong>$75/month</strong></p>
+          <p class="pricing-lede">
+            For businesses that want someone available to keep their website updated and functioning
+            properly.
+          </p>
+          <div class="pricing-block">
+            <p class="pricing-label">Includes</p>
+            <ul>
+              <li>Minor website updates</li>
+              <li>Text and image changes</li>
+              <li>Basic content updates</li>
+              <li>Routine website checks</li>
+              <li>Basic troubleshooting</li>
+              <li>Small design adjustments</li>
+            </ul>
+          </div>
+          <p class="pricing-best">
+            <strong>Best for:</strong> Businesses that do not want to handle routine website updates
+            themselves.
+          </p>
+          <p class="pricing-note">
+            Larger updates, new pages, major redesigns, development work, or extensive functionality
+            are quoted separately.
+          </p>
+        </li>
+      </ul>
+
+      <div class="pricing-extra" data-reveal>
+        <h3>Additional services</h3>
+        <p>
+          Services outside the standard packages are quoted based on scope. Examples include:
+        </p>
+        <ul class="pricing-extra-list">
+          <li>Additional website pages</li>
+          <li>Landing pages</li>
+          <li>Advanced forms</li>
+          <li>AI chatbot implementation</li>
+          <li>Advanced automations</li>
+          <li>Third-party integrations</li>
+          <li>Custom functionality</li>
+          <li>Ongoing technical support</li>
+        </ul>
+      </div>
+
+      <div class="pricing-notes" data-reveal>
+        <h3>Before work begins</h3>
+        <dl class="pricing-notes-list">
+          <div>
+            <dt>Custom quotes</dt>
+            <dd>
+              Starting prices give a clear idea of typical investment. A custom quote may apply when
+              a project needs more pages or functionality, advanced integrations, substantial content
+              work, custom automation, AI implementation, significant technical issues on an existing
+              site, or ongoing support beyond the standard package.
+            </dd>
+          </div>
+          <div>
+            <dt>Payment terms</dt>
+            <dd>
+              Project work requires a <strong>50% deposit</strong> before kickoff. The
+              <strong>remaining 50% is due before launch or handoff</strong> — final files, admin
+              access, and go-live happen after that balance is paid. Monthly maintenance is billed
+              <strong>in advance</strong> each month. Past-due invoices pause active work until
+              payment clears. Deposits are non-refundable once work has started.
+            </dd>
+          </div>
+          <div>
+            <dt>Scope</dt>
+            <dd>
+              Each project has a written scope before work starts. Requests outside that scope are
+              quoted separately and billed before the extra work begins.
+            </dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="pricing-cta" data-reveal>
+        <p>Need AI chatbots, workflow integration, or a scope that does not fit a package?</p>
+        <a class="btn primary" href="contact.html">Request a custom quote</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a class="wordmark" href="index.html">CJ Code</a>
+      <nav aria-label="Footer">
+        <a href="#process">Process</a>
+        <a href="#work">Work</a>
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <p class="footer-note">Web and AI Services Portfolio</p>
+    </div>
+  </footer>
+
+  <div class="video-lightbox" id="video-lightbox" hidden>
+    <div class="video-lightbox-backdrop" data-lightbox-close></div>
+    <div
+      class="video-lightbox-dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="video-lightbox-title"
+    >
+      <header class="video-lightbox-head">
+        <div>
+          <p class="video-lightbox-kicker">Project demo</p>
+          <h2 id="video-lightbox-title">Demo</h2>
+        </div>
+        <button type="button" class="video-lightbox-close" id="video-lightbox-close" aria-label="Close video">
+          Close
+        </button>
+      </header>
+      <div class="video-lightbox-stage">
+        <video id="video-lightbox-player" controls playsinline preload="metadata"></video>
+      </div>
+      <p class="video-lightbox-note">Full-size view so the chat typing is easy to follow.</p>
+    </div>
+  </div>
+
+  <div class="video-lightbox" id="email-assistant-lightbox" hidden>
+    <div class="video-lightbox-backdrop" data-email-close></div>
+    <div
+      class="video-lightbox-dialog email-assistant-dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="email-assistant-title"
+    >
+      <header class="video-lightbox-head">
+        <div>
+          <p class="video-lightbox-kicker">Interactive demo</p>
+          <h2 id="email-assistant-title">AI Business Email Assistant</h2>
+        </div>
+        <button type="button" class="video-lightbox-close" id="email-assistant-close" aria-label="Close demo">
+          Close
+        </button>
+      </header>
+
+      <form class="email-assistant" id="email-assistant-form">
+        <p class="demo-banner">
+          Sample walkthrough. You can try two replies in this browser. Production writes from the real inbox — this page will not copy a sendable email.
+        </p>
+        <p class="demo-remaining" id="email-demo-remaining"></p>
+
+        <div class="field field-full">
+          <label for="email-sample">Sample customer thread</label>
+          <select id="email-sample" name="sample">
+            <option value="appointment" selected>Reschedule a Friday appointment</option>
+            <option value="complaint">Late delivery, damaged box</option>
+            <option value="question">Residential vs commercial service</option>
+          </select>
+        </div>
+
+        <div class="field field-full">
+          <label for="email-customer-message">Customer message (sample)</label>
+          <textarea id="email-customer-message" name="message" rows="3" readonly></textarea>
+        </div>
+
+        <div class="email-assistant-row">
+          <div class="field">
+            <label for="email-response-type">Response Type</label>
+            <select id="email-response-type" name="type">
+              <option value="question">Customer Question</option>
+              <option value="complaint">Customer Complaint</option>
+              <option value="appointment" selected>Appointment Request</option>
+              <option value="followup">Follow-Up</option>
+              <option value="thanks">Thank You</option>
+              <option value="general">General Response</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="email-tone">Tone</label>
+            <select id="email-tone" name="tone">
+              <option value="professional" selected>Professional</option>
+              <option value="friendly">Friendly</option>
+              <option value="warm">Warm</option>
+              <option value="concise">Concise</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn primary" id="email-generate" type="submit">Generate sample reply</button>
+          <p class="form-status" id="email-assistant-status" role="status"></p>
+        </div>
+
+        <div class="field field-full">
+          <label for="email-suggested-response">Suggested response (demo marked)</label>
+          <textarea id="email-suggested-response" rows="8" readonly placeholder="A sample reply will appear here."></textarea>
+        </div>
+
+        <div class="demo-lock" id="email-demo-lock" hidden>
+          <p>You’ve used both sample replies. The live assistant sits on your actual threads and copies a sendable draft.</p>
+          <a class="btn primary" href="contact.html">Start a project</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="video-lightbox" id="intake-qualifier-lightbox" hidden>
+    <div class="video-lightbox-backdrop" data-intake-close></div>
+    <div
+      class="video-lightbox-dialog email-assistant-dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="intake-qualifier-title"
+    >
+      <header class="video-lightbox-head">
+        <div>
+          <p class="video-lightbox-kicker">Interactive demo</p>
+          <h2 id="intake-qualifier-title">Project intake qualifier</h2>
+        </div>
+        <button type="button" class="video-lightbox-close" id="intake-qualifier-close" aria-label="Close demo">
+          Close
+        </button>
+      </header>
+
+      <form class="email-assistant" id="intake-qualifier-form">
+        <p class="demo-banner">
+          Sample walkthrough. You can generate two briefs in this browser. Production reads real inbound — this page will not export a usable client brief.
+        </p>
+        <p class="demo-remaining" id="intake-demo-remaining"></p>
+
+        <div class="field field-full">
+          <label for="intake-sample">Sample inbound request</label>
+          <select id="intake-sample" name="sample">
+            <option value="harbor" selected>Harbor &amp; Line — site + qualifier</option>
+            <option value="kindling">Kindling Coffee — one-pager + FAQ</option>
+            <option value="northline">Northline — inbound to a usable brief</option>
+          </select>
+        </div>
+
+        <div class="field field-full">
+          <label for="intake-request">What they wrote (sample)</label>
+          <textarea id="intake-request" name="request" rows="4" readonly></textarea>
+        </div>
+
+        <div class="field field-full">
+          <label for="intake-depth">Brief depth</label>
+          <select id="intake-depth" name="depth">
+            <option value="standard" selected>Standard</option>
+            <option value="full">Include kickoff questions</option>
+          </select>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn primary" id="intake-generate" type="submit">Generate sample brief</button>
+          <p class="form-status" id="intake-status" role="status"></p>
+        </div>
+
+        <div class="field field-full">
+          <label for="intake-brief">Project brief (demo marked)</label>
+          <textarea id="intake-brief" rows="10" readonly placeholder="A sample brief will appear here."></textarea>
+        </div>
+
+        <div class="demo-lock" id="intake-demo-lock" hidden>
+          <p>You’ve used both sample briefs. The live qualifier turns your actual inbound into something the team can estimate.</p>
+          <a class="btn primary" href="contact.html">Start a project</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="chat-widget" id="chat-widget">
+    <div class="chat-panel" id="chat-panel" hidden>
+      <header class="chat-head">
+        <div>
+          <p class="chat-kicker">Demo assistant</p>
+          <p class="chat-title">Ask about services</p>
+        </div>
+        <button type="button" class="chat-close" id="chat-close" aria-label="Close chat">
+          Close
+        </button>
+      </header>
+      <div class="chat-log" id="chat-log" role="log" aria-live="polite"></div>
+      <form class="chat-form" id="chat-form">
+        <label class="sr-only" for="chat-input">Your message</label>
+        <input id="chat-input" type="text" autocomplete="off" placeholder="Ask about web or AI work" />
+        <button class="btn primary compact" type="submit">Send</button>
+      </form>
+      <p class="chat-note">Scripted answers. Nothing leaves this page.</p>
+    </div>
+    <button
+      type="button"
+      class="chat-toggle"
+      id="chat-toggle"
+      aria-expanded="false"
+      aria-controls="chat-panel"
+    >
+      Ask about services
+    </button>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/projects.js"></script>
+  <script src="js/demo-limit.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/email-assistant.js"></script>
+  <script src="js/intake-qualifier.js"></script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#fbf7f0" />
+  <meta
+    name="description"
+    content="Contact CJ Code about website design, redesign, maintenance, AI chatbots, automation, and workflow integration."
+  />
+  <title>Contact me — Web and AI Services Portfolio</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%23fbf7f0' width='32' height='32'/%3E%3Cpath fill='none' stroke='%231c4694' stroke-width='2' d='M6 22 L14 10 L20 18 L26 8'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script>
+    (function () {
+      var reload = false;
+      try {
+        var nav = performance.getEntriesByType("navigation")[0];
+        reload = !!(nav && nav.type === "reload");
+      } catch (e) {}
+      if (!location.hash || reload) {
+        if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+      }
+    })();
+  </script>
+</head>
+<body class="page-contact">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a class="wordmark" href="index.html">CJ Code</a>
+
+      <button
+        class="nav-toggle"
+        id="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-nav"
+      >
+        <span class="sr-only">Menu</span>
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <a href="index.html#process">Process</a>
+        <a href="index.html#work">Work</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a class="btn btn-nav" href="contact.html">Start a project</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section contact-section" id="contact" aria-labelledby="contact-title">
+      <header class="section-head" data-reveal>
+        <div>
+          <p class="eyebrow">Contact me</p>
+          <h2 id="contact-title">Tell me whether you need the website, the AI layer, or both.</h2>
+        </div>
+      </header>
+
+      <div class="contact-layout">
+        <form class="contact-form" id="contact-form" data-reveal novalidate>
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="company">Company</label>
+            <input id="company" name="company" type="text" autocomplete="organization" />
+          </div>
+          <div class="field">
+            <label for="need">Need</label>
+            <select id="need" name="need" required>
+              <option value="design">Website Design</option>
+              <option value="redesign">Website Redesign</option>
+              <option value="automation">Automation</option>
+              <option value="website-and-automation">Website and Automation</option>
+            </select>
+          </div>
+          <div class="field field-full">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+          <div class="form-actions">
+            <button class="btn primary" type="submit">Open email draft</button>
+            <p class="form-status" id="form-status" role="status"></p>
+          </div>
+        </form>
+
+        <aside class="contact-aside" data-reveal>
+          <p>No backend on this page yet. Submit opens a draft to the address in <code>js/config.js</code>.</p>
+          <p class="contact-email" id="contact-email-display"></p>
+          <p>Prefer the short version? Use the assistant in the corner — it’s a demo of chatbot UX, with answers about these services.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a class="wordmark" href="index.html">CJ Code</a>
+      <nav aria-label="Footer">
+        <a href="index.html#process">Process</a>
+        <a href="index.html#work">Work</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="contact.html" aria-current="page">Contact</a>
+      </nav>
+      <p class="footer-note">Web and AI Services Portfolio</p>
+    </div>
+  </footer>
+
+  <div class="chat-widget" id="chat-widget">
+    <div class="chat-panel" id="chat-panel" hidden>
+      <header class="chat-head">
+        <div>
+          <p class="chat-kicker">Demo assistant</p>
+          <p class="chat-title">Ask about services</p>
+        </div>
+        <button type="button" class="chat-close" id="chat-close" aria-label="Close chat">
+          Close
+        </button>
+      </header>
+      <div class="chat-log" id="chat-log" role="log" aria-live="polite"></div>
+      <form class="chat-form" id="chat-form">
+        <label class="sr-only" for="chat-input">Your message</label>
+        <input id="chat-input" type="text" autocomplete="off" placeholder="Ask about web or AI work" />
+        <button class="btn primary compact" type="submit">Send</button>
+      </form>
+      <p class="chat-note">Scripted answers. Nothing leaves this page.</p>
+    </div>
+    <button
+      type="button"
+      class="chat-toggle"
+      id="chat-toggle"
+      aria-expanded="false"
+      aria-controls="chat-panel"
+    >
+      Ask about services
+    </button>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
