@@ -337,8 +337,16 @@ h3 {
 .section-lede {
   color: var(--ink-muted);
   font-size: 1.08rem;
-  max-width: 42ch;
+  max-width: 48ch;
   margin: 0;
+}
+
+.lede-secondary {
+  color: var(--ink-muted);
+  font-size: 0.95rem;
+  max-width: 48ch;
+  margin: 0.9rem 0 0;
+  line-height: 1.55;
 }
 
 .hero-split {
@@ -1419,6 +1427,7 @@ body.lightbox-open .chat-widget {
   }
 
   .lede,
+  .lede-secondary,
   .section-lede,
   .process-list p {
     max-width: none;
