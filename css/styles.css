@@ -336,17 +336,31 @@ h3 {
 .lede,
 .section-lede {
   color: var(--ink-muted);
+  font-family: var(--font-body);
   font-size: 1.08rem;
+  font-weight: 400;
+  font-style: normal;
   max-width: 48ch;
   margin: 0;
 }
 
-.lede-secondary {
-  color: var(--ink-muted);
-  font-size: 0.95rem;
+.hero-lede {
   max-width: 48ch;
-  margin: 0.9rem 0 0;
+}
+
+.hero-lede p {
+  color: var(--ink-muted);
+  font-family: var(--font-body);
+  font-size: 1.08rem;
+  font-weight: 400;
+  font-style: normal;
   line-height: 1.55;
+  letter-spacing: normal;
+  margin: 0;
+}
+
+.hero-lede p + p {
+  margin-top: 0.9rem;
 }
 
 .hero-split {
@@ -1427,8 +1441,8 @@ body.lightbox-open .chat-widget {
   }
 
   .lede,
-  .lede-secondary,
   .section-lede,
+  .hero-lede,
   .process-list p {
     max-width: none;
   }
