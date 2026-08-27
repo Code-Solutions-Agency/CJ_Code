@@ -1,0 +1,6 @@
+# Dependencies for scripts/make_demo_video.py (optional demo-video generator).
+# Install with: pip install -r scripts/requirements.txt
+imageio
+imageio-ffmpeg
+numpy
+Pillow
