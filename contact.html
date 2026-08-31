@@ -65,7 +65,7 @@
       </header>
 
       <div class="contact-layout">
-        <form class="contact-form" id="contact-form" data-reveal novalidate>
+        <form class="contact-form" id="contact-form" data-reveal novalidate autocomplete="on">
           <div class="field">
             <label for="name">Name</label>
             <input id="name" name="name" type="text" autocomplete="name" required />
@@ -80,8 +80,8 @@
           </div>
           <div class="field">
             <label for="need">Need</label>
-            <select id="need" name="need" required>
-              <option value="" selected disabled>Select what you need</option>
+            <select id="need" name="need" required autocomplete="off">
+              <option value="">Select what you need</option>
               <option value="design">Website Design</option>
               <option value="redesign">Website Redesign</option>
               <option value="automation">Automation</option>

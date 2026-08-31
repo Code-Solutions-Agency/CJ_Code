@@ -403,6 +403,12 @@
 
   /* Contact */
   const contactForm = $("contact-form");
+  const needSelect = $("need");
+
+  if (needSelect) {
+    needSelect.value = "";
+    needSelect.selectedIndex = 0;
+  }
 
   if (contactForm) {
     contactForm.addEventListener("submit", (event) => {
@@ -413,6 +419,12 @@
 
       if (!data.name || !data.email || !data.message) {
         status.textContent = "Name, email, and a message are required.";
+        return;
+      }
+
+      if (!data.need) {
+        status.textContent = "Choose what you need from the dropdown.";
+        needSelect?.focus();
         return;
       }
 
