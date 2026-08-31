@@ -402,9 +402,7 @@
   }
 
   /* Contact */
-  const emailDisplay = $("contact-email-display");
   const contactForm = $("contact-form");
-  if (emailDisplay) emailDisplay.textContent = SITE.contactEmail;
 
   if (contactForm) {
     contactForm.addEventListener("submit", (event) => {
