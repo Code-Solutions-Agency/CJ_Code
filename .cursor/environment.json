@@ -1,0 +1,17 @@
+{
+  "name": "CJ Code Portfolio",
+  "install": "npm install",
+  "terminals": [
+    {
+      "name": "web",
+      "command": "npm start",
+      "description": "Static dev server for the portfolio site on http://localhost:3000"
+    }
+  ],
+  "ports": [
+    {
+      "name": "web server",
+      "port": 3000
+    }
+  ]
+}
