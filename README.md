@@ -4,6 +4,20 @@ CJ Code portfolio site for agencies and companies: website design, redesign, upd
 
 Static HTML/CSS/JS. No build step.
 
+## Booklane (booking SaaS)
+
+The embeddable booking product lives in [`booking/`](booking/). It is a Next.js + PostgreSQL multi-tenant app: businesses configure services and hours, paste a snippet, and visitors book on their site.
+
+```bash
+cd booking
+cp .env.example .env
+npm install
+npm run db:setup
+npm run dev
+```
+
+See [`booking/README.md`](booking/README.md) for environment variables, the demo tenant (`demo@booklane.dev` / `DemoPass123!`), and embed instructions.
+
 ## Open locally
 
 1. Open `index.html` in a browser (double-click, or drag it into Chrome/Edge).
