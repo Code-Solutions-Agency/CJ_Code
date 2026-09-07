@@ -16,7 +16,7 @@ npm run db:setup
 npm run dev
 ```
 
-See [`booking/README.md`](booking/README.md) for environment variables, the demo tenant (`demo@booklane.dev` / `DemoPass123!`), and embed instructions.
+See [`booking/README.md`](booking/README.md) for environment variables, the demo tenant (`demo@booklane.dev` / `DemoPass123!`), and embed instructions. To put the widget on a client GitHub Pages site, use [`booking/docs/github-pages-install.md`](booking/docs/github-pages-install.md).
 
 ## Open locally
 

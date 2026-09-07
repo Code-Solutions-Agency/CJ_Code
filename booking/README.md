@@ -60,7 +60,9 @@ Use Harbor & Line to confirm one tenant cannot see the other’s bookings.
 
 ## Embed
 
-Script (recommended):
+**GitHub Pages (client static sites):** follow [docs/github-pages-install.md](docs/github-pages-install.md). That guide covers script vs iframe, Jekyll/theme gotchas, CSP, and a verify step. Copy-paste starter: [docs/examples/github-pages-embed.html](docs/examples/github-pages-embed.html).
+
+Local / any HTML page — script (recommended):
 
 ```html
 <script
@@ -80,7 +82,7 @@ Iframe:
 ></iframe>
 ```
 
-Replace the origin with your deployed `NEXT_PUBLIC_APP_URL`.
+Replace the origin with the public Booklane URL (`https://YOUR_BOOKLANE_URL`) and the key with that workspace’s public key from **Dashboard → Embed**.
 
 ### CORS and framing
 
@@ -88,7 +90,7 @@ Replace the origin with your deployed `NEXT_PUBLIC_APP_URL`.
 - `/embed/*` sends `Content-Security-Policy: frame-ancestors *` so customer sites can iframe the widget
 - Public APIs resolve a tenant **only** by `publicKey`. Admin APIs use the signed session and ignore any tenant id from the client
 
-If a host site blocks third-party frames, allow this app’s origin in their CSP `frame-src` (and `script-src` if they use the script tag).
+If a host site blocks third-party frames, allow this app’s origin in their CSP `frame-src` (and `script-src` if they use the script tag). On GitHub Pages that is usually a `<meta>` CSP in the layout — see the install doc.
 
 ## How availability is calculated
 
