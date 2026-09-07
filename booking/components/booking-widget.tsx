@@ -205,7 +205,7 @@ export function BookingWidget({
             </p>
             <PrimaryButton
               type="button"
-              className="bg-[var(--brand)]"
+              style={{ background: "var(--brand)" }}
               onClick={() => {
                 setConfirmed(null);
                 setSlot(null);
@@ -345,7 +345,7 @@ export function BookingWidget({
                 <Field label="Notes (optional)">
                   <TextArea name="notes" rows={3} />
                 </Field>
-                <PrimaryButton type="submit" disabled={pending} className="bg-[var(--brand)]">
+                <PrimaryButton type="submit" disabled={pending} style={{ background: "var(--brand)" }}>
                   {pending ? "Booking…" : "Confirm booking"}
                 </PrimaryButton>
               </form>
