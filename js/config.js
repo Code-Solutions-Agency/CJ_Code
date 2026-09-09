@@ -3,15 +3,29 @@ window.SITE = {
   title: "Web and AI Services Portfolio",
   contactEmail: "hello@cjcode.com",
   /**
-   * Booklane app origin. Local default matches `booking/` (`npm run dev`).
-   * Swap to the public Booklane URL when that app is deployed.
+   * On-site “book a call” calendar (runs on GitHub Pages — no localhost, no login).
+   * Confirm opens an email draft to notifyEmail.
    */
-  booklaneUrl: "http://localhost:3000",
-  /**
-   * Tenant public key from Booklane → Dashboard → Embed.
-   * Demo key ships with the seed; replace with the CJ Code workspace key when ready.
-   */
-  booklanePublicKey: "pk_demo_willow_grove",
+  booking: {
+    timezone: "America/New_York",
+    notifyEmail: "hello@cjcode.com",
+    stepMinutes: 30,
+    minNoticeMinutes: 60,
+    services: [
+      { id: "design", name: "Website Design", durationMinutes: 30 },
+      { id: "redesign", name: "Website Redesign", durationMinutes: 30 },
+      { id: "automation", name: "Automation", durationMinutes: 30 },
+      { id: "website-and-automation", name: "Website and Automation", durationMinutes: 30 },
+    ],
+    /* 0 = Sunday … 6 = Saturday. Minutes from midnight in `timezone`. */
+    hours: [
+      { dayOfWeek: 1, startMinute: 9 * 60, endMinute: 17 * 60 },
+      { dayOfWeek: 2, startMinute: 9 * 60, endMinute: 17 * 60 },
+      { dayOfWeek: 3, startMinute: 9 * 60, endMinute: 17 * 60 },
+      { dayOfWeek: 4, startMinute: 9 * 60, endMinute: 17 * 60 },
+      { dayOfWeek: 5, startMinute: 9 * 60, endMinute: 17 * 60 },
+    ],
+  },
   /**
    * How many times a visitor can generate in each portfolio demo (per browser).
    * These tools stay sample-only on this site — not a free product.
