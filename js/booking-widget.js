@@ -4,7 +4,8 @@
 
   const site = window.SITE || {};
   const booking = site.booking || {};
-  const timezone = booking.timezone || "America/New_York";
+  const timezone = booking.timezone || "America/Chicago";
+  const timezoneLabel = booking.timezoneLabel || "Central Time";
   const notifyEmail = booking.notifyEmail || site.contactEmail || "hello@cjcode.com";
   const stepMinutes = Number(booking.stepMinutes) || 30;
   const minNoticeMinutes = Number(booking.minNoticeMinutes) || 60;
@@ -17,6 +18,9 @@
       { id: "web-and-automation", name: "Web and Automation" },
     ];
   const hours = Array.isArray(booking.hours) ? booking.hours : [];
+  const blockedDates = new Set(
+    (Array.isArray(booking.blockedDates) ? booking.blockedDates : []).map(String),
+  );
 
   const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const MONTHS = [
@@ -86,7 +90,12 @@
     return WEEKDAYS.indexOf(zonedParts(date).weekday);
   }
 
+  function dateKey(year, month, day) {
+    return `${year}-${pad(month)}-${pad(day)}`;
+  }
+
   function hoursForDay(year, month, day) {
+    if (blockedDates.has(dateKey(year, month, day))) return [];
     const dow = dayOfWeek(year, month, day);
     return hours.filter((rule) => Number(rule.dayOfWeek) === dow);
   }
@@ -260,11 +269,11 @@
       day: "numeric",
     }).format(zonedTimeToDate(year, month, day, 12, 0));
     if (!slots.length) {
-      return `<div class="booking-slots"><p class="booking-slots-kicker">${escapeHtml(label)}</p><p class="booking-slots-empty">No times left this day.</p></div>`;
+      return `<div class="booking-slots"><p class="booking-slots-kicker">${escapeHtml(label)} · ${escapeHtml(timezoneLabel)}</p><p class="booking-slots-empty">No times left this day.</p></div>`;
     }
     return `
       <div class="booking-slots">
-        <p class="booking-slots-kicker">${escapeHtml(label)}</p>
+        <p class="booking-slots-kicker">${escapeHtml(label)} · ${escapeHtml(timezoneLabel)}</p>
         <div class="booking-slot-list" role="list">
           ${slots.map((slot) => {
             const iso = slot.toISOString();
@@ -282,7 +291,7 @@
       <div class="booking-widget">
         <div class="booking-widget-head">
           <p class="booking-kicker">Book a call</p>
-          <p class="booking-lede">Pick a time. Confirm opens an email draft to ${escapeHtml(notifyEmail)} — no account, no login.</p>
+          <p class="booking-lede">Times are in ${escapeHtml(timezoneLabel)}. Confirm opens an email draft to ${escapeHtml(notifyEmail)} — no account, no login.</p>
         </div>
         <div class="booking-widget-body">
           <div class="booking-split">

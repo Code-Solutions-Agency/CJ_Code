@@ -80,10 +80,12 @@ Hours, need options, timezone, and the notify address are in `js/config.js` unde
 
 ```js
 booking: {
-  timezone: "America/New_York",
+  timezone: "America/Chicago",
+  timezoneLabel: "Central Time",
   notifyEmail: "hello@cjcode.com",
   needs: [ /* Web, Automation, Web and Automation */ ],
-  hours: [ /* dayOfWeek 0=Sun … 6=Sat, startMinute, endMinute */ ],
+  hours: [ /* Mon–Thu 1:00–3:00pm Central; Friday closed */ ],
+  blockedDates: [ /* optional YYYY-MM-DD closed days */ ],
 }
 ```
 
