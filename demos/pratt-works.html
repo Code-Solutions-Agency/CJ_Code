@@ -57,7 +57,7 @@
           <p class="lede">
             PrattWorks is a one-person shop for stainless tumblers with a full wrap:
             edge to edge, heat-set, meant for daily coffee and ice water. Some listings
-            take a name or short phrase. Most ship ready-made.
+            can be personalized with a name or short phrase. Most ship as designed.
           </p>
           <p class="lede">
             Questions used to wait two or three days on email. Try the assistant in
@@ -109,7 +109,7 @@
             <p class="pw-sku">PW-MID-20 · Ready-made</p>
             <h3>Midnight Wrap</h3>
             <p class="pw-meta">20 oz · $38</p>
-            <p>Deep navy field with a faint star scatter. Already wrapped — no custom text on this listing.</p>
+            <p>Deep navy field with a faint star scatter. Ships as designed — no personalization on this listing.</p>
             <p class="pw-stock">Sample stock: 8 on the shelf</p>
             <button class="btn ghost compact" type="button" data-ask="Is the midnight wrap in stock?">
               Ask about stock
@@ -125,13 +125,13 @@
             </div>
           </div>
           <div class="pw-product-body">
-            <p class="pw-sku">PW-MDW-30 · Custom name or phrase</p>
+            <p class="pw-sku">PW-MDW-30 · Personalization: name or phrase</p>
             <h3>Meadow Speckle</h3>
             <p class="pw-meta">30 oz · $46</p>
-            <p>Sage and cream speckle wrap. This one can take a first name or a short phrase on the press.</p>
-            <p class="pw-stock">Sample stock: 3 blanks ready to wrap</p>
-            <button class="btn ghost compact" type="button" data-ask="Can I customize the Meadow Speckle?">
-              Ask about custom
+            <p>Sage and cream speckle wrap. This listing can be personalized with a first name or a short phrase.</p>
+            <p class="pw-stock">Sample stock: 3 on the shelf</p>
+            <button class="btn ghost compact" type="button" data-ask="Can I personalize the Meadow Speckle?">
+              Ask about personalization
             </button>
           </div>
         </li>
@@ -147,10 +147,10 @@
             <p class="pw-sku">PW-CPR-20 · Ready-made</p>
             <h3>Copper Canyon</h3>
             <p class="pw-meta">20 oz · $38</p>
-            <p>Warm copper wrap, heat-set over stainless. Ready-made — last one on the bench in this sample.</p>
+            <p>Warm copper wrap over stainless. Ships as designed — last one in this sample.</p>
             <p class="pw-stock">Sample stock: 1 left</p>
-            <button class="btn ghost compact" type="button" data-ask="How long until a Copper Canyon ships?">
-              Ask about shipping
+            <button class="btn ghost compact" type="button" data-ask="Tell me about the Copper Canyon wrap">
+              Ask about this wrap
             </button>
           </div>
         </li>
@@ -171,11 +171,11 @@
         </li>
         <li>
           <h3>Heat-set wrap</h3>
-          <p>Print, align, and set. Built for daily use. Avoid soaking and the dishwasher if you want the wrap to stay vivid.</p>
+          <p>Print, align, and set. Once engraved or personalized, wash as usual — no special care routine.</p>
         </li>
         <li>
-          <h3>Custom on select listings</h3>
-          <p>Meadow Speckle can take a name or short phrase. Midnight Wrap and Copper Canyon ship as designed — no text on those two.</p>
+          <h3>Personalization on select listings</h3>
+          <p>Meadow Speckle can take a name or short phrase. Midnight Wrap and Copper Canyon ship as designed. We don’t take full custom work.</p>
         </li>
       </ul>
     </section>
@@ -186,8 +186,8 @@
           <p class="eyebrow">Lead times</p>
           <h2 id="shipping-title">Handmade means a few days on the bench before it ships.</h2>
           <p class="section-lede">
-            Ready-made wraps: 3–5 business days to pack, then about 2–6 days in US transit.
-            Custom Meadow Speckle: add 2–4 business days on the press. No drop-shipping.
+            Ready-made wraps pack in a few business days, then go out in US mail.
+            Personalized Meadow Speckle orders take a little extra time on the press.
           </p>
         </div>
       </header>
@@ -210,41 +210,14 @@
     </div>
   </footer>
 
-  <div class="chat-widget" id="chat-widget">
-    <div class="chat-panel" id="chat-panel" hidden>
-      <header class="chat-head">
-        <div>
-          <p class="chat-kicker">Demo preview · PrattWorks assistant</p>
-          <p class="chat-title">Ask about tumblers</p>
-        </div>
-        <button type="button" class="chat-close" id="chat-close" aria-label="Close chat">
-          Close
-        </button>
-      </header>
-      <div class="chat-log" id="chat-log" role="log" aria-live="polite"></div>
-      <div class="pw-chips" id="chat-chips" hidden>
-        <button type="button" data-ask="Can I customize this?">Can I customize this?</button>
-        <button type="button" data-ask="Is the midnight wrap in stock?">Is the midnight wrap in stock?</button>
-        <button type="button" data-ask="How long until it ships?">How long until it ships?</button>
-      </div>
-      <form class="chat-form" id="chat-form">
-        <label class="sr-only" for="chat-input">Your message</label>
-        <input id="chat-input" type="text" autocomplete="off" placeholder="Ask about a wrap, stock, or an order" />
-        <button class="btn primary compact" type="submit" id="chat-send">Send</button>
-      </form>
-      <p class="chat-note" id="chat-note">Scripted preview. Nothing leaves this page.</p>
-    </div>
-    <button
-      type="button"
-      class="chat-toggle"
-      id="chat-toggle"
-      aria-expanded="false"
-      aria-controls="chat-panel"
-    >
-      Ask about a tumbler
-    </button>
-  </div>
-
+  <script>
+    window.PRATTWORKS_CHAT = {
+      shopName: "PrattWorks",
+      contactHref: "../contact.html",
+      autoOpenDesktop: true,
+    };
+  </script>
+  <script src="prattworks-chatbot/prattworks-chatbot.js"></script>
   <script src="pratt-works.js"></script>
 </body>
 </html>

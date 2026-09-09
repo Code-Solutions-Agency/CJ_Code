@@ -107,9 +107,12 @@ Change the generate cap in `js/config.js` (`demoMaxUses`). Do not put an API key
 
 ## PrattWorks shop chatbot (shareable page)
 
-Standalone teaser for a fictional maker shop that sells full-wrap tumblers. Buyer-facing only — products, care, custom vs ready-made, sample stock, and one sample order. Scripted keywords, no API keys, no payments, no live inventory.
+Standalone teaser for a fictional maker shop that sells full-wrap tumblers. Shopper-facing only: sample order tracking, tumbler sizes, which wraps are in the demo, and personalization on select listings (not full custom). Scripted keywords, no API keys, no payments, no live inventory.
 
-Local path: `demos/pratt-works.html`
+Live demo host: `demos/pratt-works.html`
+
+**Client deliverable** (zip or paste — not the whole portfolio): `demos/prattworks-chatbot/`  
+See [`demos/prattworks-chatbot/INSTALL.md`](demos/prattworks-chatbot/INSTALL.md) for the snippet, config, and caps.
 
 GitHub Pages (after merge to `master`):
 
@@ -117,7 +120,7 @@ GitHub Pages (after merge to `master`):
 https://code-solutions-agency.github.io/CJ_Code/demos/pratt-works.html
 ```
 
-Send that URL to a prospect. Caps: 8 questions and 2 stock checks per visit, then a CJ Code CTA. Refreshing the page resets the preview. The Work card **Shop assistant for PrattWorks** links to the same page.
+Send that URL to try the hosted demo, or send the `prattworks-chatbot` folder for them to paste onto their site. Caps: 8 questions and 2 stock checks per visit, then a CJ Code CTA. Refreshing the page resets the preview. The Work card **Shop assistant for PrattWorks** links to the demo page.
 
 ## Cloudflare
 

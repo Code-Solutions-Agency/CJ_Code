@@ -296,58 +296,6 @@
   max-width: 34ch;
 }
 
-.page-pratt .chat-kicker {
-  color: var(--accent);
-}
-
-.pw-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  padding: 0 0.85rem 0.65rem;
-}
-
-.pw-chips[hidden] {
-  display: none;
-}
-
-.pw-chips button {
-  appearance: none;
-  border: 1px solid var(--line);
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  padding: 0.4rem 0.65rem;
-  border-radius: 999px;
-  cursor: pointer;
-}
-
-.pw-chips button:hover,
-.pw-chips button:focus-visible {
-  border-color: rgba(140, 59, 36, 0.45);
-  color: var(--accent);
-}
-
-.chat-bubble.bot.pw-cta {
-  max-width: 100%;
-  background: var(--bg);
-  border-color: rgba(140, 59, 36, 0.28);
-}
-
-.chat-bubble.bot.pw-cta a {
-  display: inline-block;
-  margin-top: 0.55rem;
-  color: var(--accent);
-  font-weight: 500;
-}
-
-.page-pratt .chat-form input:disabled,
-.page-pratt .chat-form button:disabled {
-  opacity: 0.55;
-  cursor: not-allowed;
-}
-
 @media (max-width: 900px) {
   .pw-hero,
   .page-pratt .section,

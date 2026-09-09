@@ -58,7 +58,7 @@ window.PROJECTS = [
     client: "PrattWorks",
     category: "Chatbot",
     summary:
-      "A maker-shop preview: buyers ask about full-wrap tumblers, custom listings, sample stock, and one demo order. Capped walkthrough — not a free chatbot.",
+      "A maker-shop preview: shoppers track a sample order, ask about sizes and wraps, and see personalization on select listings. Capped walkthrough — not a free chatbot.",
     tags: ["Chatbot", "Try Demo"],
     preview: "pratt-works",
     href: "demos/pratt-works.html",
