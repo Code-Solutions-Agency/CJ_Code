@@ -601,7 +601,7 @@
       if (chatToolbar) chatToolbar.hidden = open;
     }
     if (open && leadName) {
-      window.requestAnimationFrame(() => leadName.focus());
+      window.setTimeout(() => leadName.focus(), 0);
     }
   }
 
@@ -620,7 +620,9 @@
     addRichBubble("bot", (el) => {
       el.append(
         document.createTextNode(
-          `${THANKS_TEXT}${email ? ` We’ll use ${email}. ` : " "}`
+          email
+            ? `Thanks — we have that. We’ll follow up at ${email}. `
+            : `${THANKS_TEXT} `
         )
       );
       const link = document.createElement("a");
