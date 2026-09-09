@@ -3,15 +3,29 @@ window.SITE = {
   title: "Web and AI Services Portfolio",
   contactEmail: "hello@cjcode.com",
   /**
-   * Public Booklane origin on Render (not localhost).
-   * After Blueprint deploy, paste the exact URL from the Render dashboard if it differs.
+   * On-site “book a call” calendar (runs on GitHub Pages — no localhost, no login).
+   * Confirm opens an email draft to notifyEmail.
    */
-  booklaneUrl: "https://cj-code-booklane.onrender.com",
-  /**
-   * Tenant public key from Booklane → Dashboard → Embed.
-   * Seed default: pk_demo_willow_grove
-   */
-  booklanePublicKey: "pk_demo_willow_grove",
+  booking: {
+    timezone: "America/New_York",
+    notifyEmail: "hello@cjcode.com",
+    stepMinutes: 30,
+    minNoticeMinutes: 60,
+    services: [
+      { id: "design", name: "Website Design", durationMinutes: 30 },
+      { id: "redesign", name: "Website Redesign", durationMinutes: 30 },
+      { id: "automation", name: "Automation", durationMinutes: 30 },
+      { id: "website-and-automation", name: "Website and Automation", durationMinutes: 30 },
+    ],
+    /* 0 = Sunday … 6 = Saturday. Minutes from midnight in `timezone`. */
+    hours: [
+      { dayOfWeek: 1, startMinute: 9 * 60, endMinute: 17 * 60 },
+      { dayOfWeek: 2, startMinute: 9 * 60, endMinute: 17 * 60 },
+      { dayOfWeek: 3, startMinute: 9 * 60, endMinute: 17 * 60 },
+      { dayOfWeek: 4, startMinute: 9 * 60, endMinute: 17 * 60 },
+      { dayOfWeek: 5, startMinute: 9 * 60, endMinute: 17 * 60 },
+    ],
+  },
   /**
    * How many times a visitor can generate in each portfolio demo (per browser).
    * These tools stay sample-only on this site — not a free product.

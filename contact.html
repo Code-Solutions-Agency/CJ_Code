@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/styles.css?v=20260909" />
   <script>
     (function () {
       var reload = false;
@@ -62,16 +62,17 @@
           <p class="eyebrow">Book a call</p>
           <h2 id="contact-title">Pick a time — we’ll talk through the work and next steps.</h2>
           <p class="section-lede">
-            Choose a slot that fits. You’ll get a confirmation; the appointment lands on CJ Code’s calendar.
+            Choose a service and a time. Confirm opens an email draft to CJ Code — you don’t create an account.
           </p>
         </div>
       </header>
 
       <div class="contact-layout">
-        <div class="contact-booklane" data-reveal>
-          <div id="booklane-embed"></div>
-          <p class="contact-fallback" id="booklane-fallback" hidden>
-            Loading the booking calendar…
+        <div class="contact-booking" data-reveal>
+          <div id="booking-embed"></div>
+          <p class="contact-fallback">
+            Prefer to write instead? Email
+            <a href="mailto:hello@cjcode.com">hello@cjcode.com</a>.
           </p>
         </div>
       </div>
@@ -122,8 +123,8 @@
     </button>
   </div>
 
-  <script src="js/config.js"></script>
-  <script src="js/booklane.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/config.js?v=20260909"></script>
+  <script src="js/booking-widget.js?v=20260909"></script>
+  <script src="js/app.js?v=20260909"></script>
 </body>
 </html>

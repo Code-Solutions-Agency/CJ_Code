@@ -74,13 +74,20 @@ Then copy or rename the output if you want a cache-busting filename.
 
 ## Contact / book a call
 
-`contact.html` loads the Booklane widget from a public HTTPS origin (Render), not localhost. GitHub Pages only serves this static site; Booklane (Next.js + Postgres) runs on your Render account.
+`contact.html` has a booking calendar that runs **on this static site** (GitHub Pages). Visitors pick a service and a time. Confirm opens an email draft to `booking.notifyEmail` — no login, no localhost, no extra server.
 
-1. Apply the Blueprint in the [Render dashboard](https://dashboard.render.com/) (`render.yaml` at the repo root). Steps: [`booking/docs/render-deploy.md`](booking/docs/render-deploy.md).
-2. Set `booklaneUrl` in `js/config.js` to the Render URL (expected `https://cj-code-booklane.onrender.com`).
-3. Push that config to `master` so Pages picks it up.
+Hours, services, timezone, and the notify address are in `js/config.js` under `booking`.
 
-The contact page uses `booklanePublicKey` (`pk_demo_willow_grove` from seed). Free Render web services sleep after idle; the first load can take 30–60 seconds.
+```js
+booking: {
+  timezone: "America/New_York",
+  notifyEmail: "hello@cjcode.com",
+  services: [ /* name + durationMinutes */ ],
+  hours: [ /* dayOfWeek 0=Sun … 6=Sat, startMinute, endMinute */ ],
+}
+```
+
+The Booklane app in [`booking/`](booking/) is a separate multi-tenant product. The portfolio contact page does not load it.
 
 ## Chat demo
 

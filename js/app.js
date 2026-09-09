@@ -429,7 +429,7 @@
     },
     {
       tests: [/start|begin|hire|contact|email|project/i],
-      text: "Use Start a project or Contact. The Contact page is a booking calendar — pick a time instead of sending a form. Say whether you need web, AI, or both.",
+      text: "Use Start a project or Contact. On Contact, pick a service and a time — confirm opens an email draft. No account needed. Say whether you need web, AI, or both.",
     },
     {
       tests: [/who|clearpath|cjcode|cj code|you|studio|agenc/i],
