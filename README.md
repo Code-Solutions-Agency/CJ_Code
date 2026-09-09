@@ -58,13 +58,18 @@ python scripts/make_demo_video.py
 
 Then copy or rename the output if you want a cache-busting filename.
 
-## Contact email
+## Contact / book a call
 
-The form lives on `contact.html`. It opens a `mailto:` draft. Change the address in `js/config.js`:
+`contact.html` embeds the Booklane widget instead of a mailto form. URL and tenant key live in `js/config.js`:
 
 ```js
-contactEmail: "hello@cjcode.com",
+booklaneUrl: "http://localhost:3000", // Booklane app origin — swap when deployed
+booklanePublicKey: "pk_demo_willow_grove", // replace with the CJ Code tenant key when ready
 ```
+
+Booklane must be running at `SITE.booklaneUrl` (the local `booking/` app, or a future public URL). Do not expect the widget to load if that origin is down.
+
+Open `contact.html` from the portfolio (file, or `npx --yes serve . -p 4173` so it does not collide with Booklane on port 3000).
 
 ## Chat demo
 
