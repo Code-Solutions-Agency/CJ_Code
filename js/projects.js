@@ -54,8 +54,8 @@ window.PROJECTS = [
     href: "#",
   },
   {
-    title: "Shop assistant for Pratt Works",
-    client: "Pratt Works",
+    title: "Shop assistant for PrattWorks",
+    client: "PrattWorks",
     category: "Chatbot",
     summary:
       "A maker-shop preview: buyers ask about full-wrap tumblers, custom listings, sample stock, and one demo order. Capped walkthrough — not a free chatbot.",

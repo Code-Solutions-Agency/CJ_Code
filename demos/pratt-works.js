@@ -1,5 +1,5 @@
 /**
- * Pratt Works shop assistant — static teaser for maker-shop buyers.
+ * PrattWorks shop assistant — static teaser for maker-shop buyers.
  * Keyword replies only. No API, no live inventory, no customer PII.
  */
 (() => {
@@ -64,7 +64,7 @@
   let locked = false;
 
   const GREETING =
-    "Hi — I’m the Pratt Works assistant. I can help with wraps, care, custom work, shipping, and a couple of sample stock checks. This is a demo preview, so I keep a short leash.";
+    "Hi — I’m the PrattWorks assistant. I can help with wraps, care, custom work, shipping, and a couple of sample stock checks. This is a demo preview, so I keep a short leash.";
 
   const CTA_HTML =
     `This preview is meant to show what a shop assistant feels like — not to run your store for free. CJ Code can build the full bot for your shop: live inventory, every order, and your real FAQs.` +
@@ -204,7 +204,7 @@
 
   function replyTo(message) {
     if (/software|backend|app|saas|api|code base|developer/i.test(message) && !/wrap|tumbler|cup|order|ship/i.test(message)) {
-      return "I only help Pratt Works buyers with tumblers, wraps, and shop orders — not software. If you want a chatbot like this on your own site, that’s a CJ Code project.";
+      return "I only help PrattWorks buyers with tumblers, wraps, and shop orders — not software. If you want a chatbot like this on your own site, that’s a CJ Code project.";
     }
 
     if (
@@ -267,7 +267,7 @@
       return "Ask about a wrap, whether it can be customized, sample stock, care, or shipping. I also have one sample order: PW-4821.";
     }
 
-    return "I can talk through Pratt Works tumblers: materials and care, which wraps take custom text, handmade lead times, sample stock for Midnight / Meadow / Copper, and one sample order (PW-4821). Try a chip below, or name a wrap.";
+    return "I can talk through PrattWorks tumblers: materials and care, which wraps take custom text, handmade lead times, sample stock for Midnight / Meadow / Copper, and one sample order (PW-4821). Try a chip below, or name a wrap.";
   }
 
   function openChat() {
