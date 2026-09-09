@@ -30,6 +30,8 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
+To run this on a **Render** account (public HTTPS for the GitHub Pages widget), see [docs/render-deploy.md](docs/render-deploy.md). The repo-root `render.yaml` Blueprint creates the web service and Postgres.
+
 ### Environment
 
 | Variable | Required | Purpose |
@@ -82,7 +84,7 @@ Iframe:
 ></iframe>
 ```
 
-Replace the origin with the public Booklane URL (`https://YOUR_BOOKLANE_URL`) and the key with that workspace’s public key from **Dashboard → Embed**.
+Replace the origin with the public Booklane URL (`https://YOUR_BOOKLANE_URL`, for example `https://cj-code-booklane.onrender.com`) and the key with that workspace’s public key from **Dashboard → Embed**.
 
 ### CORS and framing
 

@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev --hostname 0.0.0.0 --port 3000",
     "build": "prisma generate && next build",
-    "start": "next start",
+    "start": "next start --hostname 0.0.0.0",
     "lint": "eslint",
     "test": "tsx --test lib/slots.test.ts",
     "postinstall": "prisma generate",
@@ -13,6 +13,9 @@
     "db:push": "prisma db push",
     "db:seed": "prisma db seed",
     "db:setup": "prisma db push && prisma db seed"
+  },
+  "engines": {
+    "node": "22.x"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
@@ -23,9 +26,11 @@
     "jose": "^6.2.12",
     "luxon": "^3.7.2",
     "next": "16.3.4",
+    "prisma": "^6.19.3",
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "resend": "^6.26.0",
+    "tsx": "^4.23.13",
     "zod": "^4.5.4"
   },
   "devDependencies": {
@@ -37,9 +42,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.3.4",
-    "prisma": "^6.19.3",
     "tailwindcss": "^4",
-    "tsx": "^4.23.13",
     "typescript": "^5"
   }
 }

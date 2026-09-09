@@ -14,7 +14,7 @@ Do not deploy Booklane as part of this install. Wait until that URL exists, then
    https://YOUR_BOOKLANE_URL
    ```
 
-   No trailing slash. Example once it is live: `https://booklane.example.com`.
+   No trailing slash. Example once it is live: `https://booklane.example.com`. To host Booklane on Render, follow [render-deploy.md](render-deploy.md) (this repo’s expected URL is `https://cj-code-booklane.onrender.com`).
 
 2. The business has a Booklane workspace. In **Dashboard → Embed**, copy their public key.
 

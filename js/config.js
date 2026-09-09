@@ -3,13 +3,13 @@ window.SITE = {
   title: "Web and AI Services Portfolio",
   contactEmail: "hello@cjcode.com",
   /**
-   * Booklane app origin. Local default matches `booking/` (`npm run dev`).
-   * Swap to the public Booklane URL when that app is deployed.
+   * Public Booklane origin on Render (not localhost).
+   * After Blueprint deploy, paste the exact URL from the Render dashboard if it differs.
    */
-  booklaneUrl: "http://localhost:3000",
+  booklaneUrl: "https://cj-code-booklane.onrender.com",
   /**
    * Tenant public key from Booklane → Dashboard → Embed.
-   * Demo key ships with the seed; replace with the CJ Code workspace key when ready.
+   * Seed default: pk_demo_willow_grove
    */
   booklanePublicKey: "pk_demo_willow_grove",
   /**

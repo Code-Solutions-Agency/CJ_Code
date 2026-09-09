@@ -1,0 +1,42 @@
+# Booklane on Render (apply from the dashboard: New → Blueprint).
+# After the first deploy, copy the web URL into js/config.js as booklaneUrl
+# (expected: https://cj-code-booklane.onrender.com) and push so GitHub Pages can load the widget.
+
+databases:
+  - name: booklane-db
+    plan: free
+    postgresMajorVersion: "16"
+    databaseName: booklane
+    user: booklane
+
+services:
+  - type: web
+    name: cj-code-booklane
+    runtime: node
+    plan: free
+    rootDir: booking
+    buildCommand: npm ci && npx prisma generate && npm run build
+    preDeployCommand: npx prisma db push
+    startCommand: npm run start
+    initialDeployHook: npx prisma db seed
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: "22.14.0"
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: booklane-db
+          property: connectionString
+      - key: AUTH_SECRET
+        generateValue: true
+      - key: NEXT_PUBLIC_APP_URL
+        fromService:
+          name: cj-code-booklane
+          type: web
+          envVarKey: RENDER_EXTERNAL_URL
+      - key: EMAIL_FROM
+        value: "Booklane <noreply@localhost>"
+      - key: RESEND_API_KEY
+        sync: false
