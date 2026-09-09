@@ -11,11 +11,11 @@ window.SITE = {
     notifyEmail: "hello@cjcode.com",
     stepMinutes: 30,
     minNoticeMinutes: 60,
-    services: [
-      { id: "design", name: "Website Design", durationMinutes: 30 },
-      { id: "redesign", name: "Website Redesign", durationMinutes: 30 },
-      { id: "automation", name: "Automation", durationMinutes: 30 },
-      { id: "website-and-automation", name: "Website and Automation", durationMinutes: 30 },
+    durationMinutes: 30,
+    needs: [
+      { id: "web", name: "Web" },
+      { id: "automation", name: "Automation" },
+      { id: "web-and-automation", name: "Web and Automation" },
     ],
     /* 0 = Sunday … 6 = Saturday. Minutes from midnight in `timezone`. */
     hours: [
