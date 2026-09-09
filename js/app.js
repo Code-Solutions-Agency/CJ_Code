@@ -1,8 +1,4 @@
 (() => {
-  const SITE = window.SITE || {
-    name: "CJ Code",
-    contactEmail: "hello@cjcode.com",
-  };
   const PROJECTS = Array.isArray(window.PROJECTS) ? window.PROJECTS : [];
 
   function isReload() {
@@ -401,56 +397,6 @@
     return escapeHtml(value).replaceAll("'", "&#39;");
   }
 
-  /* Contact */
-  const contactForm = $("contact-form");
-  const needSelect = $("need");
-
-  if (needSelect) {
-    needSelect.value = "";
-    needSelect.selectedIndex = 0;
-  }
-
-  if (contactForm) {
-    contactForm.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const form = event.currentTarget;
-      const data = Object.fromEntries(new FormData(form));
-      const status = $("form-status");
-
-      if (!data.name || !data.email || !data.message) {
-        status.textContent = "Name, email, and a message are required.";
-        return;
-      }
-
-      if (!data.need) {
-        status.textContent = "Choose what you need from the dropdown.";
-        needSelect?.focus();
-        return;
-      }
-
-      const needLabel = {
-        design: "Website Design",
-        redesign: "Website Redesign",
-        automation: "Automation",
-        "website-and-automation": "Website and Automation",
-      }[data.need] || data.need;
-
-      const subject = `Project inquiry — ${needLabel} — ${data.company || data.name}`;
-      const body = [
-        `Name: ${data.name}`,
-        `Email: ${data.email}`,
-        `Company: ${data.company || "—"}`,
-        `Need: ${needLabel}`,
-        "",
-        data.message,
-      ].join("\n");
-
-      const href = `mailto:${SITE.contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      window.location.href = href;
-      status.textContent = `Your email client should open a draft to ${SITE.contactEmail}. If it doesn’t, write that address directly.`;
-    });
-  }
-
   /* Chatbot */
   const REPLIES = [
     {
@@ -483,7 +429,7 @@
     },
     {
       tests: [/start|begin|hire|contact|email|project/i],
-      text: "Use Contact in the nav, or Start a project. The form on the Contact page opens an email draft. Say whether you need web, AI, or both.",
+      text: "Use Start a project or Contact. The Contact page is a booking calendar — pick a time instead of sending a form. Say whether you need web, AI, or both.",
     },
     {
       tests: [/who|clearpath|cjcode|cj code|you|studio|agenc/i],
@@ -492,7 +438,7 @@
   ];
 
   const FALLBACK =
-    "I can talk through website design, redesign, maintenance, automation, chatbots, and workflow integration. Ask about one of those, or open Contact if you’re ready to brief us.";
+    "I can talk through website design, redesign, maintenance, automation, chatbots, and workflow integration. Ask about one of those, or book a call on Contact if you’re ready.";
 
   const GREETING =
     "This is a demo assistant for CJ Code services. Ask about design, redesign, maintenance, automation, chatbots, or putting AI into a workflow.";

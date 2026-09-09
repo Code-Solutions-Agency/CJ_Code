@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #fbf7f0;
+  --bg-2: #fffdf9;
+  --bg-3: #efe8dc;
+  --ink: #212b3f;
+  --muted: rgba(33, 43, 63, 0.7);
+  --faint: rgba(33, 43, 63, 0.44);
+  --line: rgba(33, 43, 63, 0.12);
+  --accent: #1c4694;
+  --accent-ink: #fffdf9;
+  --sage: #8fa38a;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-2: var(--bg-2);
+  --color-bg-3: var(--bg-3);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-sage: var(--sage);
+  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-newsreader), ui-serif, Georgia, serif;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+body {
+  min-height: 100dvh;
+  background:
+    radial-gradient(90% 55% at 12% -8%, rgba(28, 70, 148, 0.07), transparent 55%),
+    radial-gradient(65% 40% at 88% 8%, rgba(143, 163, 138, 0.14), transparent 50%),
+    linear-gradient(180deg, #fffdf9 0%, #fbf7f0 50%, #f3ebe0 100%);
+  background-attachment: fixed;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.surface {
+  background: color-mix(in srgb, var(--bg-2) 88%, white);
+  border: 1px solid var(--line);
+  box-shadow: 0 16px 40px rgba(33, 43, 63, 0.06);
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+input[type="time"],
+input[type="color"] {
+  min-height: 2.5rem;
+}

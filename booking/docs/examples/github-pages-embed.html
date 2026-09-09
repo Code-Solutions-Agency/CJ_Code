@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Book an appointment</title>
+</head>
+<body>
+  <h1>Book an appointment</h1>
+  <p>Replace the two placeholders, then commit this file to the GitHub Pages repo (for example as <code>book.html</code>).</p>
+
+  <!-- Script embed (preferred). widget.js inserts the booking iframe after this tag. -->
+  <script
+    src="https://YOUR_BOOKLANE_URL/widget.js"
+    data-public-key="pk_THEIR_PUBLIC_KEY"
+    async
+  ></script>
+
+  <!--
+    Iframe fallback — use this instead of the script tag if scripts are blocked:
+
+    <iframe
+      src="https://YOUR_BOOKLANE_URL/embed/pk_THEIR_PUBLIC_KEY"
+      title="Book an appointment"
+      style="width:100%;min-height:720px;border:0;border-radius:16px;"
+    ></iframe>
+  -->
+</body>
+</html>
