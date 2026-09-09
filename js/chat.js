@@ -8,17 +8,13 @@
   const chatInput = document.getElementById("chat-input");
   const chatNote = document.getElementById("chat-note");
   const chatLead = document.getElementById("chat-lead");
-  const chatHandoff = document.getElementById("chat-handoff");
-  const chatToolbar = document.getElementById("chat-toolbar");
   const leadName = document.getElementById("chat-lead-name");
   const leadEmail = document.getElementById("chat-lead-email");
-  const leadNote = document.getElementById("chat-lead-note");
   const leadHoney = document.getElementById("chat-lead-honey");
   const leadSubmit = document.getElementById("chat-lead-submit");
-  const leadCancel = document.getElementById("chat-lead-cancel");
   const leadStatus = document.getElementById("chat-lead-status");
 
-  if (!panel || !chatToggle || !chatLog || !chatInput || !chatForm) return;
+  if (!panel || !chatToggle || !chatLog || !chatInput || !chatForm || !chatLead) return;
 
   const EMAIL_RX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const ON_CONTACT = /contact\.html$/i.test(window.location.pathname);
@@ -26,17 +22,51 @@
   const BOOK_LABEL = ON_CONTACT ? "Use the calendar on this page" : "Book a time on the Contact page";
   const CHAT_ENDPOINT = SITE.chatEndpoint || "/api/chat";
   const SESSION_KEY = "cjcode-chat-session";
-  const GREETING =
-    "Hi — I can help with CJ Code websites and AI work. Ask about design, redesign, maintenance, automation, or chatbots. If it looks like a fit, leave your details or book a call.";
+  const VISITOR_KEY = "cjcode-chat-visitor";
+  const NOTE_GATE = "We’ll follow up at this email if it’s a fit.";
+  const NOTE_CHAT = "Ask about design, redesign, maintenance, automation, or chatbots.";
 
   const transcript = [];
   const history = [];
+  let visitor = loadVisitor();
   let greeted = false;
-  let leadSent = false;
-  let leadPrompted = false;
   let pending = false;
   let abort = null;
   let requestGen = 0;
+
+  function firstNameFrom(name) {
+    const token = String(name || "")
+      .trim()
+      .split(/\s+/)
+      .find(Boolean);
+    return token ? token.slice(0, 40) : "";
+  }
+
+  function greetingFor(name) {
+    const first = firstNameFrom(name);
+    return first ? `Hi ${first}, how can I help you?` : "Hi, how can I help you?";
+  }
+
+  function loadVisitor() {
+    try {
+      const raw = sessionStorage.getItem(VISITOR_KEY);
+      if (!raw) return null;
+      const data = JSON.parse(raw);
+      if (data && data.name && data.email) return data;
+    } catch {
+      /* ignore */
+    }
+    return null;
+  }
+
+  function saveVisitor(data) {
+    visitor = { name: data.name, email: data.email, sent: Boolean(data.sent) };
+    try {
+      sessionStorage.setItem(VISITOR_KEY, JSON.stringify(visitor));
+    } catch {
+      /* ignore */
+    }
+  }
 
   function sessionId() {
     try {
@@ -53,6 +83,8 @@
 
   function leadEndpoint() {
     if (SITE.leadEndpoint) return SITE.leadEndpoint;
+    const local = /^(localhost|127\.0\.0\.1)$/.test(window.location.hostname);
+    if (local) return `${window.location.origin}/api/lead`;
     if (!SITE.contactEmail) return "";
     return `https://formsubmit.co/ajax/${encodeURIComponent(SITE.contactEmail)}`;
   }
@@ -64,16 +96,15 @@
       .join("\n");
   }
 
-  function mailtoLead({ name, email, note }) {
+  function mailtoLead({ name, email }) {
     const subject = `Chat lead — ${name}`;
     let body = [
       `Name: ${name}`,
       `Email: ${email}`,
-      `Note: ${note || "—"}`,
       `Page: ${window.location.href}`,
       "",
       "Chat:",
-      transcriptText() || "(no messages yet)",
+      transcriptText() || "(no messages yet — opened the assistant)",
     ].join("\n");
     if (body.length > 1800) body = `${body.slice(0, 1800)}\n…`;
     return `mailto:${SITE.contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -146,55 +177,33 @@
     scrollChat();
   }
 
-  function setLeadOpen(open) {
-    if (!chatLead) return;
-    if (leadSent) open = false;
-    if (open) chatLead.removeAttribute("hidden");
-    else chatLead.setAttribute("hidden", "");
-    panel.classList.toggle("has-lead", Boolean(open));
-    if (chatHandoff) chatHandoff.setAttribute("aria-expanded", open ? "true" : "false");
-    if (chatToolbar) chatToolbar.hidden = Boolean(open || leadSent);
-    if (open && leadName) window.setTimeout(() => leadName.focus(), 0);
-    scrollChat();
+  function showGate() {
+    panel.classList.add("is-gate");
+    panel.classList.remove("is-chat");
+    chatLead.removeAttribute("hidden");
+    chatLog.setAttribute("hidden", "");
+    chatForm.setAttribute("hidden", "");
+    if (chatNote) chatNote.textContent = NOTE_GATE;
   }
 
-  function maybeOfferLead(suggest) {
-    if (!suggest || leadSent || leadPrompted) return;
-    leadPrompted = true;
-    setLeadOpen(true);
+  function showChat() {
+    panel.classList.remove("is-gate");
+    panel.classList.add("is-chat");
+    chatLead.setAttribute("hidden", "");
+    chatLog.removeAttribute("hidden");
+    chatForm.removeAttribute("hidden");
+    if (chatNote) chatNote.textContent = NOTE_CHAT;
   }
 
-  function showThanks(email) {
-    addRichBubble("bot", (el) => {
-      el.append(
-        document.createTextNode(
-          email
-            ? `Thanks — we have that. We’ll follow up at ${email}. `
-            : "Thanks — we have your details. "
-        )
-      );
-      const link = document.createElement("a");
-      link.href = BOOK_HREF;
-      link.textContent = BOOK_LABEL;
-      el.append(link);
-      el.append(document.createTextNode(" if you’d rather pick a slot now. You can keep asking questions here."));
-    });
-    if (chatNote) {
-      chatNote.textContent = "We received your note. Ask anything else about the work.";
+  function startConversation() {
+    showChat();
+    if (!greeted && visitor) {
+      const text = greetingFor(visitor.name);
+      addBubble(text, "bot");
+      history.push({ role: "assistant", content: text });
+      greeted = true;
     }
-    if (chatToolbar) chatToolbar.hidden = true;
-  }
-
-  function showFallback(payload) {
-    const href = mailtoLead(payload);
-    addRichBubble("bot", (el) => {
-      el.append(document.createTextNode("Couldn’t send from the browser. "));
-      const link = document.createElement("a");
-      link.href = href;
-      link.textContent = `Open an email draft to ${SITE.contactEmail}`;
-      el.append(link);
-      el.append(document.createTextNode(" with this note instead — you can also try Send again."));
-    });
+    chatInput.focus();
   }
 
   function isLeadSuccess(response, data) {
@@ -218,9 +227,7 @@
       body: JSON.stringify({
         name: payload.name,
         email: payload.email,
-        note: payload.note || "(none)",
         page: window.location.href,
-        transcript: transcriptText() || "(no messages yet)",
         _subject: `Chat lead from ${SITE.name || "CJ Code"} site — ${payload.name}`,
         _template: "table",
         _captcha: "false",
@@ -242,6 +249,7 @@
   }
 
   async function requestReply() {
+    if (!visitor) return;
     if (abort) abort.abort();
     abort = new AbortController();
     const gen = ++requestGen;
@@ -257,7 +265,8 @@
         body: JSON.stringify({
           messages: history,
           sessionId: sessionId(),
-          leadCaptured: leadSent,
+          leadCaptured: true,
+          visitorName: visitor.name,
           page: ON_CONTACT ? "contact" : "home",
         }),
       });
@@ -274,10 +283,11 @@
       setTyping(false);
 
       if (response.status === 429) {
-        const text =
+        addBubble(
           (data && data.error) ||
-          "Too many messages. Try again in a few minutes, or email hello@cjcode.com.";
-        addBubble(text, "bot");
+            "Too many messages. Try again in a few minutes, or email hello@cjcode.com.",
+          "bot"
+        );
         return;
       }
 
@@ -302,7 +312,6 @@
 
       addBubble(data.reply, "bot");
       history.push({ role: "assistant", content: data.reply });
-      maybeOfferLead(data.suggestLead);
     } catch (err) {
       if (err && err.name === "AbortError") return;
       if (gen !== requestGen) return;
@@ -319,21 +328,18 @@
       if (gen !== requestGen) return;
       pending = false;
       chatInput.disabled = false;
-      if (!panel.hasAttribute("hidden")) chatInput.focus();
+      if (!panel.hasAttribute("hidden") && visitor) chatInput.focus();
     }
   }
 
   function openChat() {
     panel.removeAttribute("hidden");
     chatToggle.setAttribute("aria-expanded", "true");
-    if (!greeted) {
-      addBubble(GREETING, "bot");
-      history.push({ role: "assistant", content: GREETING });
-      greeted = true;
+    if (visitor) startConversation();
+    else {
+      showGate();
+      if (leadName) leadName.focus();
     }
-    const focusLead = chatLead && !chatLead.hasAttribute("hidden") && leadName;
-    if (focusLead) leadName.focus();
-    else chatInput.focus();
   }
 
   function closeChat(event) {
@@ -358,7 +364,7 @@
 
   chatForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    if (pending) return;
+    if (!visitor || pending) return;
     const text = chatInput.value.trim();
     if (!text) return;
     addBubble(text, "user");
@@ -367,69 +373,56 @@
     requestReply();
   });
 
-  if (chatHandoff) {
-    chatHandoff.addEventListener("click", () => {
-      if (!greeted) {
-        addBubble(GREETING, "bot");
-        history.push({ role: "assistant", content: GREETING });
-        greeted = true;
+  chatLead.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (visitor && visitor.sent) {
+      startConversation();
+      return;
+    }
+
+    const name = (leadName && leadName.value.trim()) || "";
+    const email = (leadEmail && leadEmail.value.trim()) || "";
+    const honey = (leadHoney && leadHoney.value.trim()) || "";
+
+    if (!name) {
+      if (leadStatus) leadStatus.textContent = "Name is required.";
+      leadName?.focus();
+      return;
+    }
+    if (!email || !EMAIL_RX.test(email)) {
+      if (leadStatus) leadStatus.textContent = "A valid email is required.";
+      leadEmail?.focus();
+      return;
+    }
+
+    if (leadStatus) leadStatus.textContent = "Starting…";
+    if (leadSubmit) leadSubmit.disabled = true;
+
+    const payload = { name, email, honey };
+    let sent = Boolean(visitor && visitor.sent);
+
+    try {
+      if (!sent) await sendLead(payload);
+      sent = true;
+    } catch {
+      if (leadStatus) {
+        leadStatus.textContent = "";
+        leadStatus.append(document.createTextNode("Couldn’t email from here. "));
+        const link = document.createElement("a");
+        link.href = mailtoLead(payload);
+        link.textContent = `Open a draft to ${SITE.contactEmail}`;
+        leadStatus.append(link);
+        leadStatus.append(document.createTextNode(". Starting the assistant anyway."));
       }
-      leadPrompted = true;
-      const wasHidden = Boolean(chatLead && chatLead.hasAttribute("hidden"));
-      if (wasHidden && !leadSent) {
-        addBubble("Share your name and email below and we’ll follow up.", "bot");
-      }
-      setLeadOpen(true);
-    });
-  }
+    }
 
-  if (leadCancel) {
-    leadCancel.addEventListener("click", () => {
-      setLeadOpen(false);
-      chatInput.focus();
-    });
-  }
-
-  if (chatLead) {
-    chatLead.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      if (leadSent) return;
-
-      const name = (leadName && leadName.value.trim()) || "";
-      const email = (leadEmail && leadEmail.value.trim()) || "";
-      const note = (leadNote && leadNote.value.trim()) || "";
-      const honey = (leadHoney && leadHoney.value.trim()) || "";
-
-      if (!name) {
-        if (leadStatus) leadStatus.textContent = "Name is required.";
-        leadName?.focus();
-        return;
-      }
-      if (!email || !EMAIL_RX.test(email)) {
-        if (leadStatus) leadStatus.textContent = "A valid email is required.";
-        leadEmail?.focus();
-        return;
-      }
-
-      const payload = { name, email, note, honey };
-      if (leadStatus) leadStatus.textContent = "Sending…";
-      if (leadSubmit) leadSubmit.disabled = true;
-
-      try {
-        await sendLead(payload);
-        leadSent = true;
-        setLeadOpen(false);
-        if (chatLead) chatLead.setAttribute("hidden", "");
-        if (leadStatus) leadStatus.textContent = "";
-        showThanks(email);
-      } catch {
-        if (leadStatus) {
-          leadStatus.textContent = "Couldn’t send from here. Use the email draft in the chat.";
-        }
-        showFallback(payload);
-      } finally {
-        if (leadSubmit) leadSubmit.disabled = false;
-      }
-    });
-  }
+    saveVisitor({ name, email, sent });
+    if (leadSubmit) leadSubmit.disabled = false;
+    if (leadStatus) {
+      window.setTimeout(() => {
+        if (leadStatus.textContent.startsWith("Starting")) leadStatus.textContent = "";
+      }, 400);
+    }
+    startConversation();
+  });
 })();

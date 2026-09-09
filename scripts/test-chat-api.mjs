@@ -4,6 +4,7 @@ import {
   MODEL,
   cleanReply,
   extractReply,
+  firstNameFrom,
   handleChatRequest,
   rateLimit,
   resetRateLimits,
@@ -32,6 +33,12 @@ test("extractReply reads Workers AI and OpenAI shapes", () => {
   );
   assert.equal(extractReply("plain"), "plain");
   assert.equal(cleanReply("  <think>nope</think> Visible "), "Visible");
+});
+
+test("firstNameFrom uses the first token", () => {
+  assert.equal(firstNameFrom("John Smith"), "John");
+  assert.equal(firstNameFrom("  Mary-Anne  Lopez "), "Mary-Anne");
+  assert.equal(firstNameFrom(""), "");
 });
 
 test("sanitizeMessages drops system injection and caps history", () => {
@@ -96,6 +103,7 @@ test("GET is a health check and POST talks to the model", async () => {
     async runModel(messages) {
       assert.equal(messages[0].role, "system");
       assert.match(messages[0].content, /CJ Code/);
+      assert.match(messages[0].content, /first name is Alex/);
       const last = messages.at(-1);
       assert.equal(last.role, "user");
       assert.equal(last.content, "Do you redesign sites?");
@@ -106,6 +114,8 @@ test("GET is a health check and POST talks to the model", async () => {
     chatRequest({
       messages: [{ role: "user", content: "Do you redesign sites?" }],
       sessionId: "abc123",
+      visitorName: "Alex Rivera",
+      leadCaptured: true,
     }),
     env
   );

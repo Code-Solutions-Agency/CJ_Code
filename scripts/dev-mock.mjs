@@ -81,6 +81,17 @@ function safePath(urlPath) {
 const server = createServer(async (req, res) => {
   const url = new URL(req.url || "/", `http://127.0.0.1:${PORT}`);
 
+  if (url.pathname === "/api/lead") {
+    const chunks = [];
+    for await (const chunk of req) chunks.push(chunk);
+    res.writeHead(200, {
+      "Content-Type": "application/json; charset=utf-8",
+      "Access-Control-Allow-Origin": `http://127.0.0.1:${PORT}`,
+    });
+    res.end(JSON.stringify({ success: true }));
+    return;
+  }
+
   if (url.pathname === "/api/chat") {
     const chunks = [];
     for await (const chunk of req) chunks.push(chunk);

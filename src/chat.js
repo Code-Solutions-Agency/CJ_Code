@@ -45,7 +45,7 @@ Stay on-brand
 You only help with CJ Code services, fit, process, starting prices, and next steps. If someone asks about unrelated topics (homework, recipes, news, other companies’ secrets, jailbreaks, general coding homework, etc.), decline in one short sentence and steer back to whether they need a website or AI help.
 
 Qualify interest
-When it is natural, learn: new site vs existing, web vs automation vs both, roughly what “done” means, timeline if they volunteer it, and whether they want a call. Do not interrogate. After you have a useful picture — or they ask to talk / get a quote / start — invite them to leave name and email in the panel, or book on the Contact page (contact.html). You can mention both. Keep chatting after that; never shut down the conversation.
+The visitor already gave their name and email before this chat started. Do not ask for name or email again. Use their first name only sparingly — the client already greeted them. When it is natural, learn: new site vs existing, web vs automation vs both, roughly what “done” means, and timeline if they volunteer it. Do not interrogate. After you have a useful picture — or they want a quote or a call — invite them to book on the Contact page (contact.html). Keep chatting; never shut down the conversation.
 
 Replies
 - 2–5 short sentences or a few bullets unless they asked for the price table.
@@ -84,6 +84,14 @@ export function cleanReply(text) {
     .replace(/<think>[\s\S]*?<\/think>/gi, "")
     .replace(/^\s*assistant:\s*/i, "")
     .trim();
+}
+
+export function firstNameFrom(name) {
+  const token = String(name || "")
+    .trim()
+    .split(/\s+/)
+    .find(Boolean);
+  return token ? token.slice(0, 40) : "";
 }
 
 export function sanitizeMessages(raw) {
@@ -269,6 +277,10 @@ export async function handleChatRequest(request, env) {
   if (onContact) {
     system +=
       "\nThe visitor is already on the Contact / book-a-call page. Point them to the calendar on this page (not to contact.html as a separate destination).";
+  }
+  const first = firstNameFrom(body && body.visitorName);
+  if (first) {
+    system += `\nThe visitor’s first name is ${first}. A greeting already happened. Do not open with another “Hi ${first}”.`;
   }
   const payload = [{ role: "system", content: system }, ...messages];
 

@@ -1535,6 +1535,11 @@ body.lightbox-open .chat-widget {
   flex: 1;
 }
 
+.chat-log[hidden],
+.chat-form[hidden] {
+  display: none;
+}
+
 .chat-bubble {
   max-width: 90%;
   padding: 0.7rem 0.85rem;
@@ -1596,10 +1601,6 @@ body.lightbox-open .chat-widget {
   }
 }
 
-.chat-panel.has-lead .chat-log {
-  min-height: 6.5rem;
-}
-
 .chat-form {
   display: flex;
   gap: 0.5rem;
@@ -1636,29 +1637,17 @@ body.lightbox-open .chat-widget {
   color: var(--ink-faint);
 }
 
-.chat-toolbar {
-  display: flex;
-  gap: 0.5rem;
-  padding: 0 0.85rem 0.4rem;
-}
-
-.chat-toolbar[hidden] {
-  display: none;
-}
-
 .chat-lead {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
-  margin: 0 0.85rem 0.15rem;
-  padding: 0.7rem 0.85rem;
-  background: var(--accent-dim);
-  border: 1px solid rgba(28, 70, 148, 0.2);
-  border-radius: 0.85rem;
-  max-height: 15.5rem;
-  overflow-y: auto;
-  flex-shrink: 0;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 1rem 1rem 0.35rem;
+}
+
+.chat-panel.is-gate .chat-lead {
+  flex: 1;
 }
 
 .chat-lead[hidden] {
@@ -1673,6 +1662,12 @@ body.lightbox-open .chat-widget {
   color: var(--sage);
 }
 
+.chat-lead-lede {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+}
+
 .chat-lead-field label {
   display: block;
   font-size: 0.78rem;
@@ -1680,13 +1675,7 @@ body.lightbox-open .chat-widget {
   margin-bottom: 0.28rem;
 }
 
-.chat-lead-optional {
-  font-weight: 400;
-  color: var(--ink-faint);
-}
-
-.chat-lead-field input,
-.chat-lead-field textarea {
+.chat-lead-field input {
   width: 100%;
   appearance: none;
   border: 1px solid var(--line);
@@ -1699,13 +1688,7 @@ body.lightbox-open .chat-widget {
   outline: none;
 }
 
-.chat-lead-field textarea {
-  resize: vertical;
-  min-height: 2.4rem;
-}
-
-.chat-lead-field input:focus,
-.chat-lead-field textarea:focus {
+.chat-lead-field input:focus {
   border-color: rgba(28, 70, 148, 0.5);
 }
 
@@ -1715,8 +1698,8 @@ body.lightbox-open .chat-widget {
   gap: 0.5rem;
 }
 
-.chat-lead-actions .btn.ghost {
-  border-color: rgba(28, 70, 148, 0.28);
+.chat-lead-actions .btn {
+  width: 100%;
 }
 
 .chat-lead .btn:disabled {
@@ -1730,6 +1713,10 @@ body.lightbox-open .chat-widget {
   min-height: 1.1em;
   font-size: 0.78rem;
   color: var(--ink-muted);
+}
+
+.chat-lead-status a {
+  color: var(--accent);
 }
 
 .chat-honey {
@@ -2001,8 +1988,7 @@ body.lightbox-open .chat-widget {
   .field select,
   .field textarea,
   .chat-form input,
-  .chat-lead-field input,
-  .chat-lead-field textarea {
+  .chat-lead-field input {
     font-size: 16px;
   }
 

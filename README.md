@@ -107,11 +107,11 @@ The Booklane app in [`booking/`](booking/) is a separate multi-tenant product. T
 
 ## Chat assistant
 
-The corner widget is a live, multi-turn assistant. Messages POST to `/api/chat` on this Worker, which runs **Cloudflare Workers AI** (`@cf/meta/llama-3.1-8b-instruct-fast` — free-tier friendly; 10,000 neurons/day). No OpenAI key is required.
+The corner widget is a live, multi-turn assistant. Opening **Ask about services** first asks for **name and email only** (required). That lead POSTs to FormSubmit for `hello@cjcode.com`. Then the assistant greets with the first name (`Hi John, how can I help you?`) and conversation continues through `/api/chat` on this Worker, which runs **Cloudflare Workers AI** (`@cf/meta/llama-3.1-8b-instruct-fast` — free-tier friendly; 10,000 neurons/day). No OpenAI key is required.
 
 The model is a small on-brand helper: services, starting prices, process, and next steps. It will decline unrelated topics. It can be wrong on edge cases — treat quotes as starting points and send real scoping to a call.
 
-**Leave your details** (or a prompt after buying intent / a few turns) sends name, email, an optional note, and a short transcript to `hello@cjcode.com` through FormSubmit. Conversation continues afterward. Booking still happens on `contact.html`.
+Booking still happens on `contact.html`.
 
 ```js
 contactEmail: "hello@cjcode.com",

@@ -613,7 +613,7 @@
   </div>
 
   <div class="chat-widget" id="chat-widget">
-    <div class="chat-panel" id="chat-panel" hidden role="dialog" aria-labelledby="chat-title" aria-modal="false">
+    <div class="chat-panel is-gate" id="chat-panel" hidden role="dialog" aria-labelledby="chat-title" aria-modal="false">
       <header class="chat-head">
         <div>
           <p class="chat-kicker">CJ Code</p>
@@ -623,9 +623,9 @@
           Close
         </button>
       </header>
-      <div class="chat-log" id="chat-log" role="log" aria-live="polite"></div>
-      <form class="chat-lead" id="chat-lead" hidden novalidate>
-        <p class="chat-lead-kicker">We’ll follow up by email</p>
+      <form class="chat-lead" id="chat-lead" novalidate>
+        <p class="chat-lead-kicker">Before we start</p>
+        <p class="chat-lead-lede">Name and email — then you can ask about the work.</p>
         <div class="chat-lead-field">
           <label for="chat-lead-name">Name</label>
           <input id="chat-lead-name" name="name" type="text" autocomplete="name" required />
@@ -634,29 +634,20 @@
           <label for="chat-lead-email">Email</label>
           <input id="chat-lead-email" name="email" type="email" autocomplete="email" required />
         </div>
-        <div class="chat-lead-field">
-          <label for="chat-lead-note">What you need <span class="chat-lead-optional">(optional)</span></label>
-          <textarea id="chat-lead-note" name="note" rows="2" placeholder="A sentence is enough"></textarea>
-        </div>
         <label class="sr-only" for="chat-lead-honey">Leave blank</label>
         <input id="chat-lead-honey" class="chat-honey" name="_honey" type="text" tabindex="-1" autocomplete="off" />
         <div class="chat-lead-actions">
-          <button class="btn primary compact" type="submit" id="chat-lead-submit">Send to CJ Code</button>
-          <button class="btn ghost compact" type="button" id="chat-lead-cancel">Not now</button>
+          <button class="btn primary compact" type="submit" id="chat-lead-submit">Continue</button>
         </div>
         <p class="chat-lead-status" id="chat-lead-status" role="status"></p>
       </form>
-      <div class="chat-toolbar" id="chat-toolbar">
-        <button type="button" class="btn ghost compact" id="chat-handoff" aria-expanded="false" aria-controls="chat-lead">
-          Leave your details
-        </button>
-      </div>
-      <form class="chat-form" id="chat-form">
+      <div class="chat-log" id="chat-log" role="log" aria-live="polite" hidden></div>
+      <form class="chat-form" id="chat-form" hidden>
         <label class="sr-only" for="chat-input">Your message</label>
         <input id="chat-input" type="text" autocomplete="off" placeholder="Ask about web or AI work" />
         <button class="btn primary compact" type="submit">Send</button>
       </form>
-      <p class="chat-note" id="chat-note">Live assistant for CJ Code services. Leave your details anytime to get a follow-up.</p>
+      <p class="chat-note" id="chat-note">We’ll follow up at this email if it’s a fit.</p>
     </div>
     <button
       type="button"
