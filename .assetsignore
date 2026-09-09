@@ -2,3 +2,8 @@
 **/.DS_Store
 **/.git
 **/.wrangler
+**/src
+**/scripts
+**/.gitignore
+**/package.json
+**/package-lock.json

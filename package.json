@@ -1,0 +1,11 @@
+{
+  "name": "cjcode",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test scripts/test-chat-api.mjs",
+    "dev": "npx wrangler dev",
+    "dev:mock": "node scripts/dev-mock.mjs",
+    "deploy": "npx wrangler deploy"
+  }
+}
