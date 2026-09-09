@@ -13,7 +13,7 @@ Static HTML/CSS/JS. No build step.
 npx --yes serve .
 ```
 
-Then visit the URL it prints (usually `http://localhost:3000`).
+Then visit the URL it prints (usually `http://localhost:3000`). Serving over http(s) is required if you want to test chat lead submit (FormSubmit rejects `file://`).
 
 ## Add a project
 
@@ -66,9 +66,21 @@ The form lives on `contact.html`. It opens a `mailto:` draft. Change the address
 contactEmail: "hello@cjcode.com",
 ```
 
-## Chat demo
+## Chat widget
 
-The corner widget is a scripted assistant about these services. Nothing is sent to a server. Swap the replies in `js/app.js` when you wire a real model later.
+The corner widget answers from a script in `js/app.js` (design, redesign, maintenance, automation, chatbots, workflows). Answers stay on the page.
+
+**Get a reply** sends name, email, an optional note, and a short transcript to `contactEmail` through a public form endpoint — no private API key in the frontend.
+
+Default endpoint is FormSubmit.co AJAX (`https://formsubmit.co/ajax/{contactEmail}`). Override it with `leadEndpoint` in `js/config.js` if you use a FormSubmit random-string URL or another public form backend.
+
+### One-time FormSubmit activation
+
+1. Serve the site over http(s) (not `file://`) and submit a test lead.
+2. FormSubmit emails a confirmation link to `contactEmail`. Click it once.
+3. Later leads arrive as email. FormSubmit will not work from a double-clicked HTML file.
+
+If the browser cannot reach the endpoint, the widget offers a `mailto:` draft to the same address, prefilled with the lead and transcript.
 
 ## Portfolio demos (Projects 2 and 3)
 

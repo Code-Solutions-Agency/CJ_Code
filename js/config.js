@@ -7,4 +7,13 @@ window.SITE = {
    * These tools stay sample-only on this site — not a free product.
    */
   demoMaxUses: 2,
+  /**
+   * Public endpoint for chat leads (no private API secret).
+   * Leave blank to POST to FormSubmit.co AJAX for contactEmail:
+   *   https://formsubmit.co/ajax/{contactEmail}
+   * First submission: FormSubmit emails a confirmation link to contactEmail — click it once.
+   * After that, leads arrive as email. You can paste a FormSubmit random string URL
+   * (shown after activation) or any other public form backend here.
+   */
+  leadEndpoint: "",
 };

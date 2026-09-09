@@ -467,7 +467,7 @@
     },
     {
       tests: [/chatbot|assistant|widget|slack/i],
-      text: "This panel is a demo of chatbot UX — scripted, on-page, no data leaving the browser. Production work is different: answers from your content, qualification, and a handoff into email, CRM, or Slack.",
+      text: "Answers here are scripted from this site. A production chatbot uses your content, qualifies, and hands off. Use Get a reply if you want CJ Code to follow up — that send does leave the page.",
     },
     {
       tests: [/workflow|integrat|crm|docs|support/i],
@@ -483,7 +483,7 @@
     },
     {
       tests: [/start|begin|hire|contact|email|project/i],
-      text: "Use Contact in the nav, or Start a project. The form on the Contact page opens an email draft. Say whether you need web, AI, or both.",
+      text: "Use Get a reply in this panel to send your name and email, or open Contact to book. Say whether you need web, AI, or both.",
     },
     {
       tests: [/who|clearpath|cjcode|cj code|you|studio|agenc/i],
@@ -492,23 +492,99 @@
   ];
 
   const FALLBACK =
-    "I can talk through website design, redesign, maintenance, automation, chatbots, and workflow integration. Ask about one of those, or open Contact if you’re ready to brief us.";
+    "I can talk through website design, redesign, maintenance, automation, chatbots, and workflow integration. Ask about one of those, or use Get a reply if you want us to follow up.";
 
   const GREETING =
-    "This is a demo assistant for CJ Code services. Ask about design, redesign, maintenance, automation, chatbots, or putting AI into a workflow.";
+    "Ask about design, redesign, maintenance, automation, chatbots, or workflows. Answers are scripted from this page. Use Get a reply when you want CJ Code to follow up — that sends your name and email.";
+
+  const SOFT_ASK =
+    "If you’d like a reply from us, use Get a reply and leave your name and email. You can keep asking about services here.";
+
+  const THANKS_TEXT = "Thanks — we have that. We’ll follow up by email.";
+  const BOOK_LABEL = "Book a time on the Contact page";
+  const BOOK_HREF = "contact.html";
+  const SOFT_ASK_AFTER = 2;
+  const EMAIL_RX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const HANDOFF_RX =
+    /get a reply|talk to (cj|you)|leave (my )?(name|email|details)|send (this |it )?to (cj|you)/i;
+  const INTENT_RX =
+    /hire you|work with you|start a project|get a quote|get in touch|talk to (a )?human|book (a |an )?(call|time|meeting)|leave my (details|email|name)|can you (email|call|reach)/i;
 
   const panel = $("chat-panel");
   const chatToggle = $("chat-toggle");
   const chatLog = $("chat-log");
   const chatInput = $("chat-input");
+  const chatForm = $("chat-form");
+  const chatClose = $("chat-close");
+  const chatLead = $("chat-lead");
+  const chatHandoff = $("chat-handoff");
+  const chatToolbar = chatHandoff ? chatHandoff.closest(".chat-toolbar") : null;
+  const chatNote = $("chat-note");
+  const leadName = $("chat-lead-name");
+  const leadEmail = $("chat-lead-email");
+  const leadNote = $("chat-lead-note");
+  const leadHoney = $("chat-lead-honey");
+  const leadStatus = $("chat-lead-status");
+  const leadSubmit = $("chat-lead-submit");
+  const leadCancel = $("chat-lead-cancel");
+
   let greeted = false;
+  let leadPrompted = false;
+  let leadSent = false;
+  let userTurns = 0;
+  const transcript = [];
+
+  function leadEndpoint() {
+    const custom = String(SITE.leadEndpoint || "").trim();
+    if (custom) return custom;
+    return `https://formsubmit.co/ajax/${encodeURIComponent(SITE.contactEmail)}`;
+  }
+
+  function transcriptText() {
+    return transcript
+      .slice(-10)
+      .map((entry) => `${entry.who === "user" ? "Visitor" : "CJ Code"}: ${entry.text}`)
+      .join("\n");
+  }
+
+  function mailtoLead({ name, email, note }) {
+    const subject = `Chat lead — ${name}`;
+    let body = [
+      `Name: ${name}`,
+      `Email: ${email}`,
+      `Note: ${note || "—"}`,
+      `Page: ${window.location.href}`,
+      "",
+      "Chat:",
+      transcriptText() || "(no messages yet)",
+    ].join("\n");
+    if (body.length > 1800) body = `${body.slice(0, 1800)}\n…`;
+    return `mailto:${SITE.contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  }
+
+  function scrollChat() {
+    if (chatLog) chatLog.scrollTop = chatLog.scrollHeight;
+  }
 
   function addBubble(text, who) {
+    if (!chatLog) return;
     const el = document.createElement("p");
     el.className = `chat-bubble ${who}`;
     el.textContent = text;
     chatLog.appendChild(el);
-    chatLog.scrollTop = chatLog.scrollHeight;
+    transcript.push({ who, text });
+    scrollChat();
+    return el;
+  }
+
+  function addRichBubble(who, build) {
+    if (!chatLog) return;
+    const el = document.createElement("p");
+    el.className = `chat-bubble ${who}`;
+    build(el);
+    chatLog.appendChild(el);
+    scrollChat();
+    return el;
   }
 
   function replyTo(message) {
@@ -516,38 +592,227 @@
     return hit ? hit.text : FALLBACK;
   }
 
+  function setLeadOpen(open) {
+    if (!chatLead || leadSent) return;
+    if (open) chatLead.removeAttribute("hidden");
+    else chatLead.setAttribute("hidden", "");
+    if (chatHandoff) {
+      chatHandoff.setAttribute("aria-expanded", open ? "true" : "false");
+      if (chatToolbar) chatToolbar.hidden = open;
+    }
+    if (open && leadName) {
+      window.requestAnimationFrame(() => leadName.focus());
+    }
+  }
+
+  function maybeOfferLead(message) {
+    if (leadSent || leadPrompted) return;
+    if (!chatLead || (chatLead && !chatLead.hasAttribute("hidden"))) return;
+    const wantsHandoff = HANDOFF_RX.test(message);
+    const buying = INTENT_RX.test(message);
+    if (!wantsHandoff && !buying && userTurns < SOFT_ASK_AFTER) return;
+    leadPrompted = true;
+    addBubble(SOFT_ASK, "bot");
+    if (wantsHandoff) setLeadOpen(true);
+  }
+
+  function showThanks(email) {
+    addRichBubble("bot", (el) => {
+      el.append(
+        document.createTextNode(
+          `${THANKS_TEXT}${email ? ` We’ll use ${email}. ` : " "}`
+        )
+      );
+      const link = document.createElement("a");
+      link.href = BOOK_HREF;
+      link.textContent = BOOK_LABEL;
+      el.append(link);
+      el.append(document.createTextNode(" if you’d rather pick a slot now."));
+    });
+    transcript.push({
+      who: "bot",
+      text: `${THANKS_TEXT} ${BOOK_LABEL}: ${BOOK_HREF}`,
+    });
+    if (chatNote) {
+      chatNote.textContent = "We received your note. Answers here stay scripted.";
+    }
+    if (chatToolbar) chatToolbar.hidden = true;
+  }
+
+  function showFallback(payload) {
+    const href = mailtoLead(payload);
+    addRichBubble("bot", (el) => {
+      el.append(document.createTextNode("Couldn’t send from the browser. "));
+      const link = document.createElement("a");
+      link.href = href;
+      link.textContent = `Open an email draft to ${SITE.contactEmail}`;
+      el.append(link);
+      el.append(document.createTextNode(" with this note instead — you can also try Send again."));
+    });
+    transcript.push({
+      who: "bot",
+      text: `Send failed. Mailto fallback to ${SITE.contactEmail}.`,
+    });
+  }
+
+  function isLeadSuccess(response, data) {
+    if (!response.ok) return false;
+    if (!data || typeof data !== "object") return true;
+    if (data.success === false || data.success === "false") return false;
+    return true;
+  }
+
+  async function sendLead(payload) {
+    if (payload.honey) return { ok: true, honey: true };
+
+    const response = await fetch(leadEndpoint(), {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        name: payload.name,
+        email: payload.email,
+        note: payload.note || "(none)",
+        page: window.location.href,
+        transcript: transcriptText() || "(no messages yet)",
+        _subject: `Chat lead from ${SITE.name} site — ${payload.name}`,
+        _template: "table",
+        _captcha: "false",
+        _honey: "",
+      }),
+    });
+
+    let data = null;
+    try {
+      data = await response.json();
+    } catch {
+      data = null;
+    }
+
+    if (!isLeadSuccess(response, data)) {
+      const err = new Error(data && data.message ? String(data.message) : `HTTP ${response.status}`);
+      throw err;
+    }
+    return { ok: true };
+  }
+
   function openChat() {
+    if (!panel || !chatToggle) return;
     panel.removeAttribute("hidden");
     chatToggle.setAttribute("aria-expanded", "true");
     if (!greeted) {
       addBubble(GREETING, "bot");
       greeted = true;
     }
-    chatInput.focus();
+    const focusLead = chatLead && !chatLead.hasAttribute("hidden") && leadName;
+    if (focusLead) leadName.focus();
+    else if (chatInput) chatInput.focus();
   }
 
   function closeChat(event) {
     if (event) event.stopPropagation();
+    if (!panel || !chatToggle) return;
     panel.setAttribute("hidden", "");
     chatToggle.setAttribute("aria-expanded", "false");
     chatToggle.focus();
   }
 
-  chatToggle.addEventListener("click", () => {
-    if (panel.hasAttribute("hidden")) openChat();
-    else closeChat();
-  });
+  if (chatToggle && panel && chatLog && chatInput && chatForm) {
+    chatToggle.addEventListener("click", () => {
+      if (panel.hasAttribute("hidden")) openChat();
+      else closeChat();
+    });
 
-  $("chat-close").addEventListener("click", closeChat);
+    if (chatClose) chatClose.addEventListener("click", closeChat);
 
-  $("chat-form").addEventListener("submit", (event) => {
-    event.preventDefault();
-    const text = chatInput.value.trim();
-    if (!text) return;
-    addBubble(text, "user");
-    chatInput.value = "";
-    window.setTimeout(() => addBubble(replyTo(text), "bot"), 280);
-  });
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape") return;
+      if (intakeModal && !intakeModal.hidden) return;
+      if (emailModal && !emailModal.hidden) return;
+      if (lightbox && !lightbox.hidden) return;
+      if (!panel.hasAttribute("hidden")) closeChat();
+    });
+
+    chatForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const text = chatInput.value.trim();
+      if (!text) return;
+      addBubble(text, "user");
+      chatInput.value = "";
+      userTurns += 1;
+      window.setTimeout(() => {
+        if (!HANDOFF_RX.test(text)) addBubble(replyTo(text), "bot");
+        maybeOfferLead(text);
+      }, 280);
+    });
+
+    if (chatHandoff) {
+      chatHandoff.addEventListener("click", () => {
+        if (!greeted) {
+          addBubble(GREETING, "bot");
+          greeted = true;
+        }
+        leadPrompted = true;
+        const wasHidden = Boolean(chatLead && chatLead.hasAttribute("hidden"));
+        if (wasHidden && !leadSent) {
+          addBubble("Share your name and email below and we’ll follow up.", "bot");
+        }
+        setLeadOpen(true);
+      });
+    }
+
+    if (leadCancel) {
+      leadCancel.addEventListener("click", () => {
+        setLeadOpen(false);
+        if (chatInput) chatInput.focus();
+      });
+    }
+
+    if (chatLead) {
+      chatLead.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        if (leadSent) return;
+
+        const name = (leadName && leadName.value.trim()) || "";
+        const email = (leadEmail && leadEmail.value.trim()) || "";
+        const note = (leadNote && leadNote.value.trim()) || "";
+        const honey = (leadHoney && leadHoney.value.trim()) || "";
+
+        if (!name) {
+          if (leadStatus) leadStatus.textContent = "Name is required.";
+          leadName?.focus();
+          return;
+        }
+        if (!email || !EMAIL_RX.test(email)) {
+          if (leadStatus) leadStatus.textContent = "A valid email is required.";
+          leadEmail?.focus();
+          return;
+        }
+
+        const payload = { name, email, note, honey };
+        if (leadStatus) leadStatus.textContent = "Sending…";
+        if (leadSubmit) leadSubmit.disabled = true;
+
+        try {
+          await sendLead(payload);
+          leadSent = true;
+          setLeadOpen(false);
+          if (chatLead) chatLead.setAttribute("hidden", "");
+          if (leadStatus) leadStatus.textContent = "";
+          showThanks(email);
+        } catch {
+          if (leadStatus) {
+            leadStatus.textContent = "Couldn’t send from here. Use the email draft in the chat.";
+          }
+          showFallback(payload);
+        } finally {
+          if (leadSubmit) leadSubmit.disabled = false;
+        }
+      });
+    }
+  }
 
   renderWork();
 })();
