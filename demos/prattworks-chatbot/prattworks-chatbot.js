@@ -199,7 +199,7 @@
     }
 
     function wantsStock(message) {
-      return /stock|inventor|available|how many|sold out|\bleft\b|do you have|on the shelf|in stock/i.test(
+      return /stock|inventor|available|how many|sold out|\bleft\b|on the shelf|in stock/i.test(
         message
       );
     }
@@ -275,6 +275,10 @@
       const personalize = wantsPersonalize(message);
       const custom = wantsCustom(message);
 
+      if (/size|oz\b|ounce|how big|sizing|which size/i.test(message) && !stock) {
+        return "Two sizes in this shop: 20 oz for Midnight Wrap and Copper Canyon, 30 oz for Meadow Speckle.";
+      }
+
       if (custom && !personalize) {
         return personalizeReply(product);
       }
@@ -292,10 +296,6 @@
 
       if (/care|wash|dishwasher|microwave|clean|fade|scratch/i.test(message)) {
         return "Once a tumbler is engraved or personalized, you can wash it as usual. No special care routine.";
-      }
-
-      if (/size|oz\b|ounce|20|30|how big|sizing|which size/i.test(message)) {
-        return "Two sizes in this shop: 20 oz for Midnight Wrap and Copper Canyon, 30 oz for Meadow Speckle.";
       }
 
       if (
