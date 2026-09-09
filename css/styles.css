@@ -1003,6 +1003,11 @@ main > .section:last-child {
   min-height: 8rem;
 }
 
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--ink-faint);
+}
+
 .field input:focus,
 .field select:focus,
 .field textarea:focus {

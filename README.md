@@ -74,15 +74,15 @@ Then copy or rename the output if you want a cache-busting filename.
 
 ## Contact / book a call
 
-`contact.html` has a booking calendar that runs **on this static site** (GitHub Pages). Visitors pick a service and a time. Confirm opens an email draft to `booking.notifyEmail` — no login, no localhost, no extra server.
+`contact.html` has a booking calendar that runs **on this static site** (GitHub Pages). Visitors pick a time, choose Web / Automation / Web and Automation, and can add extra information. Confirm opens an email draft to `booking.notifyEmail` — no login, no localhost, no extra server.
 
-Hours, services, timezone, and the notify address are in `js/config.js` under `booking`.
+Hours, need options, timezone, and the notify address are in `js/config.js` under `booking`.
 
 ```js
 booking: {
   timezone: "America/New_York",
   notifyEmail: "hello@cjcode.com",
-  services: [ /* name + durationMinutes */ ],
+  needs: [ /* Web, Automation, Web and Automation */ ],
   hours: [ /* dayOfWeek 0=Sun … 6=Sat, startMinute, endMinute */ ],
 }
 ```
@@ -103,7 +103,3 @@ Click **Try Demo** on a work card. Both tools are walkthroughs, not free product
 - No copy button for a sendable reply or a usable client brief
 
 Change the generate cap in `js/config.js` (`demoMaxUses`). Do not put an API key in the frontend.
-
-## Cloudflare
-
-Git-connected Workers (dashboard Create app): deploy command `npx wrangler deploy`, build command empty.

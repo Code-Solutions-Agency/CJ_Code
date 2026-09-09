@@ -8,9 +8,14 @@
   const notifyEmail = booking.notifyEmail || site.contactEmail || "hello@cjcode.com";
   const stepMinutes = Number(booking.stepMinutes) || 30;
   const minNoticeMinutes = Number(booking.minNoticeMinutes) || 60;
-  const services = Array.isArray(booking.services) && booking.services.length
-    ? booking.services
-    : [{ id: "intro", name: "Intro call", durationMinutes: 30 }];
+  const durationMinutes = Number(booking.durationMinutes) || 30;
+  const needs = Array.isArray(booking.needs) && booking.needs.length
+    ? booking.needs
+    : [
+      { id: "web", name: "Web" },
+      { id: "automation", name: "Automation" },
+      { id: "web-and-automation", name: "Web and Automation" },
+    ];
   const hours = Array.isArray(booking.hours) ? booking.hours : [];
 
   const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -24,7 +29,7 @@
     month: 0, /* 1–12 */
     selectedDay: null, /* { year, month, day } */
     selectedSlot: null, /* ISO string */
-    serviceId: services[0].id,
+    needId: "",
     name: "",
     email: "",
     company: "",
@@ -129,15 +134,15 @@
     }).format(date);
   }
 
-  function currentService() {
-    return services.find((s) => s.id === state.serviceId) || services[0];
+  function currentNeed() {
+    return needs.find((item) => item.id === state.needId) || null;
   }
 
   function initMonth() {
     const now = zonedParts(new Date());
     state.year = now.year;
     state.month = now.month;
-    const duration = Number(currentService().durationMinutes) || 30;
+    const duration = durationMinutes;
     for (let day = now.day; day <= daysInMonth(now.year, now.month); day += 1) {
       if (slotsOnDay(now.year, now.month, day, duration).length) {
         state.selectedDay = { year: now.year, month: now.month, day };
@@ -190,7 +195,7 @@
       state.year += 1;
     }
     state.selectedSlot = null;
-    const duration = Number(currentService().durationMinutes) || 30;
+    const duration = durationMinutes;
     const last = daysInMonth(state.year, state.month);
     let pick = null;
     for (let day = 1; day <= last; day += 1) {
@@ -212,7 +217,7 @@
   }
 
   function renderCalendar() {
-    const duration = Number(currentService().durationMinutes) || 30;
+    const duration = durationMinutes;
     const firstDow = dayOfWeek(state.year, state.month, 1);
     const last = daysInMonth(state.year, state.month);
     const cells = [];
@@ -242,7 +247,7 @@
   }
 
   function renderSlots() {
-    const duration = Number(currentService().durationMinutes) || 30;
+    const duration = durationMinutes;
     if (!state.selectedDay) {
       return `<div class="booking-slots"><p class="booking-slots-empty">No open days this month. Try the next month.</p></div>`;
     }
@@ -277,17 +282,9 @@
       <div class="booking-widget">
         <div class="booking-widget-head">
           <p class="booking-kicker">Book a call</p>
-          <p class="booking-lede">Pick a service and a time. Confirm opens an email draft to ${escapeHtml(notifyEmail)} — no account, no login.</p>
+          <p class="booking-lede">Pick a time. Confirm opens an email draft to ${escapeHtml(notifyEmail)} — no account, no login.</p>
         </div>
         <div class="booking-widget-body">
-          <label class="booking-service">
-            <span>What do you need?</span>
-            <select id="booking-service">
-              ${services.map((service) => (
-                `<option value="${escapeHtml(service.id)}" ${service.id === state.serviceId ? "selected" : ""}>${escapeHtml(service.name)} (${Number(service.durationMinutes) || 30} min)</option>`
-              )).join("")}
-            </select>
-          </label>
           <div class="booking-split">
             ${renderCalendar()}
             ${renderSlots()}
@@ -306,8 +303,17 @@
               <input id="booking-company" name="company" type="text" autocomplete="organization" value="${escapeHtml(state.company)}" />
             </div>
             <div class="field field-full">
-              <label for="booking-note">What should we cover? <span class="booking-optional">(optional)</span></label>
-              <textarea id="booking-note" name="note" rows="3">${escapeHtml(state.note)}</textarea>
+              <label for="booking-need">Need</label>
+              <select id="booking-need" name="need" required>
+                <option value="" ${state.needId ? "" : "selected"}>Please select an option</option>
+                ${needs.map((item) => (
+                  `<option value="${escapeHtml(item.id)}" ${state.needId === item.id ? "selected" : ""}>${escapeHtml(item.name)}</option>`
+                )).join("")}
+              </select>
+            </div>
+            <div class="field field-full">
+              <label for="booking-note">Message <span class="booking-optional">(optional)</span></label>
+              <textarea id="booking-note" name="note" rows="4" placeholder="Add extra information here">${escapeHtml(state.note)}</textarea>
             </div>
             <div class="form-actions">
               <button class="btn primary" type="submit">Confirm time</button>
@@ -337,17 +343,8 @@
         render();
       });
     });
-    mount.querySelector("#booking-service")?.addEventListener("change", (event) => {
-      state.serviceId = event.target.value;
-      state.selectedSlot = null;
-      if (state.selectedDay) {
-        const { year, month, day } = state.selectedDay;
-        const duration = Number(currentService().durationMinutes) || 30;
-        if (!slotsOnDay(year, month, day, duration).length) {
-          initMonth();
-        }
-      }
-      render();
+    mount.querySelector("#booking-need")?.addEventListener("change", (event) => {
+      state.needId = event.target.value;
     });
     mount.querySelector("#booking-form")?.addEventListener("submit", onSubmit);
     ["name", "email", "company", "note"].forEach((key) => {
@@ -356,6 +353,11 @@
         state[key] = el.value;
       });
     });
+    const needSelect = mount.querySelector("#booking-need");
+    if (needSelect && !state.needId) {
+      needSelect.value = "";
+      needSelect.selectedIndex = 0;
+    }
   }
 
   function onSubmit(event) {
@@ -363,7 +365,7 @@
     const status = document.getElementById("booking-status");
     const form = event.currentTarget;
     const data = Object.fromEntries(new FormData(form));
-    const service = currentService();
+    const need = currentNeed();
 
     if (!state.selectedSlot) {
       status.textContent = "Pick a day and a time first.";
@@ -373,18 +375,22 @@
       status.textContent = "Name and email are required.";
       return;
     }
+    if (!need) {
+      status.textContent = "Choose what you need from the dropdown.";
+      document.getElementById("booking-need")?.focus();
+      return;
+    }
 
     const when = new Date(state.selectedSlot);
-    const subject = `Call request — ${service.name} — ${data.company || data.name}`;
+    const subject = `Call request — ${need.name} — ${data.company || data.name}`;
     const body = [
       `Name: ${data.name}`,
       `Email: ${data.email}`,
       `Company: ${data.company || "—"}`,
-      `Need: ${service.name}`,
-      `Duration: ${Number(service.durationMinutes) || 30} minutes`,
+      `Need: ${need.name}`,
       `Requested time: ${formatLong(when)}`,
       "",
-      data.note || "(no note)",
+      data.note || "(no extra information)",
     ].join("\n");
 
     const href = `mailto:${notifyEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
