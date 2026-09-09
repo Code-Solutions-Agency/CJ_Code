@@ -123,7 +123,7 @@
     if (!grid) return;
     grid.innerHTML = "";
 
-    const slotCount = 3;
+    const slotCount = 4;
 
     if (!PROJECTS.length) {
       const note = document.createElement("p");
@@ -137,12 +137,13 @@
     PROJECTS.forEach((project) => {
       const hasVideo = Boolean(project.video);
       const hasDemo = Boolean(project.demo);
+      const hasPreview = Boolean(project.preview);
       const isHash = project.href === "#";
       const useLink = project.href && !isHash && !hasVideo && !hasDemo;
       const card = useLink ? document.createElement("a") : document.createElement("article");
       card.className = "work-card";
       if (hasVideo) card.classList.add("has-video");
-      if (hasDemo) card.classList.add("has-demo");
+      if (hasDemo || hasPreview) card.classList.add("has-demo");
 
       if (useLink) {
         card.href = project.href;
@@ -158,6 +159,15 @@
         media = `<div class="work-media">
           <video src="${escapeAttr(project.video)}" muted loop playsinline preload="metadata" aria-hidden="true"></video>
           <span class="work-expand">Click to enlarge</span>
+        </div>`;
+      } else if (project.preview === "pratt-works") {
+        media = `<div class="work-media work-preview work-preview-pratt">
+          <div class="work-preview-shop" aria-hidden="true">
+            <span class="pw-mini pw-mini-midnight"></span>
+            <span class="pw-mini pw-mini-meadow"></span>
+            <span class="pw-mini pw-mini-copper"></span>
+          </div>
+          <span class="work-expand">Try Demo</span>
         </div>`;
       } else if (hasDemo) {
         const isIntake = project.demo === "intake-qualifier";
@@ -188,6 +198,13 @@
           }
         </div>
       `;
+
+      if (useLink && hasPreview) {
+        card.setAttribute(
+          "aria-label",
+          `Try Demo: ${project.title || "Project demo"}`
+        );
+      }
 
       if (hasVideo) {
         card.setAttribute("role", "button");

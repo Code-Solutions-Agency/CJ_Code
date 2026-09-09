@@ -31,7 +31,7 @@ Then visit the URL it prints (usually `http://localhost:3000`).
 
 ## Add a project
 
-Work cards render from `js/projects.js`. Empty slots stay as ghost cards until you fill them (three slots total).
+Work cards render from `js/projects.js`. Empty slots stay as ghost cards until you fill them (four slots total).
 
 Add objects to `window.PROJECTS`:
 
@@ -60,6 +60,7 @@ window.PROJECTS = [
 | `image` | no | Path relative to this folder (put files in `images/`) |
 | `video` | no | Path to an mp4 (e.g. `media/demo-assistant.mp4`). Plays muted, looping. Prefer over `image` when both are set |
 | `demo` | no | `"email-assistant"` or `"intake-qualifier"` — opens a gated sample walkthrough |
+| `preview` | no | `"pratt-works"` — CSS shop preview on the card (use with `href`) |
 | `href` | no | Makes the card a link. Use `"#"` or omit for an unlinked card |
 
 Refresh the browser after you save. No rebuild.
@@ -105,6 +106,23 @@ Click **Try Demo** on a work card. Both tools are walkthroughs, not free product
 - No copy button for a sendable reply or a usable client brief
 
 Change the generate cap in `js/config.js` (`demoMaxUses`). Do not put an API key in the frontend.
+
+## PrattWorks shop chatbot (shareable page)
+
+Standalone teaser for a fictional maker shop that sells full-wrap tumblers. Shopper-facing only: sample order tracking, tumbler sizes, which wraps are in the demo, and personalization on select listings (not full custom). Scripted keywords, no API keys, no payments, no live inventory.
+
+Live demo host: `demos/pratt-works.html`
+
+**Client deliverable** (zip or paste — not the whole portfolio): `demos/prattworks-chatbot/`  
+See [`demos/prattworks-chatbot/INSTALL.md`](demos/prattworks-chatbot/INSTALL.md) for the snippet, config, and caps.
+
+GitHub Pages (after merge to `master`):
+
+```
+https://code-solutions-agency.github.io/CJ_Code/demos/pratt-works.html
+```
+
+Send that URL to try the hosted demo, or send the `prattworks-chatbot` folder for them to paste onto their site. Caps: 8 questions and 2 stock checks per visit, then a CJ Code CTA. Refreshing the page resets the preview. The Work card **Shop assistant for PrattWorks** links to the demo page.
 
 ## Cloudflare
 

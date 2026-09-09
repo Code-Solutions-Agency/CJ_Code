@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f6efe6" />
+  <meta
+    name="description"
+    content="PrattWorks makes full-wrap tumblers. Try the shop assistant demo — a CJ Code preview for maker businesses."
+  />
+  <title>PrattWorks — full-wrap tumblers</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%23f6efe6' width='32' height='32'/%3E%3Crect fill='%238c3b24' x='11' y='6' width='10' height='20' rx='3'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="pratt-works.css" />
+</head>
+<body class="page-pratt">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <p class="pw-ribbon" role="note">
+    <span>Demo preview</span>
+    PrattWorks shop assistant · a CJ Code sample for maker shops
+  </p>
+
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a class="wordmark" href="#top">PrattWorks</a>
+
+      <button
+        class="nav-toggle"
+        id="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-nav"
+      >
+        <span class="sr-only">Menu</span>
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Shop">
+        <a href="#shop">Shop</a>
+        <a href="#process">How they’re made</a>
+        <a href="#shipping">Shipping</a>
+        <button class="btn btn-nav" type="button" id="nav-ask">Ask the assistant</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="pw-hero" id="top">
+      <p class="eyebrow">Handmade full wraps</p>
+      <h1>Tumblers wrapped on the bench — not a sticker on a blank.</h1>
+      <div class="pw-hero-split">
+        <div>
+          <p class="lede">
+            PrattWorks is a one-person shop for stainless tumblers with a full wrap:
+            edge to edge, heat-set, meant for daily coffee and ice water. Some listings
+            can be personalized with a name or short phrase. Most ship as designed.
+          </p>
+          <p class="lede">
+            Questions used to wait two or three days on email. Try the assistant in
+            the corner — that’s the point of this preview.
+          </p>
+          <div class="cta-row">
+            <a class="btn ghost" href="#shop">See this week’s wraps</a>
+            <button class="btn primary" type="button" id="hero-ask">Ask about a tumbler</button>
+          </div>
+        </div>
+        <div class="pw-hero-cups" aria-hidden="true">
+          <div class="pw-cup pw-cup-midnight">
+            <span class="pw-cup-lid"></span>
+            <span class="pw-cup-sip"></span>
+            <span class="pw-cup-body"></span>
+          </div>
+          <div class="pw-cup pw-cup-meadow">
+            <span class="pw-cup-lid"></span>
+            <span class="pw-cup-sip"></span>
+            <span class="pw-cup-body"></span>
+          </div>
+          <div class="pw-cup pw-cup-copper">
+            <span class="pw-cup-lid"></span>
+            <span class="pw-cup-sip"></span>
+            <span class="pw-cup-body"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="shop" aria-labelledby="shop-title">
+      <header class="section-head">
+        <div>
+          <p class="eyebrow">This week on the bench</p>
+          <h2 id="shop-title">Three wraps. Sample stock only — this is not a live cart.</h2>
+        </div>
+      </header>
+
+      <ul class="pw-products">
+        <li class="pw-product">
+          <div class="pw-product-media" aria-hidden="true">
+            <div class="pw-cup pw-cup-midnight">
+              <span class="pw-cup-lid"></span>
+              <span class="pw-cup-sip"></span>
+              <span class="pw-cup-body"></span>
+            </div>
+          </div>
+          <div class="pw-product-body">
+            <p class="pw-sku">PW-MID-20 · Ready-made</p>
+            <h3>Midnight Wrap</h3>
+            <p class="pw-meta">20 oz · $38</p>
+            <p>Deep navy field with a faint star scatter. Ships as designed — no personalization on this listing.</p>
+            <p class="pw-stock">Sample stock: 8 on the shelf</p>
+            <button class="btn ghost compact" type="button" data-ask="Is the midnight wrap in stock?">
+              Ask about stock
+            </button>
+          </div>
+        </li>
+        <li class="pw-product">
+          <div class="pw-product-media pw-product-media-meadow" aria-hidden="true">
+            <div class="pw-cup pw-cup-meadow">
+              <span class="pw-cup-lid"></span>
+              <span class="pw-cup-sip"></span>
+              <span class="pw-cup-body"></span>
+            </div>
+          </div>
+          <div class="pw-product-body">
+            <p class="pw-sku">PW-MDW-30 · Personalization: name or phrase</p>
+            <h3>Meadow Speckle</h3>
+            <p class="pw-meta">30 oz · $46</p>
+            <p>Sage and cream speckle wrap. This listing can be personalized with a first name or a short phrase.</p>
+            <p class="pw-stock">Sample stock: 3 on the shelf</p>
+            <button class="btn ghost compact" type="button" data-ask="Can I personalize the Meadow Speckle?">
+              Ask about personalization
+            </button>
+          </div>
+        </li>
+        <li class="pw-product">
+          <div class="pw-product-media pw-product-media-copper" aria-hidden="true">
+            <div class="pw-cup pw-cup-copper">
+              <span class="pw-cup-lid"></span>
+              <span class="pw-cup-sip"></span>
+              <span class="pw-cup-body"></span>
+            </div>
+          </div>
+          <div class="pw-product-body">
+            <p class="pw-sku">PW-CPR-20 · Ready-made</p>
+            <h3>Copper Canyon</h3>
+            <p class="pw-meta">20 oz · $38</p>
+            <p>Warm copper wrap over stainless. Ships as designed — last one in this sample.</p>
+            <p class="pw-stock">Sample stock: 1 left</p>
+            <button class="btn ghost compact" type="button" data-ask="Tell me about the Copper Canyon wrap">
+              Ask about this wrap
+            </button>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section" id="process" aria-labelledby="process-title">
+      <header class="section-head">
+        <div>
+          <p class="eyebrow">On the bench</p>
+          <h2 id="process-title">A full wrap, aligned and heat-set, one tumbler at a time.</h2>
+        </div>
+      </header>
+      <ul class="pw-steps">
+        <li>
+          <h3>Stainless, not plastic</h3>
+          <p>Double-wall 20 oz and 30 oz tumblers, BPA-free sliding lid. The wrap covers the body, not a small sticker patch.</p>
+        </li>
+        <li>
+          <h3>Heat-set wrap</h3>
+          <p>Print, align, and set. Once engraved or personalized, wash as usual — no special care routine.</p>
+        </li>
+        <li>
+          <h3>Personalization on select listings</h3>
+          <p>Meadow Speckle can take a name or short phrase. Midnight Wrap and Copper Canyon ship as designed. We don’t take full custom work.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section" id="shipping" aria-labelledby="shipping-title">
+      <header class="section-head">
+        <div>
+          <p class="eyebrow">Lead times</p>
+          <h2 id="shipping-title">Handmade means a few days on the bench before it ships.</h2>
+          <p class="section-lede">
+            Ready-made wraps pack in a few business days, then go out in US mail.
+            Personalized Meadow Speckle orders take a little extra time on the press.
+          </p>
+        </div>
+      </header>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a class="wordmark" href="#top">PrattWorks</a>
+      <nav aria-label="Footer">
+        <a href="#shop">Shop</a>
+        <a href="#process">How they’re made</a>
+        <a href="#shipping">Shipping</a>
+        <a href="../index.html">CJ Code</a>
+        <a href="../contact.html">Build a bot like this</a>
+      </nav>
+      <p class="footer-note">
+        Fictional maker shop for a chatbot preview. No payments, no live inventory, no real customer data.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    window.PRATTWORKS_CHAT = {
+      shopName: "PrattWorks",
+      contactHref: "../contact.html",
+      autoOpenDesktop: true,
+    };
+  </script>
+  <script src="prattworks-chatbot/prattworks-chatbot.js"></script>
+  <script src="pratt-works.js"></script>
+</body>
+</html>

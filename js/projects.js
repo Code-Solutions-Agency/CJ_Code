@@ -3,10 +3,11 @@
  *
  * Add objects to this array. The Work section on the page renders from here.
  * Leave empty slots unfilled — the page keeps ghost cards until you add more
- * (up to three visible slots).
+ * (up to four visible slots).
  *
- * Fields: title, client, category, summary, tags, image, video, demo, href
+ * Fields: title, client, category, summary, tags, image, video, demo, preview, href
  * demo: "email-assistant" | "intake-qualifier" — gated sample walkthroughs, not free tools
+ * preview: "pratt-works" — CSS shop preview; pair with href to a standalone demo page
  *
  * Example:
  *
@@ -51,5 +52,15 @@ window.PROJECTS = [
     tags: ["Intake", "Try Demo"],
     demo: "intake-qualifier",
     href: "#",
+  },
+  {
+    title: "Shop assistant for PrattWorks",
+    client: "PrattWorks",
+    category: "Chatbot",
+    summary:
+      "A maker-shop preview: shoppers track a sample order, ask about sizes and wraps, and see personalization on select listings. Capped walkthrough — not a free chatbot.",
+    tags: ["Chatbot", "Try Demo"],
+    preview: "pratt-works",
+    href: "demos/pratt-works.html",
   },
 ];
