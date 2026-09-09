@@ -46,7 +46,7 @@ function mockReply(text, turns) {
   if (/maintain|update|retainer/.test(t)) {
     return "Maintenance starts at $75/month for minor copy, images, checks, and small fixes. Bigger pages or features are quoted separately. Do you want someone on tap after launch, or is the site already live elsewhere?";
   }
-  if (/book|call|quote|hire|start|contact|email/.test(t)) {
+  if (/book|call|quote|hire|schedule/.test(t)) {
     return "Happy to talk. Leave your name and email in this panel, or pick a time on contact.html — that opens an email draft to hello@cjcode.com. What should we cover on the call?";
   }
   if (/design|website|new site/.test(t)) {

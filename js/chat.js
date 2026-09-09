@@ -96,15 +96,16 @@
       const raw = match[0];
       const link = document.createElement("a");
       if (/^contact\.html/i.test(raw)) {
-        link.href = ON_CONTACT ? raw.replace(/^contact\.html/i, "") || "#contact" : raw;
+        link.href = ON_CONTACT ? "#contact" : raw;
+        link.textContent = ON_CONTACT ? "this page" : "the Contact page";
       } else {
         link.href = raw;
         if (/^https?:/i.test(raw)) {
           link.target = "_blank";
           link.rel = "noopener noreferrer";
         }
+        link.textContent = /^mailto:/i.test(raw) ? "hello@cjcode.com" : raw;
       }
-      link.textContent = /^mailto:/i.test(raw) ? "hello@cjcode.com" : raw;
       container.appendChild(link);
       last = match.index + raw.length;
     }
@@ -146,11 +147,13 @@
   }
 
   function setLeadOpen(open) {
-    if (!chatLead || leadSent) return;
+    if (!chatLead) return;
+    if (leadSent) open = false;
     if (open) chatLead.removeAttribute("hidden");
     else chatLead.setAttribute("hidden", "");
+    panel.classList.toggle("has-lead", Boolean(open));
     if (chatHandoff) chatHandoff.setAttribute("aria-expanded", open ? "true" : "false");
-    if (chatToolbar) chatToolbar.hidden = open;
+    if (chatToolbar) chatToolbar.hidden = Boolean(open || leadSent);
     if (open && leadName) window.setTimeout(() => leadName.focus(), 0);
     scrollChat();
   }
@@ -255,6 +258,7 @@
           messages: history,
           sessionId: sessionId(),
           leadCaptured: leadSent,
+          page: ON_CONTACT ? "contact" : "home",
         }),
       });
 

@@ -53,7 +53,7 @@ Replies
 - Prefer a next step over a dump of every service.`;
 
 const INTENT_RX =
-  /\b(book|quote|hire|call|email|contact|start|kickoff|deposit|pricing|price|cost|how much|interested|details|follow up|talk to|get started|project)\b/i;
+  /\b(book(ing)?(\s+a\s+call)?|schedule|get a quote|request a quote|hire|kickoff|interested|leave (my )?details|follow[- ]up|talk to|get started|email me|call me)\b/i;
 
 export function resetRateLimits() {
   buckets.clear();
@@ -253,6 +253,7 @@ export async function handleChatRequest(request, env) {
   }
 
   const alreadyCaptured = Boolean(body && body.leadCaptured);
+  const onContact = body && body.page === "contact";
   const userTurns = messages.filter((entry) => entry.role === "user").length;
   const limited = rateLimit(request, body && body.sessionId);
   if (!limited.ok) {
@@ -264,7 +265,12 @@ export async function handleChatRequest(request, env) {
     );
   }
 
-  const payload = [{ role: "system", content: SYSTEM_PROMPT }, ...messages];
+  let system = SYSTEM_PROMPT;
+  if (onContact) {
+    system +=
+      "\nThe visitor is already on the Contact / book-a-call page. Point them to the calendar on this page (not to contact.html as a separate destination).";
+  }
+  const payload = [{ role: "system", content: system }, ...messages];
 
   try {
     const result = await runInference(env, payload);

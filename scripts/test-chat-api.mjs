@@ -54,6 +54,14 @@ test("shouldSuggestLead after intent or several turns, not on the first hello", 
     false
   );
   assert.equal(
+    shouldSuggestLead({
+      userTurns: 2,
+      lastUserText: "What does that start at, and do you also do automation?",
+      alreadyCaptured: false,
+    }),
+    false
+  );
+  assert.equal(
     shouldSuggestLead({ userTurns: 1, lastUserText: "Can we book a call?", alreadyCaptured: false }),
     true
   );
@@ -113,15 +121,19 @@ test("rejects missing user message and suggests a lead on booking intent", async
   assert.equal(empty.status, 400);
 
   const env = {
-    runModel: async () => ({
-      choices: [{ message: { content: "Pick a time on contact.html or leave your email here." } }],
-    }),
+    runModel: async (messages) => {
+      assert.match(messages[0].content, /already on the Contact/);
+      return {
+        choices: [{ message: { content: "Pick a time on contact.html or leave your email here." } }],
+      };
+    },
   };
   const res = await handleChatRequest(
     chatRequest({
       messages: [{ role: "user", content: "I want to book a call this week." }],
       sessionId: "book-1",
       leadCaptured: false,
+      page: "contact",
     }),
     env
   );
