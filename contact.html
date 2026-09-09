@@ -6,9 +6,9 @@
   <meta name="theme-color" content="#fbf7f0" />
   <meta
     name="description"
-    content="Contact CJ Code about website design, redesign, maintenance, AI chatbots, automation, and workflow integration."
+    content="Book a call with CJ Code about website design, redesign, maintenance, AI chatbots, automation, and workflow integration."
   />
-  <title>Contact me — Web and AI Services Portfolio</title>
+  <title>Book a call — Web and AI Services Portfolio</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%23fbf7f0' width='32' height='32'/%3E%3Cpath fill='none' stroke='%231c4694' stroke-width='2' d='M6 22 L14 10 L20 18 L26 8'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -50,7 +50,7 @@
         <a href="index.html#work">Work</a>
         <a href="index.html#services">Services</a>
         <a href="index.html#pricing">Pricing</a>
-        <a class="btn btn-nav" href="contact.html">Start a project</a>
+        <a class="btn btn-nav" href="contact.html" aria-current="page">Book a call</a>
       </nav>
     </div>
   </header>
@@ -59,44 +59,21 @@
     <section class="section contact-section" id="contact" aria-labelledby="contact-title">
       <header class="section-head" data-reveal>
         <div>
-          <p class="eyebrow">Contact me</p>
-          <h2 id="contact-title">Ready when you are — leave your details and we’ll talk next steps.</h2>
+          <p class="eyebrow">Book a call</p>
+          <h2 id="contact-title">Pick a time — we’ll talk through the work and next steps.</h2>
+          <p class="section-lede">
+            Choose a slot that fits. You’ll get a confirmation; the appointment lands on CJ Code’s calendar.
+          </p>
         </div>
       </header>
 
       <div class="contact-layout">
-        <form class="contact-form" id="contact-form" data-reveal novalidate autocomplete="on">
-          <div class="field">
-            <label for="name">Name</label>
-            <input id="name" name="name" type="text" autocomplete="name" required />
-          </div>
-          <div class="field">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" autocomplete="email" required />
-          </div>
-          <div class="field">
-            <label for="company">Company</label>
-            <input id="company" name="company" type="text" autocomplete="organization" />
-          </div>
-          <div class="field">
-            <label for="need">Need</label>
-            <select id="need" name="need" required autocomplete="off">
-              <option value="">Select what you need</option>
-              <option value="design">Website Design</option>
-              <option value="redesign">Website Redesign</option>
-              <option value="automation">Automation</option>
-              <option value="website-and-automation">Website and Automation</option>
-            </select>
-          </div>
-          <div class="field field-full">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-          </div>
-          <div class="form-actions">
-            <button class="btn primary" type="submit">Open email draft</button>
-            <p class="form-status" id="form-status" role="status"></p>
-          </div>
-        </form>
+        <div class="contact-booklane" data-reveal>
+          <div id="booklane-embed"></div>
+          <p class="contact-fallback" id="booklane-fallback" hidden>
+            Booking isn’t loading. Start the Booklane app, then refresh this page.
+          </p>
+        </div>
       </div>
     </section>
   </main>
@@ -146,6 +123,7 @@
   </div>
 
   <script src="js/config.js"></script>
+  <script src="js/booklane.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
