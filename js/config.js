@@ -3,7 +3,7 @@ window.SITE = {
   title: "Web and AI Services Portfolio",
   contactEmail: "hello@cjcode.com",
   /**
-   * On-site “book a call” calendar (runs on GitHub Pages — no localhost, no login).
+   * On-site “book a call” calendar (runs on the static site — no localhost, no login).
    * Confirm opens an email draft to notifyEmail.
    */
   booking: {
