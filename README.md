@@ -74,7 +74,7 @@ Then copy or rename the output if you want a cache-busting filename.
 
 ## Contact / book a call
 
-`contact.html` has a booking calendar that runs **on this static site** (GitHub Pages). Visitors pick a time, choose Web / Automation / Web and Automation, and can add extra information. Confirm opens an email draft to `booking.notifyEmail` — no login, no localhost, no extra server.
+`contact.html` has a booking calendar that runs **on this static site**. The live host is Cloudflare Workers (`www.cjcode.workers.dev`). Visitors pick a time, choose Web / Automation / Web and Automation, and can add extra information. Confirm opens an email draft to `booking.notifyEmail` — no login, no localhost, no extra server.
 
 Hours, need options, timezone, and the notify address are in `js/config.js` under `booking`.
 
@@ -106,4 +106,6 @@ Change the generate cap in `js/config.js` (`demoMaxUses`). Do not put an API key
 
 ## Cloudflare
 
-Git-connected Workers (dashboard Create app): deploy command `npx wrangler deploy`, build command empty.
+The live site is [https://www.cjcode.workers.dev](https://www.cjcode.workers.dev) (Git-connected Worker `cjcode`). Pushes to `master` deploy it. Dashboard Create app: deploy command `npx wrangler deploy`, build command empty.
+
+Book a call: [https://www.cjcode.workers.dev/contact.html](https://www.cjcode.workers.dev/contact.html)
