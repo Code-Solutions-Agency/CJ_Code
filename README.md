@@ -103,3 +103,7 @@ Click **Try Demo** on a work card. Both tools are walkthroughs, not free product
 - No copy button for a sendable reply or a usable client brief
 
 Change the generate cap in `js/config.js` (`demoMaxUses`). Do not put an API key in the frontend.
+
+## Cloudflare
+
+Git-connected Workers (dashboard Create app): deploy command `npx wrangler deploy`, build command empty.
