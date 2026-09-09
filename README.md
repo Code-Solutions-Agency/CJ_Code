@@ -1,8 +1,8 @@
-# Web and AI Services Portfolio
+# CJ Code — Websites & AI for businesses
 
 CJ Code portfolio site for agencies and companies: website design, redesign, updates and maintenance, AI automation, chatbots, and workflow integration.
 
-Static HTML/CSS/JS. No build step.
+Static HTML/CSS/JS plus a Cloudflare Worker for `/api/chat`. No frontend build step.
 
 ## Booklane (booking SaaS)
 
@@ -20,14 +20,30 @@ See [`booking/README.md`](booking/README.md) for environment variables, the demo
 
 ## Open locally
 
-1. Open `index.html` in a browser (double-click, or drag it into Chrome/Edge).
-2. Optional, from this folder:
+Chat needs the Worker (or the mock stand-in). Opening `index.html` as a file still shows the site; the assistant will fail until `/api/chat` is served.
+
+**With Wrangler (Workers AI, same path as production):**
+
+```bash
+npx wrangler login
+npx wrangler dev
+```
+
+Then open the URL Wrangler prints (usually `http://127.0.0.1:8787`). Local `wrangler dev` still calls your Cloudflare account for Workers AI.
+
+**Without a Cloudflare login (UI only, keyword mock replies):**
+
+```bash
+node scripts/dev-mock.mjs
+```
+
+Then visit `http://127.0.0.1:8787`.
+
+Static-only preview (no chat API):
 
 ```bash
 npx --yes serve .
 ```
-
-Then visit the URL it prints (usually `http://localhost:3000`).
 
 ## Add a project
 
@@ -89,9 +105,38 @@ booking: {
 
 The Booklane app in [`booking/`](booking/) is a separate multi-tenant product. The portfolio contact page does not load it.
 
-## Chat demo
+## Chat assistant
 
-The corner widget is a scripted assistant about these services. Nothing is sent to a server. Swap the replies in `js/app.js` when you wire a real model later.
+The corner widget is a live, multi-turn assistant. Messages POST to `/api/chat` on this Worker, which runs **Cloudflare Workers AI** (`@cf/meta/llama-3.1-8b-instruct-fast` — free-tier friendly; 10,000 neurons/day). No OpenAI key is required.
+
+The model is a small on-brand helper: services, starting prices, process, and next steps. It will decline unrelated topics. It can be wrong on edge cases — treat quotes as starting points and send real scoping to a call.
+
+**Leave your details** (or a prompt after buying intent / a few turns) sends name, email, an optional note, and a short transcript to `hello@cjcode.com` through FormSubmit. Conversation continues afterward. Booking still happens on `contact.html`.
+
+```js
+contactEmail: "hello@cjcode.com",
+chatEndpoint: "/api/chat",
+leadEndpoint: "", // blank = FormSubmit AJAX to contactEmail
+```
+
+### Cloudflare dashboard (Workers AI)
+
+The `ai` binding in `wrangler.jsonc` is enough for Git-connected deploys (`npx wrangler deploy`, empty build command). After merge + redeploy:
+
+1. Cloudflare Dashboard → **Workers AI**. If the account asks you to enable the service or accept model terms, do that once.
+2. Confirm the `cjcode` Worker (routes may show as `www` / `*.cjcode.workers.dev`) has an **AI** binding named `AI`.
+3. Optional check: `GET https://www.cjcode.workers.dev/api/chat` should return JSON `{ "ok": true, "service": "cjcode-chat", ... }`.
+4. If inference returns 403, the account may be on Workers Free with a paid-only model — this project uses `llama-3.1-8b-instruct-fast`, which is meant to stay on the free allocation.
+
+Optional OpenAI override (not required): `npx wrangler secret put OPENAI_API_KEY` and optionally `OPENAI_MODEL` (default `gpt-4o-mini`). When the secret is set, `/api/chat` uses OpenAI instead of Workers AI.
+
+### FormSubmit activation (chat leads)
+
+1. Serve the site over http(s) (not `file://`) and submit a test lead from the widget.
+2. FormSubmit emails a confirmation link to `hello@cjcode.com`. **Click it once.**
+3. After that, chat leads arrive as email. You can later paste FormSubmit’s random-string URL into `leadEndpoint` to hide the address in the POST URL.
+
+FormSubmit will not accept submissions from a double-clicked HTML file. If the browser cannot reach it, the widget offers a `mailto:` draft with the transcript.
 
 ## Portfolio demos (Projects 2 and 3)
 
@@ -107,3 +152,5 @@ Change the generate cap in `js/config.js` (`demoMaxUses`). Do not put an API key
 ## Cloudflare
 
 Git-connected Workers (dashboard Create app): deploy command `npx wrangler deploy`, build command empty.
+
+`wrangler.jsonc` serves the static site and runs the Worker first on `/api/*` so chat does not collide with assets. Worker source lives in `src/` and is not uploaded as a public file.
