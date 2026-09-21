@@ -152,11 +152,19 @@
         }
       }
 
+      const kind = project.kind
+        || (project.demo ? "Sample walkthrough" : "")
+        || (project.video ? "Demo" : "");
+      const kindBadge = kind
+        ? `<span class="work-kind-badge">${escapeHtml(kind)}</span>`
+        : "";
+
       const tags = Array.isArray(project.tags) ? project.tags : [];
-      let media = `<div class="work-media"></div>`;
+      let media = `<div class="work-media">${kindBadge}</div>`;
       if (hasVideo) {
         media = `<div class="work-media">
           <video src="${escapeAttr(project.video)}" muted loop playsinline preload="metadata" aria-hidden="true"></video>
+          ${kindBadge}
           <span class="work-expand">Click to enlarge</span>
         </div>`;
       } else if (hasDemo) {
@@ -168,10 +176,11 @@
             <p class="work-preview-line short"></p>
             <p class="work-preview-reply">${isIntake ? "Project brief" : "Suggested reply"}</p>
           </div>
+          ${kindBadge}
           <span class="work-expand">Try Demo</span>
         </div>`;
       } else if (project.image) {
-        media = `<div class="work-media"><img src="${escapeAttr(project.image)}" alt="" /></div>`;
+        media = `<div class="work-media"><img src="${escapeAttr(project.image)}" alt="" />${kindBadge}</div>`;
       }
 
       card.innerHTML = `
@@ -194,7 +203,7 @@
         card.setAttribute("tabindex", "0");
         card.setAttribute(
           "aria-label",
-          `Enlarge video: ${project.title || "Project demo"}`
+          `Demo — enlarge video: ${project.title || "Sample walkthrough"}`
         );
         const open = () => openVideoLightbox(project);
         card.addEventListener("click", open);
@@ -211,8 +220,8 @@
         card.setAttribute(
           "aria-label",
           isIntake
-            ? "Try Demo: Project intake qualifier"
-            : "Try Demo: AI Business Email Assistant"
+            ? "Sample walkthrough: Project intake qualifier"
+            : "Sample walkthrough: AI Business Email Assistant"
         );
         const open = isIntake ? openIntakeQualifier : openEmailAssistant;
         card.addEventListener("click", open);
@@ -429,7 +438,7 @@
     },
     {
       tests: [/start|begin|hire|contact|email|project/i],
-      text: "Use Start a project or Contact. On Contact, pick a service and a time — confirm opens an email draft. No account needed. Say whether you need web, AI, or both.",
+      text: "Use Book a call or Contact. On Contact, pick a service and a time — confirm opens an email draft. No account needed. Say whether you need web, AI, or both.",
     },
     {
       tests: [/who|clearpath|cjcode|cj code|you|studio|agenc/i],

@@ -363,6 +363,12 @@ h3 {
   margin-top: 0.9rem;
 }
 
+.hero-lede .hero-aside {
+  margin-top: 0.7rem;
+  font-size: 0.98rem;
+  color: var(--ink-faint);
+}
+
 .hero-split {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
@@ -464,6 +470,19 @@ main > .section:last-child {
   margin-bottom: 0.55rem;
 }
 
+.service-badge {
+  display: inline-block;
+  margin: 0 0 0.7rem;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-dim);
+  padding: 0.22rem 0.55rem;
+  border-radius: 999px;
+}
+
 .service-card p:last-child {
   margin: 0;
   color: var(--ink-muted);
@@ -542,6 +561,21 @@ main > .section:last-child {
   border-radius: 999px;
   background: rgba(33, 43, 63, 0.78);
   color: var(--accent-ink);
+  pointer-events: none;
+}
+
+.work-kind-badge {
+  position: absolute;
+  left: 0.75rem;
+  top: 0.75rem;
+  z-index: 2;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(251, 247, 240, 0.94);
+  color: var(--accent);
   pointer-events: none;
 }
 
@@ -1067,6 +1101,14 @@ main > .section:last-child {
   color: var(--accent);
   text-align: right;
   white-space: nowrap;
+}
+
+.pricing-summary tbody td.pricing-custom {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .pricing-grid {
