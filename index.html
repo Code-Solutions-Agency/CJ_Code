@@ -201,8 +201,9 @@
           <p class="service-badge">Custom quote</p>
           <p>
             Assistants that answer, qualify, and hand off — on the site, in
-            Slack, or in the tools the team already uses. The widget on this
-            page is a live sketch of that UX.
+            Slack, or in the tools the team already uses. The corner widget
+            on this page is the CJ Code assistant for these services — not a
+            client’s production chatbot.
           </p>
         </li>
         <li class="service-card" data-reveal>
@@ -630,7 +631,7 @@
     <div class="chat-panel" id="chat-panel" hidden>
       <header class="chat-head">
         <div>
-          <p class="chat-kicker">Demo assistant</p>
+          <p class="chat-kicker">CJ Code assistant</p>
           <p class="chat-title">Ask about services</p>
         </div>
         <button type="button" class="chat-close" id="chat-close" aria-label="Close chat">
@@ -643,7 +644,7 @@
         <input id="chat-input" type="text" autocomplete="off" placeholder="Ask about web or AI work" />
         <button class="btn primary compact" type="submit">Send</button>
       </form>
-      <p class="chat-note">Scripted answers. Nothing leaves this page.</p>
+      <p class="chat-note">Answers come from this site’s services and pricing. For a quote, book a call.</p>
     </div>
     <button
       type="button"
@@ -662,5 +663,6 @@
   <script src="js/app.js"></script>
   <script src="js/email-assistant.js"></script>
   <script src="js/intake-qualifier.js"></script>
+  <script type="module" src="js/chat.js"></script>
 </body>
 </html>

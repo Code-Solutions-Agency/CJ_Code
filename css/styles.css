@@ -1591,6 +1591,11 @@ body.lightbox-open .chat-widget {
   border: 1px solid rgba(28, 70, 148, 0.2);
 }
 
+.chat-bubble.pending {
+  color: var(--ink-faint);
+  font-style: italic;
+}
+
 .chat-bubble.user {
   align-self: flex-end;
   background: var(--bg-2);
