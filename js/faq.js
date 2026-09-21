@@ -18,7 +18,7 @@ export const FAQ = [
     id: "paths",
     tags: ["services", "offer", "paths", "what you do"],
     q: "What services do you offer?",
-    a: "Four priced paths: website design, website redesign, business automation, and website maintenance. AI chatbot implementation and AI in business workflows are custom-quote. The process is discover, then design or rebuild, automate, and maintain.",
+    a: "Four priced packages: website design, website redesign, business automation, and website maintenance. AI chatbot implementation and AI in business workflows sit with Business Automation and are custom-quote. The process is discover, then design or rebuild, automate, and maintain.",
   },
   {
     id: "design",
@@ -36,7 +36,7 @@ export const FAQ = [
     id: "automation",
     tags: ["automation", "automate", "workflow", "lead capture", "follow-up"],
     q: "What is business automation and what does it cost?",
-    a: "Business Automation starts at $300 for one focused automation: workflow planning, a connection between supported tools, basic testing, setup and handoff, and basic documentation. Examples include lead capture, form-to-email notifications, automated follow-ups, information routing, and connecting existing tools. More complex automations, multiple workflows, advanced integrations, or AI systems may need a custom quote.",
+    a: "Business Automation starts at $300 for one focused automation: workflow planning, a connection between supported tools, basic testing, setup and handoff, and basic documentation. Examples include lead capture, form-to-email notifications, automated follow-ups, information routing, and connecting existing tools. AI chatbot implementation and AI in business workflows sit on this Automate path and are custom quotes. More complex automations, multiple workflows, or advanced integrations are also quoted.",
   },
   {
     id: "maintenance",
@@ -48,19 +48,19 @@ export const FAQ = [
     id: "chatbot-service",
     tags: ["chatbot", "assistant", "widget", "slack", "qualify"],
     q: "Do you build AI chatbots? How much?",
-    a: "Yes — AI chatbot implementation is a custom quote, not a starting package. Production assistants answer, qualify, and hand off on the site, in Slack, or in tools the team already uses. The widget on this site is the CJ Code assistant for these services, not a client’s production chatbot.",
+    a: "Yes — AI chatbot implementation sits with Business Automation and is a custom quote, not a starting package. Production assistants answer, qualify, and hand off on the site, in Slack, or in tools the team already uses. The widget on this site is the CJ Code assistant for these services, not a client’s production chatbot.",
   },
   {
     id: "workflow-ai",
     tags: ["workflow", "integration", "crm", "docs", "ops", "models"],
     q: "What is AI in business workflows, and is it priced?",
-    a: "AI in business workflows means wiring models into the actual sequence of work — CRM, docs, support, ops — as a step in the process. That work is custom-quote, not in the starting price table.",
+    a: "AI in business workflows means wiring models into the actual sequence of work — CRM, docs, support, ops — as a step in the process. That work sits with Business Automation and is custom-quote, not a starting package.",
   },
   {
     id: "starting-prices",
     tags: ["price", "pricing", "cost", "rate", "how much", "quote"],
     q: "What are the starting prices?",
-    a: "Starting points, not guaranteed finals: Website Design $750, Website Redesign $500, Business Automation $300, Website Maintenance $75/month. Scope, integrations, content, page count, and functionality change the quote. Chatbot implementation and workflow AI are custom quotes.",
+    a: "The four packages start at: Website Design $750, Website Redesign $500, Business Automation $300, Website Maintenance $75/month. Scope, integrations, content, page count, and functionality change the quote. Chatbot implementation and workflow AI are called out on the Business Automation card as custom quotes.",
   },
   {
     id: "includes-design",
