@@ -1133,6 +1133,10 @@ main > .section:last-child {
   font-size: 0.94rem;
 }
 
+.pricing-custom-quote ul {
+  font-size: 0.96rem;
+}
+
 .pricing-block li + li,
 .pricing-extra-list li + li {
   margin-top: 0.25rem;
