@@ -363,6 +363,12 @@ h3 {
   margin-top: 0.9rem;
 }
 
+.hero-lede .hero-aside {
+  margin-top: 0.7rem;
+  font-size: 0.98rem;
+  color: var(--ink-faint);
+}
+
 .hero-split {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
@@ -464,6 +470,19 @@ main > .section:last-child {
   margin-bottom: 0.55rem;
 }
 
+.service-badge {
+  display: inline-block;
+  margin: 0 0 0.7rem;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-dim);
+  padding: 0.22rem 0.55rem;
+  border-radius: 999px;
+}
+
 .service-card p:last-child {
   margin: 0;
   color: var(--ink-muted);
@@ -542,6 +561,21 @@ main > .section:last-child {
   border-radius: 999px;
   background: rgba(33, 43, 63, 0.78);
   color: var(--accent-ink);
+  pointer-events: none;
+}
+
+.work-kind-badge {
+  position: absolute;
+  left: 0.75rem;
+  top: 0.75rem;
+  z-index: 2;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(251, 247, 240, 0.94);
+  color: var(--accent);
   pointer-events: none;
 }
 
@@ -1030,45 +1064,6 @@ main > .section:last-child {
 }
 
 /* Pricing */
-.pricing-summary-wrap {
-  margin-bottom: 2.75rem;
-  overflow-x: auto;
-}
-
-.pricing-summary {
-  width: 100%;
-  max-width: 36rem;
-  border-collapse: collapse;
-  font-size: 0.98rem;
-}
-
-.pricing-summary th,
-.pricing-summary td {
-  padding: 0.75rem 1rem;
-  text-align: left;
-  border-bottom: 1px solid var(--line);
-}
-
-.pricing-summary thead th {
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-muted);
-  font-weight: 500;
-}
-
-.pricing-summary tbody th {
-  font-weight: 500;
-}
-
-.pricing-summary tbody td {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  color: var(--accent);
-  text-align: right;
-  white-space: nowrap;
-}
-
 .pricing-grid {
   list-style: none;
   margin: 0 0 3rem;
@@ -1136,6 +1131,10 @@ main > .section:last-child {
   padding-left: 1.15rem;
   color: var(--ink-muted);
   font-size: 0.94rem;
+}
+
+.pricing-custom-quote ul {
+  font-size: 0.96rem;
 }
 
 .pricing-block li + li,
@@ -1549,6 +1548,11 @@ body.lightbox-open .chat-widget {
   border: 1px solid rgba(28, 70, 148, 0.2);
 }
 
+.chat-bubble.pending {
+  color: var(--ink-faint);
+  font-style: italic;
+}
+
 .chat-bubble.user {
   align-self: flex-end;
   background: var(--bg-2);
@@ -1652,10 +1656,6 @@ body.lightbox-open .chat-widget {
 
   .pricing-extra-list {
     columns: 1;
-  }
-
-  .pricing-summary tbody td {
-    font-size: 1.05rem;
   }
 
   .hero-split {

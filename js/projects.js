@@ -5,7 +5,8 @@
  * Leave empty slots unfilled — the page keeps ghost cards until you add more
  * (up to three visible slots).
  *
- * Fields: title, client, category, summary, tags, image, video, demo, href
+ * Fields: title, client, category, kind, summary, tags, image, video, demo, href
+ * kind: "Demo" | "Sample walkthrough" — shown in card chrome (inferred from video/demo if omitted)
  * demo: "email-assistant" | "intake-qualifier" — gated sample walkthroughs, not free tools
  *
  * Example:
@@ -26,30 +27,30 @@ window.PROJECTS = [
     title: "Garden chat for Willow & Grove",
     client: "Willow & Grove",
     category: "Chatbot",
+    kind: "Demo",
     summary:
-      "A visitor opens Chat with us on a nursery site, asks about raised-bed delivery, follows up on a Thursday drop-off, and gets clear next steps from the garden assistant.",
-    tags: ["Chatbot", "Client demo"],
+      "Sample walkthrough of a garden-center chatbot — not a live client site. A visitor asks about raised-bed delivery, follows up on a Thursday drop-off, and gets clear next steps.",
+    tags: ["Chatbot", "Demo"],
     video: "media/willow-grove-chatbot-v5.mp4",
-    href: "#",
   },
   {
     title: "AI Business Email Assistant",
     client: "Harbor & Line",
     category: "Automation",
+    kind: "Sample walkthrough",
     summary:
       "Staff pick a sample customer thread, choose type and tone, and see a draft reply. Walkthrough only — not a free inbox tool.",
-    tags: ["Automation", "Try Demo"],
+    tags: ["Automation", "Sample walkthrough"],
     demo: "email-assistant",
-    href: "#",
   },
   {
     title: "Project intake for Harbor & Line",
     client: "Harbor & Line",
     category: "Intake",
+    kind: "Sample walkthrough",
     summary:
       "A messy inbound request becomes a structured project brief — pages, fit, out of scope, next step. Sample walkthrough, not a free briefing tool.",
-    tags: ["Intake", "Try Demo"],
+    tags: ["Intake", "Sample walkthrough"],
     demo: "intake-qualifier",
-    href: "#",
   },
 ];
