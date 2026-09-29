@@ -2,3 +2,8 @@
 **/.DS_Store
 **/.git
 **/.wrangler
+**/worker.js
+**/wrangler.jsonc
+**/README.md
+**/scripts/**
+**/booking/**

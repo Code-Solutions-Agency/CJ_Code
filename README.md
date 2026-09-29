@@ -91,9 +91,19 @@ booking: {
 
 The Booklane app in [`booking/`](booking/) is a separate multi-tenant product. The portfolio contact page does not load it.
 
-## Chat demo
+## Site assistant (chat)
 
-The corner widget is a scripted assistant about these services. Nothing is sent to a server. Swap the replies in `js/app.js` when you wire a real model later.
+The corner widget is the **CJ Code assistant**. It answers from `js/faq.js` — the same services, starting prices, payment terms, and booking path as the site. Keep that file in sync when copy changes. Do not add prices or promises that are not already on the pages.
+
+On Cloudflare, the widget POSTs to `/api/chat`. `worker.js` tries Workers AI (`AI` binding, model `@cf/meta/llama-3.1-8b-instruct`) using retrieved FAQ snippets only. If the binding is missing, the model call fails, or you are serving the files locally, the widget still answers from the FAQ in the browser. Off-topic questions get an “I’m not sure” plus Book a call — it will not invent numbers.
+
+No API key belongs in the frontend. The only wiring is the Workers AI binding already in `wrangler.jsonc`:
+
+```jsonc
+"ai": { "binding": "AI" }
+```
+
+Enable **Workers AI** on the Cloudflare account that deploys `cjcode`. There is no secret name to set. If Workers AI is not enabled, deploy still serves the site; chat falls back to FAQ retrieval.
 
 ## Portfolio demos (Projects 2 and 3)
 
@@ -108,6 +118,6 @@ Change the generate cap in `js/config.js` (`demoMaxUses`). Do not put an API key
 
 ## Cloudflare
 
-The live site is [https://www.cjcode.workers.dev](https://www.cjcode.workers.dev) (Git-connected Worker `cjcode`). Pushes to `master` deploy it. Dashboard Create app: deploy command `npx wrangler deploy`, build command empty.
+The live site is [https://www.cjcode.workers.dev](https://www.cjcode.workers.dev) (Git-connected Worker `cjcode`). Pushes to `master` deploy it. Dashboard Create app: deploy command `npx wrangler deploy`, build command empty. Chat uses the `AI` binding in `wrangler.jsonc` when Workers AI is enabled on the account.
 
 Book a call: [https://www.cjcode.workers.dev/contact.html](https://www.cjcode.workers.dev/contact.html)

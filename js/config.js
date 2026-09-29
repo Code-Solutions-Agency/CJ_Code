@@ -1,6 +1,6 @@
 window.SITE = {
   name: "CJ Code",
-  title: "Web and AI Services Portfolio",
+  title: "CJ Code — Websites and practical AI",
   contactEmail: "hello@cjcode.com",
   /**
    * On-site “book a call” calendar (runs on the static site — no localhost, no login).
