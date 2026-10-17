@@ -1,6 +1,6 @@
 # Web and AI Services Portfolio
 
-CJ Code portfolio site for agencies and companies: website design, redesign, updates and maintenance, AI automation, chatbots, and workflow integration.
+CJ Code portfolio site for agencies and companies: Web Design and Development, Web Redesign and Development, Updates and Maintenance, AI Business Automation, AI Chatbot Implementation, and AI and Business Workflows.
 
 Static HTML/CSS/JS. No build step.
 
@@ -82,7 +82,7 @@ Hours, need options, timezone, and the notify address are in `js/config.js` unde
 booking: {
   timezone: "America/Chicago",
   timezoneLabel: "Central Time",
-  notifyEmail: "hello@cjcode.com",
+  notifyEmail: "CJ_Code@outlook.com",
   needs: [ /* Web, Automation, Web and Automation */ ],
   hours: [ /* Mon–Thu 1:00–3:00pm Central; Friday closed */ ],
   blockedDates: [ /* optional YYYY-MM-DD closed days */ ],

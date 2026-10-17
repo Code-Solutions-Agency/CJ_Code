@@ -1,7 +1,7 @@
 import { answerFromKnowledge } from "./faq.js";
 
 const GREETING =
-  "I’m the CJ Code assistant — not a person. Ask about design, redesign, automation, maintenance, custom AI work, starting prices, or booking a call.";
+  "I’m the CJ Code assistant — not a person. Ask about Web Design and Development, Web Redesign and Development, AI Business Automation, Updates and Maintenance, AI Chatbot Implementation, AI and Business Workflows, starting prices, or booking a call.";
 
 const API_TIMEOUT_MS = 8000;
 const MAX_MESSAGE = 500;

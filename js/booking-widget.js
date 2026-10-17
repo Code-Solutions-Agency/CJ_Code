@@ -6,7 +6,7 @@
   const booking = site.booking || {};
   const timezone = booking.timezone || "America/Chicago";
   const timezoneLabel = booking.timezoneLabel || "Central Time";
-  const notifyEmail = booking.notifyEmail || site.contactEmail || "hello@cjcode.com";
+  const notifyEmail = booking.notifyEmail || site.contactEmail || "CJ_Code@outlook.com";
   const stepMinutes = Number(booking.stepMinutes) || 30;
   const minNoticeMinutes = Number(booking.minNoticeMinutes) || 60;
   const durationMinutes = Number(booking.durationMinutes) || 30;
@@ -291,7 +291,7 @@
       <div class="booking-widget">
         <div class="booking-widget-head">
           <p class="booking-kicker">Book a call</p>
-          <p class="booking-lede">Times are in ${escapeHtml(timezoneLabel)}. Confirm opens an email draft to ${escapeHtml(notifyEmail)} — no account, no login.</p>
+          <p class="booking-lede">Times are in Central Time Zone.</p>
         </div>
         <div class="booking-widget-body">
           <div class="booking-split">

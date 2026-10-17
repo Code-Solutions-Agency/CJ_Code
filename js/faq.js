@@ -5,74 +5,74 @@
  */
 
 export const BOOK_A_CALL =
-  "If this doesn’t cover your case, use Book a call on Contact — pick a time in Central Time and confirm to open an email draft. Or email hello@cjcode.com.";
+  "If this doesn’t cover your case, use Book a call on Contact — pick a time in Central Time and confirm to open an email draft. Or email CJ_Code@outlook.com.";
 
 export const FAQ = [
   {
     id: "who",
     tags: ["cj code", "about", "who", "agency", "company", "studio"],
     q: "Who is CJ Code and what do you do?",
-    a: "CJ Code designs and rebuilds modern websites, keeps them current, and adds practical AI — chatbots, lead capture, and automations behind the site. The work is for businesses; agencies can also hand off defined website or automation work.",
+    a: "CJ Code designs and builds modern websites, writes the code, keeps them current, and adds practical AI, including chatbots, lead capture, and the automations that sit behind the site. The work is for businesses; agencies can also hand off defined website or automation work.",
   },
   {
     id: "paths",
     tags: ["services", "offer", "paths", "what you do"],
     q: "What services do you offer?",
-    a: "Four priced packages: website design, website redesign, business automation, and website maintenance. AI chatbot implementation and AI in business workflows sit with Business Automation and are custom-quote. The process is discover, then design or rebuild, automate, and maintain.",
+    a: "Four priced packages: Web Design and Development, Web Redesign and Development, Business Automation, and Website Maintenance. AI Chatbot Implementation and AI and Business Workflows sit with Business Automation and are custom-quote. The process is discover, then Web Design and Development or Web Redesign and Development, automate, and maintain.",
   },
   {
     id: "design",
-    tags: ["design", "new site", "website", "package"],
-    q: "What is website design and what does it cost?",
-    a: "Website Design is a new, modern site built from the ground up. It starts at $750 and typically includes custom design, a mobile-responsive layout, up to 5 core pages, clear navigation and CTAs, a contact form, basic SEO structure, deployment, and launch testing. Best for small businesses that need a professional presence without extra complexity.",
+    tags: ["design", "development", "new site", "website", "package"],
+    q: "What is Web Design and Development, and what does it cost?",
+    a: "Web Design and Development is a new, modern site designed and developed from the ground up. It starts at $750 and typically includes Custom Web Design and Development, a mobile-responsive layout, up to 5 core pages, clear navigation and CTAs, a contact form, basic SEO structure, deployment, and launch testing. Best for small businesses that need a professional presence without extra complexity.",
   },
   {
     id: "redesign",
-    tags: ["redesign", "rebuild", "refresh", "existing site", "outdated"],
-    q: "What is website redesign and what does it cost?",
-    a: "Website Redesign is for a site you already have that needs a more modern, usable experience. It starts at $500 and typically includes a review of the live site, modernized visual design, improved layout and navigation, mobile responsiveness, stronger CTAs, content organization, contact form updates when needed, basic SEO structure, and launch testing. The URL stays the same.",
+    tags: ["redesign", "development", "rebuild", "refresh", "existing site", "outdated"],
+    q: "What is Web Redesign and Development, and what does it cost?",
+    a: "Web Redesign and Development is for a site you already have that needs a more modern, usable experience. It starts at $500 and typically includes a review of the live site, modernized visual design, improved layout and navigation, mobile responsiveness, stronger CTAs, content organization, contact form updates when needed, basic SEO structure, and launch testing. The URL stays the same.",
   },
   {
     id: "automation",
     tags: ["automation", "automate", "workflow", "lead capture", "follow-up"],
-    q: "What is business automation and what does it cost?",
-    a: "Business Automation starts at $300 for one focused automation: workflow planning, a connection between supported tools, basic testing, setup and handoff, and basic documentation. Examples include lead capture, form-to-email notifications, automated follow-ups, information routing, and connecting existing tools. AI chatbot implementation and AI in business workflows sit on this Automate path and are custom quotes. More complex automations, multiple workflows, or advanced integrations are also quoted.",
+    q: "What is AI Business Automation, and what does it cost?",
+    a: "AI Business Automation is the Business Automation package. It starts at $300 for one focused automation: workflow planning, a connection between supported tools, basic testing, setup and handoff, and basic documentation. Examples include lead capture, form-to-email notifications, automated follow-ups, information routing, and connecting existing tools. AI Chatbot Implementation and AI and Business Workflows sit on this Automate path and are custom quotes. More complex automations, multiple workflows, or advanced integrations are also quoted.",
   },
   {
     id: "maintenance",
     tags: ["maintenance", "updates", "retainer", "cms", "wordpress"],
-    q: "What is website maintenance and what does it cost?",
-    a: "Website Maintenance starts at $75/month and covers minor updates, text and image changes, basic content updates, routine checks, basic troubleshooting, and small design adjustments. Larger updates, new pages, major redesigns, or extensive functionality are quoted separately. It is billed in advance each month.",
+    q: "What is Updates and Maintenance, and what does it cost?",
+    a: "Updates and Maintenance is the Website Maintenance package. It starts at $75/month and covers minor updates, text and image changes, basic content updates, routine checks, basic troubleshooting, and small design adjustments. Larger updates, new pages, major redesigns, or extensive functionality are quoted separately. It is billed in advance each month.",
   },
   {
     id: "chatbot-service",
     tags: ["chatbot", "assistant", "widget", "slack", "qualify"],
     q: "Do you build AI chatbots? How much?",
-    a: "Yes — AI chatbot implementation sits with Business Automation and is a custom quote, not a starting package. Production assistants answer, qualify, and hand off on the site, in Slack, or in tools the team already uses. The widget on this site is the CJ Code assistant for these services, not a client’s production chatbot.",
+    a: "Yes — AI Chatbot Implementation sits with Business Automation and is a custom quote, not a starting package. Production assistants answer, qualify, and hand off on the site, in Slack, or in tools the team already uses. The widget on this site is the CJ Code assistant for these services, not a client’s production chatbot.",
   },
   {
     id: "workflow-ai",
     tags: ["workflow", "integration", "crm", "docs", "ops", "models"],
-    q: "What is AI in business workflows, and is it priced?",
-    a: "AI in business workflows means wiring models into the actual sequence of work — CRM, docs, support, ops — as a step in the process. That work sits with Business Automation and is custom-quote, not a starting package.",
+    q: "What is AI and Business Workflows, and is it priced?",
+    a: "AI and Business Workflows means wiring models into the actual sequence of work: CRM, docs, support, and ops, as a step in the process. That work sits with Business Automation and is custom-quote, not a starting package.",
   },
   {
     id: "starting-prices",
     tags: ["price", "pricing", "cost", "rate", "how much", "quote"],
     q: "What are the starting prices?",
-    a: "The four packages start at: Website Design $750, Website Redesign $500, Business Automation $300, Website Maintenance $75/month. Scope, integrations, content, page count, and functionality change the quote. Chatbot implementation and workflow AI are called out on the Business Automation card as custom quotes.",
+    a: "Starting Prices for Design, Redesign, Automation, and Maintenance. The four packages start at: Web Design and Development $750, Web Redesign and Development $500, Business Automation $300, Website Maintenance $75/month. Scope, integrations, content, page count, and functionality change the quote. AI Chatbot Implementation and AI and Business Workflows are called out on the Business Automation card as custom quotes.",
   },
   {
     id: "includes-design",
-    tags: ["includes", "included", "design", "pages"],
-    q: "What is included in website design?",
-    a: "The Website Design starting package includes custom website design, a mobile-responsive layout, up to 5 core pages, clear navigation and calls to action, a contact form, basic SEO structure, deployment and setup, and basic launch testing.",
+    tags: ["includes", "included", "design", "development", "pages"],
+    q: "What is included in Web Design and Development?",
+    a: "The Web Design and Development starting package includes Custom Web Design and Development, a mobile-responsive layout, up to 5 core pages, clear navigation and calls to action, a contact form, basic SEO structure, deployment and setup, and basic launch testing.",
   },
   {
     id: "not-included",
     tags: ["not included", "extra", "additional", "out of scope", "custom"],
     q: "What is not in the standard packages?",
-    a: "Quoted separately: additional pages, landing pages, advanced forms, AI chatbot implementation, advanced automations, third-party integrations, custom functionality, and ongoing technical support. Requests outside the written scope are quoted before that extra work begins.",
+    a: "Quoted separately: additional pages, landing pages, advanced forms, AI Chatbot Implementation, advanced automations, third-party integrations, custom functionality, and ongoing technical support. Requests outside the written scope are quoted before that extra work begins.",
   },
   {
     id: "payment",
@@ -90,7 +90,7 @@ export const FAQ = [
     id: "process",
     tags: ["process", "discover", "steps", "how you work", "timeline"],
     q: "What is the process?",
-    a: "A short path: Discover (goals, constraints, current site or workflow, what “done” means), Design / rebuild, Automate (chat, handoffs, repetitive tasks), and Maintain so the site and automations don’t stall after launch.",
+    a: "A short path: Discover (goals, constraints, current site or workflow, what “done” means), Web Design and Development / Web Redesign and Development, Automate (chat, handoffs, repetitive tasks), and Maintain so the site and automations don’t stall after launch.",
   },
   {
     id: "agency",
@@ -102,7 +102,7 @@ export const FAQ = [
     id: "booking",
     tags: ["booking", "book", "call", "contact", "calendar", "schedule", "email"],
     q: "How do I book a call or get in touch?",
-    a: "Use Book a call. On Contact, pick a time in Central Time, say whether you need Web, Automation, or both, add extra detail if you want, and confirm. That opens an email draft to hello@cjcode.com — no account. You can also email hello@cjcode.com directly.",
+    a: "Use Book a call. On Contact, pick a time in Central Time, say whether you need Web, Automation, or both, add extra detail if you want, and confirm. That opens an email draft to CJ_Code@outlook.com — no account. You can also email CJ_Code@outlook.com directly.",
   },
   {
     id: "hours",
@@ -171,6 +171,9 @@ const ALIASES = {
   outdated: "redesign",
   existing: "redesign",
   design: "design",
+  develop: "design",
+  development: "design",
+  developer: "design",
   website: "design",
   websites: "design",
   site: "design",
@@ -272,7 +275,7 @@ export function answerFromKnowledge(question) {
   const q = String(question || "").trim();
   if (!q) {
     return {
-      answer: "Ask about design, redesign, automation, maintenance, custom AI work, or booking a call.",
+      answer: "Ask about Web Design and Development, Web Redesign and Development, AI Business Automation, Updates and Maintenance, AI Chatbot Implementation, AI and Business Workflows, starting prices, or booking a call.",
       source: "empty",
     };
   }
