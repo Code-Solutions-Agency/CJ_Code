@@ -51,6 +51,12 @@ export const FAQ = [
     a: "Yes — AI Chatbot Implementation sits with Business Automation and is a custom quote, not a starting package. Production assistants answer, qualify, and hand off on the site, in Slack, or in tools the team already uses. The widget on this site is the CJ Code assistant for these services, not a client’s production chatbot.",
   },
   {
+    id: "answer-calls",
+    tags: ["answer calls", "answer my calls", "phone", "phones", "missed calls"],
+    q: "Can you answer my calls?",
+    a: "Phone answering is not a package on this site. AI Chatbot Implementation can answer, qualify, and hand off inquiries on your site or in the tools you already use, and that work is a custom quote. AI and Business Workflows are custom quotes as well. To talk through what you need, book a call on Contact or email CJ_Code@outlook.com.",
+  },
+  {
     id: "workflow-ai",
     tags: ["workflow", "integration", "crm", "docs", "ops", "models"],
     q: "What is AI and Business Workflows, and is it priced?",
@@ -158,6 +164,7 @@ const ALIASES = {
   book: "booking",
   booking: "booking",
   call: "booking",
+  phones: "phone",
   schedule: "booking",
   calendar: "booking",
   appointment: "booking",
@@ -252,6 +259,13 @@ export function retrieve(question, limit = 4) {
     if (qset.has("maintenance") && entry.id === "maintenance") score += 6;
     if (qset.has("automation") && entry.id === "automation") score += 6;
     if (qset.has("chatbot") && entry.id === "chatbot-service") score += 6;
+    if (
+      entry.id === "answer-calls" &&
+      qset.has("answer") &&
+      (qset.has("calls") || qset.has("phone") || qset.has("missed"))
+    ) {
+      score += 8;
+    }
     if (qset.has("workflow") && entry.id === "workflow-ai") score += 6;
     if (qset.has("agency") && entry.id === "agency") score += 8;
     if (qset.has("booking") && entry.id === "booking") score += 4;

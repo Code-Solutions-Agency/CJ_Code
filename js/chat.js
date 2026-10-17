@@ -1,7 +1,9 @@
 import { answerFromKnowledge } from "./faq.js";
 
 const GREETING =
-  "I’m the CJ Code assistant — not a person. Ask about Web Design and Development, Web Redesign and Development, AI Business Automation, Updates and Maintenance, AI Chatbot Implementation, AI and Business Workflows, starting prices, or booking a call.";
+  "Hi, I’m the CJ Code assistant, not a person. I help local small businesses with pricing, redesigns, chatbots and AI assistants, how a project works, and booking a call.";
+
+const QUICK_REPLIES = ["How much?", "Do you do chatbots?", "Redesign my site", "Answer my calls"];
 
 const API_TIMEOUT_MS = 8000;
 const MAX_MESSAGE = 500;
@@ -24,6 +26,7 @@ if (!panel || !chatToggle || !chatLog || !chatForm || !chatInput) {
   const history = [];
   let greeted = false;
   let pending = false;
+  let quickReplies = null;
 
   function addBubble(text, who) {
     const el = document.createElement("p");
@@ -72,11 +75,39 @@ if (!panel || !chatToggle || !chatLog || !chatForm || !chatInput) {
     return answerFromKnowledge(message).answer;
   }
 
+  function showQuickReplies() {
+    if (quickReplies) return;
+    const row = document.createElement("div");
+    row.className = "chat-chips";
+    row.setAttribute("role", "group");
+    row.setAttribute("aria-label", "Suggested questions");
+    QUICK_REPLIES.forEach((label) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "chat-chip";
+      button.textContent = label;
+      button.addEventListener("click", () => {
+        submitText(label);
+      });
+      row.appendChild(button);
+    });
+    chatLog.appendChild(row);
+    quickReplies = row;
+    chatLog.scrollTop = chatLog.scrollHeight;
+  }
+
+  function hideQuickReplies() {
+    if (!quickReplies) return;
+    quickReplies.remove();
+    quickReplies = null;
+  }
+
   function openChat() {
     panel.removeAttribute("hidden");
     chatToggle.setAttribute("aria-expanded", "true");
     if (!greeted) {
       addBubble(GREETING, "bot");
+      showQuickReplies();
       greeted = true;
     }
     chatInput.focus();
@@ -102,11 +133,11 @@ if (!panel || !chatToggle || !chatLog || !chatForm || !chatInput) {
     closeChat();
   });
 
-  chatForm.addEventListener("submit", async (event) => {
-    event.preventDefault();
+  async function submitText(raw) {
     if (pending) return;
-    const text = chatInput.value.trim().slice(0, MAX_MESSAGE);
+    const text = String(raw || "").trim().slice(0, MAX_MESSAGE);
     if (!text) return;
+    hideQuickReplies();
     addBubble(text, "user");
     history.push({ role: "user", content: text });
     chatInput.value = "";
@@ -126,5 +157,10 @@ if (!panel || !chatToggle || !chatLog || !chatForm || !chatInput) {
       setPending(false);
       chatInput.focus();
     }
+  }
+
+  chatForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    submitText(chatInput.value);
   });
 }
