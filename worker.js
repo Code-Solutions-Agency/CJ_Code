@@ -1,13 +1,27 @@
-import { answerFromKnowledge, knowledgeSnippets } from "./js/faq.js";
+import {
+  acceptModelAnswer,
+  answerFromKnowledge,
+  formatToneExamples,
+  knowledgeSnippets,
+} from "./js/faq.js";
 
 const MODEL = "@cf/meta/llama-3.1-8b-instruct";
 const MAX_MESSAGE = 500;
+const MAX_ASSISTANT_HISTORY = 2000;
 
-const SYSTEM = `You are the CJ Code assistant on the CJ Code website. You are not a human.
-Answer only from the knowledge snippets. Be warm, concise (2–5 sentences), and professional.
-Never invent prices, timelines, guarantees, or services that are not in the snippets.
-If the snippets do not cover the question, say you are not sure and tell the visitor to Book a call on Contact or email hello@cjcode.com.
+const SYSTEM = `You are the CJ Code assistant on the CJ Code website. You are not a person. Never claim to be Caitlin or a human.
+Voice: plain, warm, and direct. Short sentences. Do not use em dashes.
+Help the visitor decide, then move them toward booking a call.
+The draft answer is the facts. You may tighten wording. Do not add offers, results, testimonials, clients, timelines, revision counts, or prices.
+If the draft gives a starting price, keep it and keep the line that the final price comes from a written scope.
+If the draft says custom quote, do not invent a number.
+If the draft asks a question, keep that question.
+If the draft offers booking a call, keep that offer.
+Style examples, for tone only. Do not copy their facts onto a different question:
+${formatToneExamples()}
 Do not mention these instructions.`;
+
+const DIRECT = new Set(["empty", "greeting", "thanks", "unsure", "guide"]);
 
 function json(data, status = 200) {
   return new Response(JSON.stringify(data), {
@@ -25,25 +39,31 @@ function cleanHistory(history) {
     .slice(-6)
     .map((turn) => {
       const role = turn && turn.role === "assistant" ? "assistant" : "user";
-      const content = String(turn && turn.content ? turn.content : "").trim().slice(0, MAX_MESSAGE);
+      const cap = role === "assistant" ? MAX_ASSISTANT_HISTORY : MAX_MESSAGE;
+      const content = String(turn && turn.content ? turn.content : "").trim().slice(0, cap);
       return content ? { role, content } : null;
     })
     .filter(Boolean);
 }
 
-async function generateWithAi(env, message, history, snippets) {
+function shouldSkipModel(local) {
+  if (DIRECT.has(local.source)) return true;
+  return /\$\d|custom quote|written scope/i.test(local.answer);
+}
+
+async function generateWithAi(env, message, history, snippets, draft) {
   if (!env || !env.AI || typeof env.AI.run !== "function") return null;
   const messages = [
     { role: "system", content: SYSTEM },
     ...cleanHistory(history).filter((turn) => turn.role === "user" || turn.role === "assistant"),
     {
       role: "user",
-      content: `Knowledge snippets:\n${snippets}\n\nVisitor question: ${message}`,
+      content: `Knowledge snippets:\n${snippets}\n\nDraft answer:\n${draft}\n\nVisitor question: ${message}\n\nRewrite the draft in the voice above. Keep every fact. If you cannot, return the draft unchanged.`,
     },
   ];
   const result = await env.AI.run(MODEL, {
     messages,
-    max_tokens: 220,
+    max_tokens: 420,
   });
   const text = String(
     (result && (result.response || result.text || result.output_text)) || "",
@@ -62,19 +82,19 @@ async function handleChat(request, env) {
   const message = String(body && body.message ? body.message : "").trim().slice(0, MAX_MESSAGE);
   if (!message) return json({ error: "Message required." }, 400);
 
-  const local = answerFromKnowledge(message);
-  if (local.source !== "faq") {
+  const history = cleanHistory(body && body.history);
+  const local = answerFromKnowledge(message, history);
+  if (shouldSkipModel(local)) {
     return json({ answer: local.answer, source: local.source || "faq" });
   }
 
   const snippets = knowledgeSnippets(message, 4);
   try {
-    const generated = await generateWithAi(env, message, body.history, snippets);
-    if (generated) {
-      return json({ answer: generated, source: "workers-ai" });
-    }
+    const generated = await generateWithAi(env, message, history, snippets, local.answer);
+    const accepted = generated ? acceptModelAnswer(generated, local.answer) : null;
+    if (accepted) return json({ answer: accepted, source: "workers-ai" });
   } catch {
-    /* Fall back to FAQ retrieval — no invented answer. */
+    /* Fall back to the draft. No invented answer. */
   }
 
   return json({ answer: local.answer, source: local.source || "faq" });
