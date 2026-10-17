@@ -1,7 +1,7 @@
 window.SITE = {
   name: "CJ Code",
   title: "CJ Code — Websites and practical AI",
-  contactEmail: "hello@cjcode.com",
+  contactEmail: "CJ_Code@outlook.com",
   /**
    * On-site “book a call” calendar (runs on the static site — no localhost, no login).
    * Confirm opens an email draft to notifyEmail.
@@ -9,7 +9,7 @@ window.SITE = {
   booking: {
     timezone: "America/Chicago",
     timezoneLabel: "Central Time",
-    notifyEmail: "hello@cjcode.com",
+    notifyEmail: "CJ_Code@outlook.com",
     stepMinutes: 30,
     minNoticeMinutes: 60,
     durationMinutes: 30,

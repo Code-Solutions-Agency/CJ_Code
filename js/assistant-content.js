@@ -5,28 +5,28 @@
  */
 
 export const BOOKING_NEXT =
-  "Book a call on Contact. Pick a time in Central Time, Monday through Thursday, 1:00 to 3:00pm, and confirm. That opens an email draft to hello@cjcode.com. You can also email that address directly.";
+  "Book a call on Contact. Pick a time in Central Time, Monday through Thursday, 1:00 to 3:00pm, and confirm. Confirming only opens your email app with a draft to CJ_Code@outlook.com. Nothing is sent until you send that email. You can also email CJ_Code@outlook.com directly.";
 
 export const FAQ_NEXT =
   "Book a call on Contact if you want this talked through for your project.";
 
 export const ASK_NEED_Q =
-  "What are you hoping to get done? A new website, a redesign of a site you already have, a focused automation, monthly maintenance, or a chatbot or AI in a workflow?";
+  "What are you hoping to get done? Web Design and Development, Web Redesign and Development, AI Business Automation, Updates and Maintenance, AI Chatbot Implementation, or AI and Business Workflows?";
 
 export const ASK_NEED = `${ASK_NEED_Q} You can also book a call on Contact and sort it out there.`;
 
 export const ASK_WEB_Q =
-  "Is this a new website, or a redesign of a site that's already live?";
+  "Is this Web Design and Development for a new site, or Web Redesign and Development for a site that's already live?";
 
 export const ASK_WEB = `${ASK_WEB_Q} Book a call on Contact if you'd rather talk it through.`;
 
 export const ASK_AUTO_Q =
-  "Is this one focused automation, like a form, follow-up, or routing between tools you already use, or a chatbot or AI inside the workflow?";
+  "Is this one focused AI Business Automation, like a form, follow-up, or routing between tools you already use, or is it AI Chatbot Implementation or AI and Business Workflows?";
 
 export const ASK_AUTO = `${ASK_AUTO_Q} Book a call on Contact if you'd rather talk it through.`;
 
 export const ASK_NARROW_Q =
-  "If you pick one, is it a website, an automation or chatbot, or monthly upkeep?";
+  "If you pick one, is it Web Design and Development or Web Redesign and Development, AI Business Automation or AI Chatbot Implementation, or Updates and Maintenance?";
 
 export const ASK_NARROW = `${ASK_NARROW_Q} Book a call on Contact if you'd rather talk it through.`;
 
@@ -40,60 +40,60 @@ export const QUESTION_MARKERS = [
 export const GREETING = `I'm the CJ Code assistant, not a person. ${ASK_NEED}`;
 
 export const IDENTITY =
-  "I'm the CJ Code assistant, not a person. I can help you sort design, redesign, automation, maintenance, and custom AI work, then point you to a starting price and a call. I don't write the final quote. That comes from a written scope. Book a call on Contact when you're ready.";
+  "I'm the CJ Code assistant, not a person. The site speaks in the first person because the websites are designed and built by hand and the code is written directly. I can help you sort Web Design and Development, Web Redesign and Development, AI Business Automation, Updates and Maintenance, AI Chatbot Implementation, and AI and Business Workflows, then point you to a starting price and a call. I don't write the final quote. That comes from a written scope. Book a call on Contact when you're ready.";
 
 export const SERVICES_BRIEF =
-  "CJ Code designs and rebuilds websites, keeps them current, and adds practical automation. Website design starts at $750, a redesign starts at $500, a focused automation starts at $300, and maintenance starts at $75 a month. Chatbots and workflow AI are custom quotes. Those are starting points. The final price comes from a written scope before any work starts.";
+  "Starting Prices for Design, Redesign, Automation, and Maintenance. Web Design and Development starts at $750. Web Redesign and Development starts at $500. AI Business Automation is the Business Automation package and starts at $300. Updates and Maintenance is the Website Maintenance package and starts at $75/month. AI Chatbot Implementation and AI and Business Workflows are custom quotes. Those are starting points. The final price comes from a written scope before any work starts.";
 
 export const WORK_HONEST =
-  "Willow & Grove and Harbor & Line are sample walkthroughs. They show the kind of chatbot and automation work CJ Code ships. They are not live client sites. If you want that kind of work scoped for your business, book a call on Contact.";
+  "Willow & Grove and Harbor & Line are sample walkthroughs. They show the kind of AI Chatbot Implementation and AI Business Automation described on this site. They are not live client sites. If you want that kind of work scoped for your business, book a call on Contact.";
 
 export const NO_PROMISE =
-  "I can't promise a ranking, a revenue number, or any other result. CJ Code designs and rebuilds websites, keeps them current, and builds practical automation and custom AI. The written scope says what the work includes. Book a call on Contact if you want to talk about your project.";
+  "I can't promise a ranking, a revenue number, or any other result. The work covers Web Design and Development, Web Redesign and Development, Updates and Maintenance, AI Business Automation, AI Chatbot Implementation, and AI and Business Workflows. Sites are designed and the code is written by hand. The written scope says what the work includes. Book a call on Contact if you want to talk about your project.";
 
 export const EXTRAS_A =
-  "Landing pages and extra pages are not in the starting packages. They're quoted from the scope, along with advanced forms, third-party integrations, and custom functionality. A full website design starts at $750 if what you need is a new site. That figure is a starting point. The final price comes from a written scope before any work starts, not from this chat. Project work is a 50% deposit before kickoff, and the rest is due before launch or handoff. " +
+  "Landing pages and extra pages are not in the starting packages. They're quoted from the scope, along with advanced forms, third-party integrations, and custom functionality. Web Design and Development starts at $750 if what you need is a new site. That figure is a starting point. The final price comes from a written scope before any work starts, not from this chat. Project work is a 50% deposit before kickoff, and the rest is due before launch or handoff. " +
   BOOKING_NEXT;
 
 export const THANKS =
   "Glad to help. When you want to talk through a project, book a call on Contact.";
 
 export const UNSURE =
-  "I'm not sure from what CJ Code publishes. Book a call on Contact, or email hello@cjcode.com, and we can look at your project.";
+  "I'm not sure from what this site publishes. Book a call on Contact, or email CJ_Code@outlook.com.";
 
 export const EMPTY =
-  "Tell me what you need done: a website, a redesign, an automation, maintenance, or custom AI. I can point you to a starting price and how to book a call.";
+  "Tell me what you need: Web Design and Development, Web Redesign and Development, AI Business Automation, Updates and Maintenance, AI Chatbot Implementation, or AI and Business Workflows. I can point you to a starting price and how to book a call.";
 
 export const OFFERS = {
   design: {
-    lead: "Website design starts at $750.",
+    lead: "Web Design and Development starts at $750.",
     detail:
-      "The starting package covers custom design, a mobile layout, up to 5 core pages, navigation and calls to action, a contact form, basic SEO structure, deployment, and launch testing.",
+      "The starting package is a new site designed and developed from the ground up. It covers Custom Web Design and Development, a mobile-responsive layout, up to 5 core pages, navigation and calls to action, a contact form, basic SEO structure, deployment, and launch testing.",
   },
   redesign: {
-    lead: "A website redesign starts at $500.",
+    lead: "Web Redesign and Development starts at $500.",
     detail:
       "The starting package covers a review of the live site, a more modern layout and navigation, mobile responsiveness, stronger calls to action, content organization, contact form updates when needed, basic SEO structure, and launch testing. The URL stays the same.",
   },
   automation: {
-    lead: "A focused automation starts at $300.",
+    lead: "AI Business Automation, the Business Automation package, starts at $300.",
     detail:
-      "The starting package is one workflow: planning, a connection between tools you already use, basic testing, setup, and a short handoff note. Lead capture, form-to-email, follow-ups, and routing fit here. More complex work and multiple workflows are quoted separately. Chatbots and workflow AI are custom quotes, not this package.",
+      "The starting package is one focused automation: planning, a connection between tools already in use, basic testing, setup, and a short handoff note. Lead capture, form-to-email, follow-ups, and routing fit here. More complex work and multiple workflows are quoted separately. AI Chatbot Implementation and AI and Business Workflows are custom quotes, not this package.",
   },
   maintenance: {
-    lead: "Website maintenance starts at $75 a month.",
+    lead: "Updates and Maintenance, the Website Maintenance package, starts at $75/month.",
     detail:
-      "The starting package covers minor updates, text and image changes, basic content updates, routine checks, basic troubleshooting, and small design adjustments. It is billed in advance. Larger updates, new pages, or a redesign are quoted separately.",
+      "The starting package covers minor updates, text and image changes, basic content updates, routine checks, basic troubleshooting, and small design adjustments. It is billed in advance. Larger updates, new pages, or Web Redesign and Development are quoted separately.",
   },
   chatbot: {
-    lead: "A chatbot is a custom quote, not a starting package.",
+    lead: "AI Chatbot Implementation is a custom quote, not a starting package.",
     detail:
-      "CJ Code builds assistants that answer, qualify, and hand off, on the site, in Slack, or in tools the team already uses.",
+      "That work is assistants that answer, qualify, and hand off, on the site, in Slack, or in tools the team already uses. The assistant on this site is not a production chatbot.",
   },
   workflow: {
-    lead: "AI in a business workflow is a custom quote, not a starting package.",
+    lead: "AI and Business Workflows is a custom quote, not a starting package.",
     detail:
-      "That is a model as a step in work you already do, such as CRM, docs, support, or ops.",
+      "That is a model as a step in work already underway, such as CRM, docs, support, or ops.",
   },
 };
 
@@ -140,12 +140,12 @@ export function quoteReply(kinds, options = {}) {
 
 export function priceMenu() {
   return [
-    "Here are the starting prices.",
+    "Starting Prices for Design, Redesign, Automation, and Maintenance.",
     OFFERS.design.lead,
     OFFERS.redesign.lead,
     OFFERS.automation.lead,
     OFFERS.maintenance.lead,
-    "Chatbots and workflow AI are custom quotes.",
+    "AI Chatbot Implementation and AI and Business Workflows are custom quotes.",
     frame(["design", "redesign", "automation", "maintenance", "chatbot"]),
   ].join(" ");
 }
@@ -163,19 +163,19 @@ export function autoUnsure() {
 }
 
 export const STILL_CHOOSING =
-  "No problem. Website design starts at $750, a redesign starts at $500, a focused automation starts at $300, and maintenance starts at $75 a month. Chatbots and workflow AI are custom quotes. Those are starting points. The final price comes from a written scope before any work starts, not from this chat. " +
+  "No problem. Web Design and Development starts at $750. Web Redesign and Development starts at $500. Business Automation starts at $300. Website Maintenance is $75/month. AI Chatbot Implementation and AI and Business Workflows are custom quotes. Those are starting points. The final price comes from a written scope before any work starts, not from this chat. " +
   BOOKING_NEXT;
 
 export function noDiscount() {
-  return `There isn't a published discount. ${OFFERS.design.lead} ${OFFERS.redesign.lead} ${OFFERS.automation.lead} ${OFFERS.maintenance.lead} Chatbots and workflow AI are custom quotes. ${frame(["design", "redesign", "automation", "maintenance", "chatbot"])}`;
+  return `There isn't a published discount. ${OFFERS.design.lead} ${OFFERS.redesign.lead} ${OFFERS.automation.lead} ${OFFERS.maintenance.lead} AI Chatbot Implementation and AI and Business Workflows are custom quotes. ${frame(["design", "redesign", "automation", "maintenance", "chatbot"])}`;
 }
 
 export const TIMELINE_A =
-  "There isn't a fixed timeline on the site. It depends on the scope, and that scope is written down before any work starts. The path is discover, then design or rebuild, automate if you need it, and maintain after launch. " +
+  "There isn't a fixed timeline on the site. It depends on the scope, and that scope is written down before any work starts. The path is discover, then Web Design and Development or Web Redesign and Development, automate if you need it, and maintain after launch. " +
   FAQ_NEXT;
 
 export const PROVIDE_A =
-  "You don't need a finished brief. Discovery is where we sort goals, constraints, the current site or workflow, and what done has to mean. On the booking form, choose Web, Automation, or both, and add any extra detail you already have. If something is missing, it gets named in the written scope before work starts. " +
+  "You don't need a finished brief. Discovery covers goals, constraints, the current site or workflow, and what done has to mean. On the booking form, choose Web, Automation, or both, and add any extra detail you already have. If something is missing, it gets named in the written scope before work starts. " +
   FAQ_NEXT;
 
 export const OWNERSHIP_A =
@@ -187,11 +187,11 @@ export const REVISIONS_A =
   FAQ_NEXT;
 
 export const AFTER_LAUNCH_A =
-  "After launch, maintenance is how the site stays current. It starts at $75 a month for minor updates, text and image changes, basic content updates, routine checks, basic troubleshooting, and small design adjustments. That is a starting point. The final price comes from a written scope, and the month is billed in advance. Larger updates, new pages, or a redesign are quoted on their own. " +
+  "After launch, Updates and Maintenance is how the site stays current. Website Maintenance starts at $75/month for minor updates, text and image changes, basic content updates, routine checks, basic troubleshooting, and small design adjustments. That is a starting point. The final price comes from a written scope, and the month is billed in advance. Larger updates, new pages, or Web Redesign and Development are quoted on their own. " +
   FAQ_NEXT;
 
 export const AI_FIT_A =
-  "Chatbots and workflow AI sit with the automation work, alongside the site, not instead of it. A chatbot answers, qualifies, and hands off, on the site, in Slack, or in tools you already use. Workflow AI is a model inside the job itself, such as CRM, docs, support, or ops. Both are custom quotes. One focused automation, like a form notice or a follow-up, starts at $300. The final price comes from a written scope before work starts. " +
+  "AI Chatbot Implementation and AI and Business Workflows sit with AI Business Automation, alongside the site, not instead of it. AI Chatbot Implementation answers, qualifies, and hands off, on the site, in Slack, or in tools already in use. AI and Business Workflows is a model inside the job itself, such as CRM, docs, support, or ops. Both are custom quotes. One focused Business Automation, like a form notice or a follow-up, starts at $300. The final price comes from a written scope before work starts. " +
   FAQ_NEXT;
 
 export const CLIENT_FAQ = [

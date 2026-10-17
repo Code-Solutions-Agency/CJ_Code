@@ -46,7 +46,7 @@ export const FAQ = [
     id: "who",
     tags: ["cj code", "about", "who", "agency", "company", "studio"],
     q: "Who is CJ Code and what do you do?",
-    a: "CJ Code designs and rebuilds modern websites, keeps them current, and adds practical AI: chatbots, lead capture, and automations behind the site. The work is for businesses. Agencies can hand off a defined website or automation job. " + FAQ_NEXT,
+    a: "CJ Code designs and builds modern websites, writes the code, keeps them current, and adds practical AI, including chatbots, lead capture, and the automations behind the site. I'm the site assistant, not that person. The work is for businesses. Agencies can hand off a defined website or automation job. " + FAQ_NEXT,
   },
   {
     id: "paths",
@@ -56,26 +56,26 @@ export const FAQ = [
   },
   {
     id: "design",
-    tags: ["design", "new site", "website", "package"],
-    q: "What is website design and what does it cost?",
+    tags: ["design", "development", "new site", "website", "package"],
+    q: "What is Web Design and Development, and what does it cost?",
     a: quoteReply(["design"]),
   },
   {
     id: "redesign",
-    tags: ["redesign", "rebuild", "refresh", "existing site", "outdated"],
-    q: "What is website redesign and what does it cost?",
+    tags: ["redesign", "development", "rebuild", "refresh", "existing site", "outdated"],
+    q: "What is Web Redesign and Development, and what does it cost?",
     a: quoteReply(["redesign"]),
   },
   {
     id: "automation",
     tags: ["automation", "automate", "workflow", "lead capture", "follow-up"],
-    q: "What is business automation and what does it cost?",
+    q: "What is AI Business Automation, and what does it cost?",
     a: quoteReply(["automation"]),
   },
   {
     id: "maintenance",
     tags: ["maintenance", "updates", "retainer", "cms", "wordpress"],
-    q: "What is website maintenance and what does it cost?",
+    q: "What is Updates and Maintenance, and what does it cost?",
     a: quoteReply(["maintenance"]),
   },
   {
@@ -87,7 +87,7 @@ export const FAQ = [
   {
     id: "workflow-ai",
     tags: ["workflow", "integration", "crm", "docs", "ops", "models"],
-    q: "What is AI in business workflows, and is it priced?",
+    q: "What is AI and Business Workflows, and is it priced?",
     a: quoteReply(["workflow"]),
   },
   {
@@ -98,15 +98,15 @@ export const FAQ = [
   },
   {
     id: "includes-design",
-    tags: ["includes", "included", "design", "pages"],
-    q: "What is included in website design?",
-    a: "The website design starting package includes custom website design, a mobile layout, up to 5 core pages, clear navigation and calls to action, a contact form, basic SEO structure, deployment and setup, and basic launch testing. It starts at $750. That figure is a starting point. The final price comes from a written scope before any work starts. " + FAQ_NEXT,
+    tags: ["includes", "included", "design", "development", "pages"],
+    q: "What is included in Web Design and Development?",
+    a: "The Web Design and Development starting package includes Custom Web Design and Development, a mobile-responsive layout, up to 5 core pages, clear navigation and calls to action, a contact form, basic SEO structure, deployment and setup, and basic launch testing. It starts at $750. That figure is a starting point. The final price comes from a written scope before any work starts. " + FAQ_NEXT,
   },
   {
     id: "not-included",
     tags: ["not included", "extra", "additional", "out of scope", "custom", "landing"],
     q: "What is not in the standard packages?",
-    a: "Quoted separately: additional pages, landing pages, advanced forms, AI chatbot implementation, advanced automations, third-party integrations, custom functionality, and ongoing technical support. Requests outside the written scope are quoted before that extra work begins. " + FAQ_NEXT,
+    a: "Quoted separately: additional pages, landing pages, advanced forms, AI Chatbot Implementation, advanced automations, third-party integrations, custom functionality, and ongoing technical support. Requests outside the written scope are quoted before that extra work begins. " + FAQ_NEXT,
   },
   {
     id: "payment",
@@ -124,19 +124,19 @@ export const FAQ = [
     id: "process",
     tags: ["process", "discover", "steps", "how you work"],
     q: "What is the process?",
-    a: "It's a short path. Discover covers goals, constraints, the current site or workflow, and what done has to mean. Then design or rebuild. Then automate: chat, handoffs, and repetitive tasks. Then maintain, so the site and the automations don't stall after launch. " + FAQ_NEXT,
+    a: "It's a short path. Discover covers goals, constraints, the current site or workflow, and what done has to mean. Then Web Design and Development or Web Redesign and Development. Then automate: chat, handoffs, and repetitive tasks. Then maintain, so the site and the automations don't stall after launch. " + FAQ_NEXT,
   },
   {
     id: "agency",
     tags: ["agency", "agencies", "overflow", "subcontract", "hands"],
     q: "Do you work with agencies?",
-    a: "Yes. Agencies can hand off defined website or automation work: a build, a redesign, a maintenance task, or a straightforward automation, behind the scenes. " + FAQ_NEXT,
+    a: "Yes. Agencies can hand off defined website or automation work: Web Design and Development, Web Redesign and Development, an Updates and Maintenance task, or a straightforward AI Business Automation, behind the scenes. " + FAQ_NEXT,
   },
   {
     id: "booking",
     tags: ["booking", "book", "call", "contact", "calendar", "schedule", "email"],
     q: "How do I book a call or get in touch?",
-    a: "Use Book a call on Contact. Pick a time in Central Time, Monday through Thursday, 1:00 to 3:00pm. Friday is closed. Choose Web, Automation, or both, add any extra detail, and confirm. That opens an email draft to hello@cjcode.com. You don't need an account. You can also email hello@cjcode.com directly.",
+    a: "Use Book a call on Contact. Pick a time in Central Time, Monday through Thursday, 1:00 to 3:00pm. Friday is closed. Choose Web, Automation, or both, add any extra detail, and confirm. Confirming only opens your email app with a draft to CJ_Code@outlook.com. Nothing is sent until you send that email. You don't need an account. You can also email CJ_Code@outlook.com directly.",
   },
   {
     id: "hours",
@@ -208,6 +208,9 @@ const ALIASES = {
   outdated: "redesign",
   existing: "redesign",
   design: "design",
+  develop: "design",
+  development: "design",
+  developer: "design",
   website: "design",
   websites: "design",
   site: "design",
@@ -369,7 +372,7 @@ const FACTUAL_PATTERNS = [
   /who owns|ownership|intellectual property|\bsource code\b|admin access|final files/,
   /\brevisions?\b|how many (rounds|edits|changes)/,
   /after launch|after (it |we )?(go|goes) live|once it'?s live|post-?launch/,
-  /how do (i|we) book|how (do|can) (i|we) (schedule|contact|reach)|book a call|booking hours|what are (your|the) hours|when are you (open|available)|friday is closed/,
+  /how do (i|we) book|how (do|can) (i|we) (schedule|contact|reach|email|write)|book a call|booking hours|what are (your|the) hours|when are you (open|available)|friday is closed|get in touch|contact you|reach you|\b(e-?mail address|your email|email you)\b/,
   /willow|harbor|sample walkthrough|real client|your clients|testimonials?|case stud|who have you worked/,
   /written scope|out of scope|not included|what('s| is) included|what does .+ include/,
   /\bagenc/,
@@ -377,6 +380,12 @@ const FACTUAL_PATTERNS = [
   /what is cj code|who is cj/,
   /(\bai\b|chatbots?).{0,48}\bfit\b|\bfit\b.{0,48}(\bai\b|chatbots?)|how (do|does) (ai|a chatbot|chatbots?)\b/,
 ];
+
+function isContactAsk(lower) {
+  if (/\b(form[- ]to[- ]email|email notification|email follow)\b/.test(lower)) return false;
+  if (detectServices(lower).some((kind) => kind !== "web")) return false;
+  return /get in touch|contact you|reach you|your email|email you|e-?mail address|how (do|can) (i|we) (book|email|reach|contact|write)|book a call|who (do|can|should) i (email|contact|call)|what('s| is) (your|the) email/.test(lower);
+}
 
 function isPureFactual(lower) {
   if (/deposit|invoice|\bpayment\b|non-refundable|\brefund\b/.test(lower)) return true;
@@ -401,11 +410,14 @@ function wantsPublishedList(lower) {
 export function detectServices(text) {
   const t = norm(text);
   const found = [];
-  const redesign = /\b(redesign|rebuild|re-design|refresh)\b/.test(t)
+  const namedDesign = /\bweb design and development\b/.test(t);
+  const namedRedesign = /\bweb redesign and development\b/.test(t);
+  const redesign = namedRedesign
+    || /\b(redesign|rebuild|re-design|refresh)\b/.test(t)
     || /\b(outdated|dated)\b/.test(t)
     || /already (have|has) a (web)?site|existing (web)?site|old (web)?site/.test(t)
     || /site is (old|dated|outdated)|looks (old|dated|outdated)/.test(t);
-  const design = !redesign && (
+  const design = namedDesign || (!redesign && (
     /\b(new|brand-new|brand new)\b.{0,30}\b(website|site)\b/.test(t)
     || /\b(website|site)\b.{0,30}\bfrom scratch\b/.test(t)
     || /\b(don't|do not) have a (website|site)\b/.test(t)
@@ -414,19 +426,26 @@ export function detectServices(text) {
     || /\bground up\b/.test(t)
     || /\bbuild (me |us )?(a |my )?(new )?(website|site)\b/.test(t)
     || (/\bdesign\b/.test(t) && !/\bdesign adjustments?\b/.test(t))
-  );
-  const maintenance = /\b(maintenance|retainer|upkeep)\b/.test(t)
+  ));
+  const maintenance = /\bupdates and maintenance\b/.test(t)
+    || /\bwebsite maintenance\b/.test(t)
+    || /\b(maintenance|retainer|upkeep)\b/.test(t)
     || /keep (the |my |our )?(site|website) updated/.test(t)
     || /\bmonthly (update|updates|maintenance|upkeep)\b/.test(t);
-  const chatbot = /\b(chatbot|chat bot|chatbots)\b/.test(t)
+  const chatbot = /\bai chatbot implementation\b/.test(t)
+    || /\bchatbot implementation\b/.test(t)
+    || /\b(chatbot|chat bot|chatbots)\b/.test(t)
     || /\bai chat\b/.test(t)
     || (/\bslack\b/.test(t) && /\b(bot|assistant|chat)\b/.test(t))
     || (/\bqualif(y|ies|ied)\b/.test(t) && /\b(lead|leads|chat|bot|site)\b/.test(t));
-  const workflow = /\bworkflow ai\b/.test(t)
-    || (/\bworkflow\b/.test(t) && /\b(ai|model|models|crm|ops)\b/.test(t))
+  const workflow = /\bai and business workflows\b/.test(t)
+    || /\bworkflow ai\b/.test(t)
+    || (/\bworkflows?\b/.test(t) && /\b(ai|model|models|crm|ops)\b/.test(t))
     || (/\b(crm|ops)\b/.test(t) && /\bai\b/.test(t));
   const automation = !chatbot && !workflow && (
-    /\b(automation|automations|automate)\b/.test(t)
+    /\bai business automation\b/.test(t)
+    || /\bbusiness automation\b/.test(t)
+    || /\b(automation|automations|automate)\b/.test(t)
     || /\bfollow[- ]?ups?\b/.test(t)
     || /\bform[- ]to[- ]email\b/.test(t)
   );
@@ -652,6 +671,10 @@ export function answerFromKnowledge(question, history = []) {
 
   const hits = retrieve(q, 3);
   if (!hits.length || hits[0].score < 3) {
+    if (isContactAsk(lower)) {
+      const booking = FAQ.find((entry) => entry.id === "booking");
+      return { answer: booking.a, source: "faq", ids: ["booking"] };
+    }
     return { answer: UNSURE, source: "unsure" };
   }
 
