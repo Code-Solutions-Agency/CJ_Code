@@ -3,7 +3,7 @@ import { answerFromKnowledge } from "./faq.js";
 const GREETING =
   "Hi, I’m the CJ Code assistant, not a person. I help local small businesses with pricing, redesigns, chatbots and AI assistants, how a project works, and booking a call.";
 
-const QUICK_REPLIES = ["How much?", "Do you do chatbots?", "Redesign my site", "Answer my calls"];
+const QUICK_REPLIES = ["How much?", "Do you do chatbots?", "Redesign my site", "Have my calls answered"];
 
 const API_TIMEOUT_MS = 8000;
 const MAX_MESSAGE = 500;

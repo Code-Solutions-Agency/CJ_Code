@@ -52,8 +52,8 @@ export const FAQ = [
   },
   {
     id: "answer-calls",
-    tags: ["answer calls", "answer my calls", "phone", "phones", "missed calls"],
-    q: "Can you answer my calls?",
+    tags: ["have my calls answered", "answer my calls", "answer calls", "phone", "phones", "missed calls"],
+    q: "Have my calls answered?",
     a: "Phone answering is not a package on this site. AI Chatbot Implementation can answer, qualify, and hand off inquiries on your site or in the tools you already use, and that work is a custom quote. AI and Business Workflows are custom quotes as well. To talk through what you need, book a call on Contact or email CJ_Code@outlook.com.",
   },
   {
@@ -165,6 +165,7 @@ const ALIASES = {
   booking: "booking",
   call: "booking",
   phones: "phone",
+  answered: "answer",
   schedule: "booking",
   calendar: "booking",
   appointment: "booking",
