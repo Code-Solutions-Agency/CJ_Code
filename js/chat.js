@@ -54,7 +54,7 @@ if (!panel || !chatToggle || !chatLog || !chatForm || !chatInput) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           message,
-          history: history.slice(-HISTORY_TURNS),
+          history: history.slice(0, -1).slice(-HISTORY_TURNS),
         }),
         signal: controller.signal,
       });
@@ -69,10 +69,14 @@ if (!panel || !chatToggle || !chatLog || !chatForm || !chatInput) {
     }
   }
 
+  function priorHistory() {
+    return history.slice(0, -1).slice(-HISTORY_TURNS);
+  }
+
   async function replyTo(message) {
     const api = await answerViaApi(message);
     if (api) return api;
-    return answerFromKnowledge(message).answer;
+    return answerFromKnowledge(message, priorHistory()).answer;
   }
 
   function showQuickReplies() {
@@ -107,6 +111,7 @@ if (!panel || !chatToggle || !chatLog || !chatForm || !chatInput) {
     chatToggle.setAttribute("aria-expanded", "true");
     if (!greeted) {
       addBubble(GREETING, "bot");
+      history.push({ role: "assistant", content: GREETING });
       showQuickReplies();
       greeted = true;
     }
@@ -149,7 +154,7 @@ if (!panel || !chatToggle || !chatLog || !chatForm || !chatInput) {
       waiting.classList.remove("pending");
       history.push({ role: "assistant", content: answer });
     } catch {
-      const fallback = answerFromKnowledge(text).answer;
+      const fallback = answerFromKnowledge(text, history.slice(0, -1)).answer;
       waiting.textContent = fallback;
       waiting.classList.remove("pending");
       history.push({ role: "assistant", content: fallback });
