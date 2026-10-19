@@ -298,6 +298,11 @@ body.nav-open .nav-toggle-bars::after {
   opacity: 0.45;
 }
 
+.hero h1 {
+  max-width: 22ch;
+  text-wrap: balance;
+}
+
 .eyebrow {
   margin: 0 0 1rem;
   font-size: 0.75rem;
@@ -363,9 +368,15 @@ h3 {
   margin-top: 0.9rem;
 }
 
-.hero-lede .hero-aside {
-  margin-top: 0.7rem;
+.hero-aside {
+  margin: 0.85rem 0 0;
+  max-width: 48ch;
+  font-family: var(--font-body);
   font-size: 0.98rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.55;
+  letter-spacing: normal;
   color: var(--ink-faint);
 }
 
@@ -1658,6 +1669,7 @@ body.lightbox-open .chat-widget {
 
   .hero h1 {
     max-width: none;
+    text-wrap: pretty;
   }
 
   .section {
@@ -1700,6 +1712,7 @@ body.lightbox-open .chat-widget {
   .lede,
   .section-lede,
   .hero-lede,
+  .hero-aside,
   .process-list p {
     max-width: none;
   }
