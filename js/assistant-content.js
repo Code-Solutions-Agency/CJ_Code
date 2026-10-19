@@ -43,7 +43,7 @@ export const IDENTITY =
   "I'm the CJ Code assistant, not a person. The site speaks in the first person because the websites are designed and built by hand and the code is written directly. I can help you sort Web Design and Development, Web Redesign and Development, AI Business Automation, Updates and Maintenance, AI Chatbot Implementation, and AI and Business Workflows, then point you to a starting price and a call. I don't write the final quote. That comes from a written scope. Book a call on Contact when you're ready.";
 
 export const SERVICES_BRIEF =
-  "Starting Prices for Design, Redesign, Automation, and Maintenance. Web Design and Development starts at $750. Web Redesign and Development starts at $500. AI Business Automation is the Business Automation package and starts at $300. Updates and Maintenance is the Website Maintenance package and starts at $75/month. AI Chatbot Implementation and AI and Business Workflows are custom quotes. Those are starting points. The final price comes from a written scope before any work starts.";
+  "Starting Prices for Design, Redesign, Automation, and Maintenance. Web Design and Development starts at $750. Web Redesign and Development starts at $500. AI Business Automation starts at $300. Updates and Maintenance starts at $75/month. AI Chatbot Implementation and AI and Business Workflows are custom quotes. Those are starting points. The final price comes from a written scope before any work starts.";
 
 export const WORK_HONEST =
   "Willow & Grove and Harbor & Line are sample walkthroughs. They show the kind of AI Chatbot Implementation and AI Business Automation described on this site. They are not live client sites. If you want that kind of work scoped for your business, book a call on Contact.";
@@ -76,12 +76,12 @@ export const OFFERS = {
       "The starting package covers a review of the live site, a more modern layout and navigation, mobile responsiveness, stronger calls to action, content organization, contact form updates when needed, basic SEO structure, and launch testing. The URL stays the same.",
   },
   automation: {
-    lead: "AI Business Automation, the Business Automation package, starts at $300.",
+    lead: "AI Business Automation starts at $300.",
     detail:
       "The starting package is one focused automation: planning, a connection between tools already in use, basic testing, setup, and a short handoff note. Lead capture, form-to-email, follow-ups, and routing fit here. More complex work and multiple workflows are quoted separately. AI Chatbot Implementation and AI and Business Workflows are custom quotes, not this package.",
   },
   maintenance: {
-    lead: "Updates and Maintenance, the Website Maintenance package, starts at $75/month.",
+    lead: "Updates and Maintenance starts at $75/month.",
     detail:
       "The starting package covers minor updates, text and image changes, basic content updates, routine checks, basic troubleshooting, and small design adjustments. It is billed in advance. Larger updates, new pages, or Web Redesign and Development are quoted separately.",
   },
@@ -163,7 +163,7 @@ export function autoUnsure() {
 }
 
 export const STILL_CHOOSING =
-  "No problem. Web Design and Development starts at $750. Web Redesign and Development starts at $500. Business Automation starts at $300. Website Maintenance is $75/month. AI Chatbot Implementation and AI and Business Workflows are custom quotes. Those are starting points. The final price comes from a written scope before any work starts, not from this chat. " +
+  "No problem. Web Design and Development starts at $750. Web Redesign and Development starts at $500. AI Business Automation starts at $300. Updates and Maintenance is $75/month. AI Chatbot Implementation and AI and Business Workflows are custom quotes. Those are starting points. The final price comes from a written scope before any work starts, not from this chat. " +
   BOOKING_NEXT;
 
 export function noDiscount() {
@@ -187,11 +187,11 @@ export const REVISIONS_A =
   FAQ_NEXT;
 
 export const AFTER_LAUNCH_A =
-  "After launch, Updates and Maintenance is how the site stays current. Website Maintenance starts at $75/month for minor updates, text and image changes, basic content updates, routine checks, basic troubleshooting, and small design adjustments. That is a starting point. The final price comes from a written scope, and the month is billed in advance. Larger updates, new pages, or Web Redesign and Development are quoted on their own. " +
+  "After launch, Updates and Maintenance is how the site stays current. Updates and Maintenance starts at $75/month for minor updates, text and image changes, basic content updates, routine checks, basic troubleshooting, and small design adjustments. That is a starting point. The final price comes from a written scope, and the month is billed in advance. Larger updates, new pages, or Web Redesign and Development are quoted on their own. " +
   FAQ_NEXT;
 
 export const AI_FIT_A =
-  "AI Chatbot Implementation and AI and Business Workflows sit with AI Business Automation, alongside the site, not instead of it. AI Chatbot Implementation answers, qualifies, and hands off, on the site, in Slack, or in tools already in use. AI and Business Workflows is a model inside the job itself, such as CRM, docs, support, or ops. Both are custom quotes. One focused Business Automation, like a form notice or a follow-up, starts at $300. The final price comes from a written scope before work starts. " +
+  "AI Chatbot Implementation and AI and Business Workflows sit with AI Business Automation, alongside the site, not instead of it. AI Chatbot Implementation answers, qualifies, and hands off, on the site, in Slack, or in tools already in use. AI and Business Workflows is a model inside the job itself, such as CRM, docs, support, or ops. Both are custom quotes. One focused AI Business Automation, like a form notice or a follow-up, starts at $300. The final price comes from a written scope before work starts. " +
   FAQ_NEXT;
 
 export const CLIENT_FAQ = [
