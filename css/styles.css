@@ -1254,7 +1254,7 @@ main > .section:last-child {
 
 /* Footer */
 .site-footer {
-  padding: 2rem 0 6.5rem;
+  padding: 2rem 0 144px;
 }
 
 .footer-inner {
@@ -1466,28 +1466,57 @@ body.lightbox-open .chat-widget {
   gap: 0.65rem;
 }
 
-/* Chat widget. The booking half of the dock is mobile only. */
+/* Sticky book button stacked above the chat launcher on desktop. */
 .chat-widget {
   position: fixed;
-  right: 1.15rem;
-  bottom: 1.15rem;
+  right: 24px;
+  bottom: 24px;
   z-index: 50;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 0.7rem;
-  width: min(22.5rem, calc(100vw - 1.5rem));
+  gap: 12px;
+  width: min(22.5rem, calc(100vw - 48px));
   overflow-anchor: none;
 }
 
 .dock-row {
   display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+  width: max-content;
+  max-width: 100%;
+}
+
+.dock-book,
+.dock-row .chat-toggle {
+  box-sizing: border-box;
+  height: 44px;
+  min-height: 44px;
+  max-height: 44px;
+  padding: 0 22px;
+  display: inline-flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
+  white-space: nowrap;
+  font-size: 13.5px;
+  line-height: 1.1;
 }
 
 .dock-book {
-  display: none;
+  width: max-content;
+}
+
+.dock-row .chat-toggle {
+  width: 100%;
+  animation: none;
+}
+
+@media (min-width: 641px) {
+  .dock-row:has(.chat-toggle[aria-expanded="true"]) .dock-book {
+    display: none;
+  }
 }
 
 .chat-toggle {
@@ -1884,13 +1913,13 @@ body.lightbox-open .chat-widget {
   }
 
   .site-footer {
-    padding: 2rem 0 calc(6.25rem + env(safe-area-inset-bottom));
+    padding: 2rem 0 calc(144px + env(safe-area-inset-bottom, 0px));
   }
 
   .chat-widget {
-    right: max(0.85rem, env(safe-area-inset-right));
-    bottom: max(0.85rem, env(safe-area-inset-bottom));
-    width: min(22.5rem, calc(100vw - 1.7rem - env(safe-area-inset-left) - env(safe-area-inset-right)));
+    right: max(24px, env(safe-area-inset-right));
+    bottom: max(24px, env(safe-area-inset-bottom));
+    width: min(22.5rem, calc(100vw - 48px - env(safe-area-inset-left) - env(safe-area-inset-right)));
   }
 
   .chat-panel {
@@ -1963,19 +1992,26 @@ body.lightbox-open .chat-widget {
   }
 
   .dock-row {
+    flex-direction: row;
+    align-items: center;
     gap: 8px;
     width: 100%;
+  }
+
+  .dock-row:has(.chat-toggle[aria-expanded="true"]) .dock-book {
+    display: inline-flex;
   }
 
   .chat-panel {
     width: 100%;
   }
 
-  .dock-book,
-  .chat-toggle {
+  .dock-row .dock-book,
+  .dock-row .chat-toggle {
     flex: 1 1 0;
     width: 0;
     min-width: 0;
+    max-width: none;
     height: 44px;
     min-height: 44px;
     max-height: 44px;
