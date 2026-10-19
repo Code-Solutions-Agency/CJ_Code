@@ -85,6 +85,12 @@ export const FAQ = [
     a: quoteReply(["chatbot"]),
   },
   {
+    id: "answer-calls",
+    tags: ["have my calls answered", "answer my calls", "answer calls", "phone", "phones", "missed calls"],
+    q: "Have my calls answered?",
+    a: "Phone answering is not a package on this site. AI Chatbot Implementation can answer, qualify, and hand off inquiries on your site or in the tools you already use, and that work is a custom quote. AI and Business Workflows are custom quotes as well. To talk through what you need, book a call on Contact or email CJ_Code@outlook.com.",
+  },
+  {
     id: "workflow-ai",
     tags: ["workflow", "integration", "crm", "docs", "ops", "models"],
     q: "What is AI and Business Workflows, and is it priced?",
@@ -195,6 +201,8 @@ const ALIASES = {
   book: "booking",
   booking: "booking",
   call: "booking",
+  phones: "phone",
+  answered: "answer",
   schedule: "booking",
   calendar: "booking",
   appointment: "booking",
@@ -315,6 +323,13 @@ export function retrieve(question, limit = 4) {
     if (qset.has("maintenance") && entry.id === "maintenance") score += 6;
     if (qset.has("automation") && entry.id === "automation") score += 6;
     if (qset.has("chatbot") && entry.id === "chatbot-service") score += 6;
+    if (
+      entry.id === "answer-calls" &&
+      qset.has("answer") &&
+      (qset.has("calls") || qset.has("phone") || qset.has("missed"))
+    ) {
+      score += 8;
+    }
     if (qset.has("workflow") && entry.id === "workflow-ai") score += 6;
     if (qset.has("agency") && entry.id === "agency") score += 8;
     if (qset.has("booking") && entry.id === "booking") score += 4;
@@ -618,9 +633,15 @@ function answerFresh(lower, asked) {
   return null;
 }
 
+function isCallsRequest(lower) {
+  return /have my calls answered|answer my calls|answer calls|missed calls/.test(lower)
+    || (/\b(answer|answered|answering)\b/.test(lower) && /\b(calls|phones?)\b/.test(lower));
+}
+
 export function guideReply(message, history = []) {
   const lower = norm(message);
   if (!lower || isGreeting(lower) || isThanks(lower)) return null;
+  if (isCallsRequest(lower)) return null;
   if (/^(hmm+|no idea|idk|i don't know|not sure|whatever|you (pick|choose|tell me))[!.?\s]*$/.test(lower)) {
     const pending = pendingQuestion(history);
     const asked = questionsAsked(history);
