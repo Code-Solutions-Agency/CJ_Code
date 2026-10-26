@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Cedar Lane Studio sample | FAQ chatbot preview</title>
+    <meta
+      name="description"
+      content="Sample preview of a one-time FAQ and booking chatbot. Fictional studio. Scripted answers. Nothing is sent off this page."
+    />
+    <style>
+      :root {
+        --ink: #241f1b;
+        --muted: rgba(36, 31, 27, 0.72);
+        --line: rgba(36, 31, 27, 0.14);
+        --paper: #f3eee6;
+        --card: #fffaf3;
+        --accent: #1d6a4f;
+        --accent-ink: #f7f4ee;
+        --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+        --sans: system-ui, "Segoe UI", sans-serif;
+      }
+
+      * { box-sizing: border-box; }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--sans);
+        font-size: 1.05rem;
+        line-height: 1.5;
+        padding-bottom: 6rem;
+      }
+
+      .ribbon {
+        margin: 0;
+        padding: 0.7rem 1.25rem;
+        background: var(--accent);
+        color: var(--accent-ink);
+        text-align: center;
+        font-size: 0.92rem;
+      }
+
+      .wrap {
+        width: min(68rem, calc(100% - 2rem));
+        margin: 0 auto;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        padding: 1.25rem 0;
+      }
+
+      .brand {
+        font-family: var(--serif);
+        font-size: 1.35rem;
+        text-decoration: none;
+        color: inherit;
+      }
+
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 1rem;
+        align-items: center;
+      }
+
+      nav a {
+        color: var(--ink);
+        text-decoration: none;
+        font-size: 0.95rem;
+      }
+
+      nav a:hover { color: var(--accent); }
+
+      .hero {
+        padding: 1.5rem 0 2.5rem;
+        max-width: 40rem;
+      }
+
+      h1 {
+        margin: 0 0 0.75rem;
+        font-family: var(--serif);
+        font-size: clamp(2.4rem, 6vw, 4.2rem);
+        font-weight: 500;
+        letter-spacing: -0.03em;
+        line-height: 0.95;
+      }
+
+      .lede {
+        margin: 0 0 1.25rem;
+        font-size: 1.15rem;
+        color: var(--muted);
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+      }
+
+      button,
+      .button {
+        appearance: none;
+        border: 0;
+        border-radius: 999px;
+        min-height: 44px;
+        padding: 0.7rem 1rem;
+        font: inherit;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .primary {
+        background: var(--accent);
+        color: var(--accent-ink);
+      }
+
+      .ghost {
+        background: transparent;
+        color: var(--ink);
+        border: 1px solid var(--line);
+      }
+
+      section { padding: 1.25rem 0 2rem; }
+
+      h2 {
+        margin: 0 0 0.85rem;
+        font-family: var(--serif);
+        font-size: 2rem;
+        font-weight: 500;
+      }
+
+      .services {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+      }
+
+      .service {
+        background: var(--card);
+        border-top: 3px solid var(--accent);
+        padding: 1rem 1rem 1.1rem;
+      }
+
+      .num {
+        margin: 0 0 0.35rem;
+        color: var(--accent);
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h3 {
+        margin: 0 0 0.4rem;
+        font-size: 1.15rem;
+      }
+
+      p { margin: 0; }
+
+      .hours {
+        display: grid;
+        grid-template-columns: 12rem 1fr;
+        gap: 0.35rem 1rem;
+        max-width: 32rem;
+        margin: 0;
+      }
+
+      .hours dt { font-weight: 600; }
+      .hours dd { margin: 0; color: var(--muted); }
+
+      .try {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+        margin-top: 0.9rem;
+      }
+
+      .try button {
+        background: var(--card);
+        border: 1px solid var(--line);
+        color: var(--ink);
+        font-weight: 600;
+      }
+
+      .book {
+        background: var(--card);
+        border: 1px solid var(--line);
+        padding: 1.25rem;
+        max-width: 40rem;
+      }
+
+      .book p + p { margin-top: 0.75rem; }
+
+      footer {
+        padding: 0 0 1rem;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      a:focus-visible,
+      button:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+      }
+
+      @media (max-width: 800px) {
+        .services { grid-template-columns: 1fr; }
+        header { align-items: flex-start; flex-direction: column; }
+        .hours { grid-template-columns: 1fr; }
+        .hours dd { margin-bottom: 0.45rem; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <p class="ribbon" role="note">
+      Sample preview. Cedar Lane Studio is fictional. The chatbot answers from a scripted FAQ. Nothing you type is sent to a server.
+    </p>
+    <div class="wrap">
+      <header>
+        <a class="brand" href="#top">Cedar Lane Studio</a>
+        <nav aria-label="Page">
+          <a href="#services">Services</a>
+          <a href="#hours">Hours</a>
+          <a href="#book">Book a call</a>
+        </nav>
+      </header>
+      <main id="top">
+        <section class="hero">
+          <h1>A room plan, without the rush.</h1>
+          <p class="lede">
+            Cedar Lane Studio helps you plan a room you actually use. This page is a sample of a one-time FAQ chatbot: hours, services, and a booking button. It is not a live business.
+          </p>
+          <div class="actions">
+            <button class="primary" type="button" data-faq-chat-open>Try the sample chat</button>
+            <a class="button ghost" href="#book">See the booking spot</a>
+          </div>
+        </section>
+
+        <section id="services" aria-labelledby="services-title">
+          <h2 id="services-title">Services</h2>
+          <div class="services">
+            <article class="service">
+              <p class="num">01</p>
+              <h3>Design consult</h3>
+              <p>Goals and a short walkthrough, so we know which room matters first.</p>
+            </article>
+            <article class="service">
+              <p class="num">02</p>
+              <h3>Room plan</h3>
+              <p>A written layout and a shopping list. No work starts until you agree to that note.</p>
+            </article>
+            <article class="service">
+              <p class="num">03</p>
+              <h3>Styling day</h3>
+              <p>Hands-on help in the room, after the plan is set.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="hours" aria-labelledby="hours-title">
+          <h2 id="hours-title">Hours</h2>
+          <dl class="hours">
+            <dt>Tuesday to Friday</dt>
+            <dd>10am to 5pm</dd>
+            <dt>Saturday</dt>
+            <dd>10am to 2pm</dd>
+            <dt>Sunday and Monday</dt>
+            <dd>Closed</dd>
+          </dl>
+          <div class="try" aria-label="Sample questions">
+            <button type="button" data-faq-chat-open data-faq-chat-ask="What are your hours?">What are your hours?</button>
+            <button type="button" data-faq-chat-open data-faq-chat-ask="How much does it cost?">How much does it cost?</button>
+            <button type="button" data-faq-chat-open data-faq-chat-ask="What happens next?">What happens next?</button>
+          </div>
+        </section>
+
+        <section id="next" aria-labelledby="next-title">
+          <h2 id="next-title">What happens next</h2>
+          <p>
+            We confirm the time by email. The call is short. Then we send a written next step. The chat can say that too. Ask it.
+          </p>
+        </section>
+
+        <section id="book" aria-labelledby="book-title">
+          <h2 id="book-title">Book a call</h2>
+          <div class="book">
+            <p>
+              On this preview, Book a call in the chat jumps to this note. On a client site, the same button opens their booking link, contact page, or a mailto address.
+            </p>
+            <p>
+              This package does not install a booking calendar. Swap the link in <code>sample-config.js</code>, then click the button once before you hand the files over.
+            </p>
+          </div>
+        </section>
+      </main>
+      <footer>
+        <p>
+          Sample preview for a one-time FAQ chatbot handoff. Scripted answers, no paid AI, no subscription. This folder is not the CJ Code marketing site.
+        </p>
+      </footer>
+    </div>
+    <script src="sample-config.js"></script>
+    <script>
+      window.FAQ_CHAT.samplePreview = true;
+      window.FAQ_CHAT.bookingUrl = "#book";
+      window.FAQ_CHAT.autoOpen = true;
+    </script>
+    <script src="faq-chatbot.js"></script>
+  </body>
+</html>
