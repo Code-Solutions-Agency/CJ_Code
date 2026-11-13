@@ -28,6 +28,17 @@ if (!panel || !chatToggle || !chatLog || !chatForm || !chatInput) {
   let pending = false;
   let quickReplies = null;
 
+  const note = panel.querySelector(".chat-note");
+  if (note && !panel.querySelector(".chat-privacy")) {
+    const line = document.createElement("p");
+    line.className = "chat-privacy";
+    const link = document.createElement("a");
+    link.href = "privacy.html";
+    link.textContent = "See our Privacy Policy";
+    line.appendChild(link);
+    note.insertAdjacentElement("afterend", line);
+  }
+
   function addBubble(text, who) {
     const el = document.createElement("p");
     el.className = `chat-bubble ${who}`;
