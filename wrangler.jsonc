@@ -9,5 +9,8 @@
 	},
 	"ai": {
 		"binding": "AI"
+	},
+	"observability": {
+		"enabled": false
 	}
 }
