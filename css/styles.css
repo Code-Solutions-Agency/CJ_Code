@@ -1373,15 +1373,6 @@ main > .section:last-child {
   font-size: 0.98rem;
 }
 
-.legal-placeholder {
-  background: #f6dc93;
-  color: var(--ink);
-  font-weight: 600;
-  padding: 0.08em 0.32em;
-  border-radius: 0.22em;
-  box-decoration-break: clone;
-}
-
 .legal-signoff {
   margin-top: 1.75rem;
   color: var(--ink-faint);
