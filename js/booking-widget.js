@@ -326,6 +326,7 @@
             </div>
             <div class="form-actions">
               <button class="btn primary" type="submit">Confirm time</button>
+              <a class="booking-privacy" href="privacy.html">See our Privacy Policy</a>
               <p class="form-status" id="booking-status" role="status">${selectedDate ? escapeHtml(formatLong(selectedDate)) : "Select a day and time."}</p>
             </div>
           </form>
